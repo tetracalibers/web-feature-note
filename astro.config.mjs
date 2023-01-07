@@ -14,9 +14,6 @@ export default defineConfig(
           "@": resolve(__dirname, "src"),
         },
       },
-      ssr: {
-        noExternal: ["@acab/reset.css"],
-      },
     },
     integrations: [],
     site: "https://tetracalibers.github.io",

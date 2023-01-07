@@ -12,6 +12,7 @@
     "format": "prettier . --write"
   },
   "dependencies": {
-    "astro": "^1.9.0"
+    "astro": "^1.9.0",
+    "uikit": "^3.15.20"
   }
 }
