@@ -1,0 +1,213 @@
+---
+import Layout from "@/layouts/Layout.astro"
+import { CollectionEntry, getCollection } from "astro:content"
+import fs from "node:fs/promises"
+import path from "node:path"
+
+export async function getStaticPaths() {
+  const posts = await getCollection("css-modules")
+
+  type PostsByModule = {
+    [k: string]: {
+      [k: string]: CollectionEntry<"css-modules">
+    }
+  }
+
+  const postsByModule = posts.reduce<PostsByModule>((acc, post) => {
+    const [module, feature] = post.slug.split("/")
+    return {
+      ...acc,
+      [module]: {
+        ...acc[module],
+        [feature]: post,
+      },
+    }
+  }, {})
+
+  const _modules = await Promise.all(
+    Object.keys(postsByModule).map(async module_id => {
+      const _metaJson = await fs.readFile(
+        `src/content/css-modules/${module_id}/_module.json`,
+        "utf-8",
+      )
+      const _meta = await JSON.parse(_metaJson)
+      return {
+        id: module_id,
+        name: _meta.module_name,
+        slug: _meta.mdn_slug,
+      }
+    }),
+  )
+  const modules = _modules.sort().reduce<{ [k: string]: { name: string; slug: string } }>(
+    (acc, obj) => ({
+      ...acc,
+      [obj.id]: {
+        name: obj.name,
+        slug: obj.slug,
+      },
+    }),
+    {},
+  )
+
+  const moduleList = Object.keys(postsByModule).sort()
+
+  const orderedPostsByModule = moduleList.map(module => postsByModule[module])
+
+  const orderedPosts = Object.values(orderedPostsByModule)
+    .flatMap(featureInModule => Object.values(featureInModule))
+    .sort((_a, _b) => {
+      const a = Object.keys(_a)[0]
+      const b = Object.keys(_b)[0]
+      return a < b ? -1 : a > b ? 1 : 0
+    })
+
+  const featureList = Object.values(orderedPostsByModule).flatMap(post => Object.keys(post))
+
+  return posts.map(entry => {
+    const slug_component = entry.slug.split("/")
+    const [module_id, feature_id] = slug_component
+    const feature_name = entry.data.feature_name ?? feature_id
+    const module = modules[module_id]
+    const currIdx = featureList.indexOf(feature_id)
+    return {
+      params: { slug: entry.slug },
+      props: {
+        entry,
+        mdn_url: "https://developer.mozilla.org/ja/docs/Web/CSS/" + feature_name,
+        feature_name,
+        module_slug: module.slug,
+        module_name: module.name,
+        module_mdn_url: "https://developer.mozilla.org/ja/docs/Web/CSS/" + module.slug,
+        title: slug_component.reverse().join(" - "),
+        next: orderedPosts[currIdx + 1],
+        prev: orderedPosts[currIdx - 1],
+      },
+    }
+  })
+}
+
+interface Props {
+  entry: CollectionEntry<"css-modules">
+  mdn_url: string
+  feature_name: string
+  module_slug: string
+  module_name: string
+  module_mdn_url: string
+  title: string
+  next: CollectionEntry<"css-modules">
+  prev: CollectionEntry<"css-modules">
+}
+
+const {
+  entry,
+  feature_name,
+  module_name,
+  module_mdn_url,
+  mdn_url,
+  title,
+  next,
+  prev,
+  module_slug,
+} = Astro.props
+const { Content } = await entry.render()
+const { summary, type } = entry.data
+
+const existCssTrick = await (async () => {
+  if (type !== "property") return false
+  const res = await fetch(`https://css-tricks.com/almanac/properties/a/${feature_name}`)
+  return res.status !== 404
+})()
+const existRelatedArticle = existCssTrick
+---
+
+<Layout title={title}>
+  <div class="root">
+    <header>
+      <a class="back-link" href={path.join(import.meta.env.BASE_URL, `/#${module_slug}`)}
+        >back to top</a
+      >
+    </header>
+    <main>
+      <h1>{feature_name}</h1>
+      <dl>
+        <dt>Module Reference</dt>
+        <dd><a href={module_mdn_url}>{module_name}</a></dd>
+        <dt>Feature Reference</dt>
+        <dd><a href={mdn_url}>{feature_name}</a></dd>
+      </dl>
+      {
+        summary && (
+          <>
+            <h2>What is this?</h2>
+            <p>{summary}</p>
+          </>
+        )
+      }
+      <Content />
+      <div class="related">
+        {
+          existRelatedArticle && (
+            <>
+              <h2>Related Article</h2>
+              <ul>
+                {existCssTrick && (
+                  <li>
+                    <a href={`https://css-tricks.com/almanac/properties/a/${feature_name}`}>
+                      CSS Trick - {feature_name}
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </>
+          )
+        }
+      </div>
+    </main>
+    <footer>
+      {
+        prev && (
+          <a href={path.join(import.meta.env.BASE_URL, "/css-modules", prev.slug)}>
+            {prev.slug.split("/")[1]}
+          </a>
+        )
+      }
+      {
+        next && (
+          <a href={path.join(import.meta.env.BASE_URL, "/css-modules", next.slug)}>
+            {next.slug.split("/")[1]}
+          </a>
+        )
+      }
+    </footer>
+  </div>
+</Layout>
+
+<style>
+  :global(body) {
+    padding-block: 0;
+  }
+
+  .root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-block: 1.25rem;
+    gap: 1.25rem;
+  }
+
+  main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 999;
+    margin-bottom: 2rem;
+  }
+
+  .related {
+    margin-top: auto;
+  }
+
+  footer {
+    display: flex;
+    justify-content: space-between;
+  }
+</style>
