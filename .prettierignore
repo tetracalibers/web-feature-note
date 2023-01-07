@@ -1,0 +1,4 @@
+*.md
+*.mdx
+package.json
+yarn.lock
