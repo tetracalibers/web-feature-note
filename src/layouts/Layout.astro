@@ -1,5 +1,5 @@
 ---
-import "../../node_modules/uikit/dist/css/uikit.min.css"
+import "../css/latex.css"
 
 export interface Props {
   title: string
@@ -17,10 +17,7 @@ const { title } = Astro.props
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <body>
+  <body class="latex-dark-auto libertinus">
     <slot />
-    <script type="module">
-      import "../../node_modules/uikit/dist/js/uikit.min.js"
-    </script>
   </body>
 </html>
