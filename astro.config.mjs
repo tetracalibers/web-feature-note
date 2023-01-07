@@ -2,6 +2,7 @@
 
 import { defineConfig } from "astro/config"
 import { resolve } from "node:path"
+import mdx from "@astrojs/mdx"
 const __dirname = new URL(".", import.meta.url).pathname
 
 export default defineConfig(
@@ -15,7 +16,7 @@ export default defineConfig(
         },
       },
     },
-    integrations: [],
+    integrations: [mdx()],
     site: "https://tetracalibers.github.io",
     base: "/repo-name",
   },
