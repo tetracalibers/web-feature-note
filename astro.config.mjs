@@ -19,5 +19,8 @@ export default defineConfig(
     integrations: [mdx()],
     site: "https://tetracalibers.github.io",
     base: "/repo-name",
+    experimental: {
+      contentCollections: true,
+    },
   },
 )
