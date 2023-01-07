@@ -18,7 +18,7 @@ export default defineConfig(
     },
     integrations: [mdx()],
     site: "https://tetracalibers.github.io",
-    base: "https://tetracalibers.github.io/web-feature-note",
+    base: "web-feature-note",
     experimental: {
       contentCollections: true,
     },
