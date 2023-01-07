@@ -1,35 +1,162 @@
 ---
 import Layout from "../layouts/Layout.astro"
+import { CollectionEntry, getCollection } from "astro:content"
+import fs from "node:fs/promises"
+
+const posts = await getCollection("css-modules")
+
+type PostsByModule = {
+  [k: string]: {
+    [k: string]: CollectionEntry<"css-modules">
+  }
+}
+
+const postsByModule = posts.reduce<PostsByModule>((acc, post) => {
+  const [module, feature] = post.slug.split("/")
+  return {
+    ...acc,
+    [module]: {
+      ...acc[module],
+      [feature]: post,
+    },
+  }
+}, {})
+
+const _modules = await Promise.all(
+  Object.keys(postsByModule).map(async module_id => {
+    const _metaJson = await fs.readFile(
+      `src/content/css-modules/${module_id}/_module.json`,
+      "utf-8",
+    )
+    const _meta = await JSON.parse(_metaJson)
+    return {
+      id: module_id,
+      name: _meta.module_name,
+      slug: _meta.mdn_slug,
+    }
+  }),
+)
+const modules = _modules.sort()
 ---
 
-<Layout title="Welcome to Astro.">
-  <ul uk-accordion>
-    <li class="uk-open">
-      <a class="uk-accordion-title" href="#">Item 1</a>
-      <div class="uk-accordion-content">
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </p>
-      </div>
-    </li>
-    <li>
-      <a class="uk-accordion-title" href="#">Item 2</a>
-      <div class="uk-accordion-content">
-        <p>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-          commodo consequat. Duis aute irure dolor reprehenderit.
-        </p>
-      </div>
-    </li>
-    <li>
-      <a class="uk-accordion-title" href="#">Item 3</a>
-      <div class="uk-accordion-content">
-        <p>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-          nulla pariatur. Excepteur sint occaecat cupidatat proident.
-        </p>
-      </div>
-    </li>
-  </ul>
+<Layout title="CSS All Modules Note">
+  <div class="root">
+    <header><h1>CSS All Modules Note</h1></header>
+    <details class="toc" open>
+      <summary>TOC</summary>
+      <ul>
+        {
+          modules.map(module => (
+            <li>
+              <a href={`#${module.slug}`}>{module.name}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </details>
+    <ul class="list-root">
+      {
+        modules.map(module => (
+          <li>
+            <Fragment>
+              <h2 id={module.slug}>{module.name}</h2>
+              <ul class="feature-list">
+                {Object.keys(postsByModule[module.id])
+                  .sort()
+                  .map(feature => (
+                    <li>
+                      <a href={`css-modules/${postsByModule[module.id][feature].slug}`}>
+                        {feature}
+                      </a>
+                    </li>
+                  ))}
+              </ul>
+            </Fragment>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
 </Layout>
+
+<style>
+  :global(body) {
+    overflow-x: auto;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 0;
+    max-width: none;
+    width: max-content;
+  }
+  .root {
+    width: max-content;
+  }
+  .toc {
+    margin: 4rem 25vw 2rem;
+    width: fit-content;
+    font-size: 1.25rem;
+  }
+  .toc ul {
+    list-style: none;
+    display: flex;
+    padding: 0 0 0 1rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .toc li {
+    width: 50vw;
+  }
+  header {
+    top: 0;
+    position: fixed;
+    width: 100vw;
+    height: 100px;
+    background-color: rgb(249 250 251 / 80%);
+    backdrop-filter: blur(10px);
+    z-index: 1;
+  }
+  header > h1 {
+    padding: 1rem;
+    margin: 0;
+    white-space: nowrap;
+    font-size: min(7vw, 2.5rem);
+  }
+  .list-root {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    margin: 0 2rem;
+    padding: 0;
+  }
+  .list-root > li {
+    flex-shrink: 0;
+  }
+  .list-root > li > h2 {
+    position: sticky;
+    top: 100px;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    margin: 0;
+    background-image: linear-gradient(
+      135deg,
+      rgba(60, 140, 231, 0.7) 10%,
+      rgba(0, 234, 255, 0.7) 100%
+    );
+    backdrop-filter: blur(10px);
+    z-index: 1;
+  }
+  .feature-list {
+    padding-right: 2rem;
+    position: sticky;
+    top: 160px;
+  }
+  .feature-list > li:first-child {
+    margin-top: 1rem;
+  }
+  summary > h2 {
+    display: inline;
+    padding-left: 1rem;
+    vertical-align: bottom;
+  }
+</style>
