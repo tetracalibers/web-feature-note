@@ -70,7 +70,7 @@ export async function getStaticPaths() {
     const module = modules[module_id]
     const currIdx = featureList.indexOf(feature_id)
     return {
-      params: { slug: entry.slug },
+      params: { slug: feature_id },
       props: {
         entry,
         mdn_url: "https://developer.mozilla.org/ja/docs/Web/CSS/" + feature_name,

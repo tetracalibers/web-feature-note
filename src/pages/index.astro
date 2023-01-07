@@ -65,9 +65,7 @@ const modules = _modules.sort()
                   .sort()
                   .map(feature => (
                     <li>
-                      <a href={`css-modules/${postsByModule[module.id][feature].slug}`}>
-                        {feature}
-                      </a>
+                      <a href={`css-modules/${feature}`}>{feature}</a>
                     </li>
                   ))}
               </ul>
