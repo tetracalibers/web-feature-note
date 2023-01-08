@@ -112,10 +112,12 @@ const {
   module_slug,
 } = Astro.props
 const { Content } = await entry.render()
-const { type } = entry.data
+const { type, related_features, related_articles, css_trick } = entry.data
 
-const existCssTrick = type === "property"
-const existRelatedArticle = existCssTrick
+const existCssTrick = type === "property" && css_trick !== false
+const existRelatedArticle = existCssTrick && related_articles
+
+const cssTrickArticle = typeof css_trick === "string" ? css_trick : feature_name
 ---
 
 <Layout title={title}>
@@ -136,17 +138,39 @@ const existRelatedArticle = existCssTrick
       <Content />
       <div class="related">
         {
+          related_features && (
+            <>
+              <h2>Related Features</h2>
+              <ul>
+                {related_features.map(feature => (
+                  <li>
+                    <OtherPageLink slugs={["css-modules", feature]}>{feature}</OtherPageLink>
+                  </li>
+                ))}
+              </ul>
+            </>
+          )
+        }
+        {
           existRelatedArticle && (
             <>
               <h2>Related Article</h2>
               <ul>
                 {existCssTrick && (
                   <li>
-                    <a href={`https://css-tricks.com/almanac/properties/a/${feature_name}`}>
-                      CSS Trick - {feature_name}
+                    <a
+                      href={`https://css-tricks.com/almanac/properties/${cssTrickArticle[0]}/${cssTrickArticle}`}
+                    >
+                      CSS Trick - {cssTrickArticle}
                     </a>
                   </li>
                 )}
+                {related_articles &&
+                  related_articles.map(article => (
+                    <li>
+                      <a href={article.href}>{article.label}</a>
+                    </li>
+                  ))}
               </ul>
             </>
           )
@@ -179,13 +203,6 @@ const existRelatedArticle = existCssTrick
 <style>
   :global(body) {
     padding-block: 0;
-  }
-
-  :global(.demo-space) {
-    font-family: monospace;
-    background-color: white;
-    padding: 1rem;
-    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   }
 
   .root {

@@ -4,22 +4,16 @@ const css_modules = defineCollection({
   schema: {
     feature_name: z.string().optional(),
     type: z.enum(["property", "function", "at-rule"]).default("property"),
-    external_related_article: z
+    related_features: z.array(z.string()).optional(),
+    related_articles: z
       .array(
         z.object({
-          href: z.string(),
+          href: z.string().url(),
           label: z.string(),
         }),
       )
       .optional(),
-    inner_related_page: z
-      .array(
-        z.object({
-          href: z.string(),
-          label: z.string(),
-        }),
-      )
-      .optional(),
+    css_trick: z.union([z.boolean(), z.string()]).default(true),
   },
 })
 
