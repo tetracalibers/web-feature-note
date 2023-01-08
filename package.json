@@ -17,6 +17,7 @@
     "latex.css": "^1.8.0"
   },
   "devDependencies": {
+    "@astrojs/prism": "^1.0.2",
     "@types/marked": "^4.0.8",
     "marked": "^4.2.5"
   }

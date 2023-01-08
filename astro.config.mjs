@@ -22,5 +22,8 @@ export default defineConfig(
     experimental: {
       contentCollections: true,
     },
+    markdown: {
+      syntaxHighlight: "prism",
+    },
   },
 )
