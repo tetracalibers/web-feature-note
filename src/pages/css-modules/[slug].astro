@@ -162,14 +162,20 @@ const existRelatedArticle = existCssTrick
     <footer>
       {
         prev && (
-          <a class="prev" href={path.join(import.meta.env.BASE_URL, "/css-modules", prev.slug)}>
+          <a
+            class="prev"
+            href={path.join(import.meta.env.BASE_URL, "/css-modules", prev.slug.split("/")[1])}
+          >
             {prev.slug.split("/")[1]}
           </a>
         )
       }
       {
         next && (
-          <a class="next" href={path.join(import.meta.env.BASE_URL, "/css-modules", next.slug)}>
+          <a
+            class="next"
+            href={path.join(import.meta.env.BASE_URL, "/css-modules", next.slug.split("/")[1])}
+          >
             {next.slug.split("/")[1]}
           </a>
         )
