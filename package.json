@@ -19,6 +19,8 @@
   "devDependencies": {
     "@astrojs/prism": "^1.0.2",
     "@types/marked": "^4.0.8",
-    "marked": "^4.2.5"
+    "@types/prettier": "^2.7.2",
+    "marked": "^4.2.5",
+    "prettier": "^2.8.2"
   }
 }
