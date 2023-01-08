@@ -154,11 +154,9 @@ const existRelatedArticle = existCssTrick
     <footer>
       {
         prev && (
-          <a
-            class="prev"
-            href={path.join(import.meta.env.BASE_URL, "/css-modules", prev.slug.split("/")[1])}
-          >
-            {prev.slug.split("/")[1]}
+          <div class="prev">
+            <OtherPageLink slugs={["css-modules", prev.slug.split("/")[1]]}>
+              {prev.slug.split("/")[1]}
             </OtherPageLink>
           </div>
         )
@@ -168,7 +166,8 @@ const existRelatedArticle = existCssTrick
           <div class="next">
             <OtherPageLink slugs={["css-modules", next.slug.split("/")[1]]}>
               {next.slug.split("/")[1]}
-          </a>
+            </OtherPageLink>
+          </div>
         )
       }
     </footer>
@@ -178,6 +177,13 @@ const existRelatedArticle = existCssTrick
 <style>
   :global(body) {
     padding-block: 0;
+  }
+
+  :global(.demo-space) {
+    font-family: monospace;
+    background-color: white;
+    padding: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.02) 0px 1px 3px 0px, rgba(27, 31, 35, 0.15) 0px 0px 0px 1px;
   }
 
   .root {

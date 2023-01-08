@@ -1,0 +1,53 @@
+---
+styles:
+  common: |
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100px;
+  clip: |
+    text-overflow: clip;
+  ellipsis: |
+    text-overflow: ellipsis;
+---
+
+import { TITLE_LV2 } from '@/config/css-modules-structure.js'
+import OtherPageLink from '@/components/link/other-page-link.astro'
+import ValuesDemo from '@/demo/css-modules/text-overflow/values.astro'
+
+## {TITLE_LV2.summary}
+
+長いテキストの溢れた部分をどう省略するか、省略されていることをどのような記号で表現するかを指定する。
+
+## そもそもテキストを溢れさせるには
+
+```css
+.text {
+  overflow: hidden;
+  white-space: nowrap;
+}
+```
+
+## {TITLE_LV2.values}
+
+### `clip`
+
+溢れた文字列は切り取って非表示にする。
+
+<ValuesDemo style={frontmatter.styles.common + frontmatter.styles.clip} />
+
+### `ellipsis`
+
+`…`で省略されていることを表す。
+
+<ValuesDemo style={frontmatter.styles.common + frontmatter.styles.ellipsis} />
+
+## 複数行に渡るテキストの末尾を省略したい場合
+
+- <OtherPageLink slugs={['css-modules', '-webkit-line-clamp']}>`-webkit-line-clamp`を使う</OtherPageLink>
+
+## {TITLE_LV2.status}
+
+2023/01/08時点では、
+
+- カスタム省略文字列の適用は**Firefox**のみ対応
+- 値を2つ設定して、行頭にも省略文字列を適用できるのも**Firefox**のみ
