@@ -1,0 +1,31 @@
+---
+related_features:
+  - text-decoration
+  - text-decoration-line
+  - text-underline-offset
+styles:
+  common: |
+    text-decoration: underline;
+  auto: |
+    text-underline-position: auto;
+  under: |
+    text-underline-position: under;
+---
+
+import { TITLE_LV2 } from '@/config/css-modules-structure.js'
+import OtherPageLink from '@/components/link/other-page-link.astro'
+import OneLineTextDemo from '@/demo/css-modules/one-line-text.astro'
+
+## {TITLE_LV2.summary}
+
+`text-decoration: underline;`で設定される下線の位置を調整する。
+
+## {TITLE_LV2.values}
+
+### `auto`
+
+<OneLineTextDemo styleClass="auto" style={frontmatter.styles.common + frontmatter.styles.auto} />
+
+### `under`
+
+<OneLineTextDemo styleClass="under" style={frontmatter.styles.common + frontmatter.styles.under} />
