@@ -1,0 +1,38 @@
+---
+styles:
+  common: |
+    width: 200px;
+    text-decoration-line: underline;
+  two_px: |
+    text-decoration-thickness: 2px;
+  ten_px: |
+    text-decoration-thickness: 10px;
+---
+
+import { TITLE_LV2 } from '@/config/css-modules-structure.js'
+import OtherPageLink from '@/components/link/other-page-link.astro'
+import OneLineTextDemo from '@/demo/css-modules/one-line-text.astro'
+
+## {TITLE_LV2.summary}
+
+`text-decoration`等で設定された装飾線の太さを指定する。
+
+## {TITLE_LV2.usage}
+
+### 2px
+
+<OneLineTextDemo style={frontmatter.styles.common + frontmatter.styles.two_px} />
+
+### 10px
+
+<OneLineTextDemo style={frontmatter.styles.common + frontmatter.styles.ten_px} />
+
+### 子孫要素で変更を加える
+
+TODO
+
+### 継承先のフォントサイズに合わせて伸縮
+
+2023/01/08時点では、**Firefox**のみ対応。
+
+TODO
