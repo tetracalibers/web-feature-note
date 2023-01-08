@@ -1,8 +1,8 @@
 ---
+import OtherPageLink from "@/components/link/other-page-link.astro"
 import Layout from "@/layouts/Layout.astro"
 import { CollectionEntry, getCollection } from "astro:content"
 import fs from "node:fs/promises"
-import path from "node:path"
 
 export async function getStaticPaths() {
   const posts = await getCollection("css-modules")
@@ -119,9 +119,9 @@ const existRelatedArticle = existCssTrick
 <Layout title={title}>
   <div class="root">
     <header>
-      <a class="back-link" href={path.join(import.meta.env.BASE_URL, `/#${module_slug}`)}
-        >back to top</a
-      >
+      <div class="back-link">
+        <OtherPageLink slugs={[`/#${module_slug}`]}>back to top</OtherPageLink>
+      </div>
     </header>
     <main>
       <h1>{feature_name}</h1>
@@ -159,16 +159,15 @@ const existRelatedArticle = existCssTrick
             href={path.join(import.meta.env.BASE_URL, "/css-modules", prev.slug.split("/")[1])}
           >
             {prev.slug.split("/")[1]}
-          </a>
+            </OtherPageLink>
+          </div>
         )
       }
       {
         next && (
-          <a
-            class="next"
-            href={path.join(import.meta.env.BASE_URL, "/css-modules", next.slug.split("/")[1])}
-          >
-            {next.slug.split("/")[1]}
+          <div class="next">
+            <OtherPageLink slugs={["css-modules", next.slug.split("/")[1]]}>
+              {next.slug.split("/")[1]}
           </a>
         )
       }

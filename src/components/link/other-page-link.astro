@@ -1,0 +1,13 @@
+---
+import path from "node:path"
+
+interface Props {
+  slugs: string[]
+}
+
+const { slugs } = Astro.props
+---
+
+<a href={path.join(import.meta.env.BASE_URL, ...slugs)}>
+  <slot />
+</a>
