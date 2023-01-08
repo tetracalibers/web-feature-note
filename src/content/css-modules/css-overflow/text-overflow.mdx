@@ -15,7 +15,7 @@ styles:
 
 import { TITLE_LV2 } from '@/config/css-modules-structure.js'
 import OtherPageLink from '@/components/link/other-page-link.astro'
-import ValuesDemo from '@/demo/css-modules/text-overflow/values.astro'
+import OneLineTextDemo from '@/demo/css-modules/one-line-text.astro'
 
 ## {TITLE_LV2.summary}
 
@@ -36,13 +36,13 @@ import ValuesDemo from '@/demo/css-modules/text-overflow/values.astro'
 
 溢れた文字列は切り取って非表示にする。
 
-<ValuesDemo style={frontmatter.styles.common + frontmatter.styles.clip} />
+<OneLineTextDemo style={frontmatter.styles.common + frontmatter.styles.clip} styleClass="clip" />
 
 ### `ellipsis`
 
 `…`で省略されていることを表す。
 
-<ValuesDemo style={frontmatter.styles.common + frontmatter.styles.ellipsis} />
+<OneLineTextDemo style={frontmatter.styles.common + frontmatter.styles.ellipsis} styleClass="ellipsis" />
 
 ## 複数行に渡るテキストの末尾を省略したい場合
 

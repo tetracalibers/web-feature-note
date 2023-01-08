@@ -4,10 +4,11 @@ import prettier from "prettier"
 
 interface Props {
   style: string
+  styleClass?: string
 }
 
-const { style } = Astro.props
-const code = prettier.format(`.clip{${style}}`, { parser: "css" })
+const { style, styleClass = "example" } = Astro.props
+const code = prettier.format(`.${styleClass}{${style}}`, { parser: "css" })
 ---
 
 <Prism lang="css" code={code} />
