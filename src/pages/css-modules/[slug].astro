@@ -114,8 +114,8 @@ const {
 const { Content } = await entry.render()
 const { type, related_features, related_articles, css_trick } = entry.data
 
-const existCssTrick = type === "property" && css_trick !== false
-const existRelatedArticle = existCssTrick && related_articles
+const existCssTrick = type === "property" && css_trick
+const existRelatedArticle = existCssTrick || related_articles
 
 const cssTrickArticle = typeof css_trick === "string" ? css_trick : feature_name
 ---
