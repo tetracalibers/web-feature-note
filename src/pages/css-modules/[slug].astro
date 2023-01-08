@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro"
 import { CollectionEntry, getCollection } from "astro:content"
 import fs from "node:fs/promises"
 import path from "node:path"
+import { marked } from "marked"
 
 export async function getStaticPaths() {
   const posts = await getCollection("css-modules")
@@ -135,7 +136,7 @@ const existRelatedArticle = existCssTrick
         summary && (
           <>
             <h2>What is this?</h2>
-            <p>{summary}</p>
+            <Fragment set:html={marked.parse(summary)} />
           </>
         )
       }
