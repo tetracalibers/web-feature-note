@@ -4,7 +4,6 @@ const css_modules = defineCollection({
   schema: {
     feature_name: z.string().optional(),
     type: z.enum(["property", "function", "at-rule"]).default("property"),
-    summary: z.string().optional(),
     external_related_article: z
       .array(
         z.object({

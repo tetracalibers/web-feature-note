@@ -3,7 +3,6 @@ import Layout from "@/layouts/Layout.astro"
 import { CollectionEntry, getCollection } from "astro:content"
 import fs from "node:fs/promises"
 import path from "node:path"
-import { marked } from "marked"
 
 export async function getStaticPaths() {
   const posts = await getCollection("css-modules")
@@ -111,7 +110,7 @@ const {
   module_slug,
 } = Astro.props
 const { Content } = await entry.render()
-const { summary, type } = entry.data
+const { type } = entry.data
 
 const existCssTrick = type === "property"
 const existRelatedArticle = existCssTrick
@@ -132,14 +131,6 @@ const existRelatedArticle = existCssTrick
         <dt>Feature Reference</dt>
         <dd><a href={mdn_url}>{feature_name}</a></dd>
       </dl>
-      {
-        summary && (
-          <>
-            <h2>What is this?</h2>
-            <Fragment set:html={marked.parse(summary)} />
-          </>
-        )
-      }
       <Content />
       <div class="related">
         {
