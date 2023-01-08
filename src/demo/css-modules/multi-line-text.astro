@@ -1,0 +1,21 @@
+---
+import { Prism } from "@astrojs/prism"
+import prettier from "prettier"
+
+interface Props {
+  style: string
+  styleClass?: string
+}
+
+const { style, styleClass = "example" } = Astro.props
+const code = prettier.format(`.${styleClass}{${style}}`, { parser: "css" })
+---
+
+<Prism lang="css" code={code} />
+
+<div class="demo-space pd-x-1rem" style={style.replaceAll("\n", "")}>
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
+  massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
+  quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+  Donec pede justo, fringilla vel, aliquet nec, vulputate
+</div>

@@ -1,0 +1,62 @@
+---
+css_trick: line-clamp
+related_features:
+  - text-overflow
+related_articles:
+  - href: https://kumaweb-d.com/blog/css3-box-orient/
+    label: box-orientでフレキシブルボックス内の配置方向を指定する
+  - href: https://t-yng.jp/post/wh-webkit-box
+    label: 複数行テキストの省略と-webkit-boxについて
+styles:
+  clamp: |
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  padding: |
+    padding: 1rem;
+  padding_bottom_reset: |
+    padding-bottom: 0;
+  not_working: |
+    display: flex;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+---
+
+import { TITLE_LV2 } from '@/config/css-modules-structure.js'
+import OtherPageLink from '@/components/link/other-page-link.astro'
+import MultiLineTextDemo from '@/demo/css-modules/multi-line-text.astro'
+
+## {TITLE_LV2.summary}
+
+テキストを複数行に渡って表示し、指定した行数で収まらない部分は省略する。
+
+## {TITLE_LV2.usage}
+
+### 3行表示
+
+<MultiLineTextDemo style={frontmatter.styles.clamp} styleClass='clamp' />
+
+## {TITLE_LV2.bad}
+
+### 上下の`padding`があると綺麗に見えない
+
+`-webkit-line-clamp`を指定するとき、上下に`padding`があると、省略行の次の行が見えてしまう。
+
+<MultiLineTextDemo style={frontmatter.styles.padding + frontmatter.styles.clamp} styleClass='has-padding-clamp' />
+
+この場合、少なくとも`padding-bottom: 0;`が必要。
+
+<MultiLineTextDemo style={frontmatter.styles.padding + frontmatter.styles.padding_bottom_reset + frontmatter.styles.clamp} styleClass='has-padding-clamp' />
+
+### `-webkit-`群の組み合わせでしか機能しない
+
+`-webkit-box`の正体は`flex`プロパティのベンダープレフィックス。
+
+`flex`が草案時代に WebKit で`flex`を利用するときに使われていたプロパティだが、
+`-webkit-box`の代わりに`flex`を指定すると`-webkit-line-clamp`は機能しない。
+
+<MultiLineTextDemo style={frontmatter.styles.not_working} styleClass='not-working' />
+
+
