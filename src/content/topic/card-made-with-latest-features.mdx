@@ -1,0 +1,57 @@
+---
+title: カードコンポーネントで学ぶ最新CSSテクニック
+---
+
+import EmbedOtherPage from '@/components/embed-other-page.astro'
+import Card from '@/demo/topic/card.astro'
+
+<EmbedOtherPage pagePath="/demo/card-with-latest-features">
+  <Card />
+</EmbedOtherPage>
+
+## gridによる重ね合わせ配置
+
+- 画像の上にテキストを重ねる（同セル配置）
+- 角に装飾を加える（位置と広がりの制御）
+
+## flexによるインライン配置
+
+- アイコンとテキストを揃えて並べる
+  - `flex-shrink: 0;`
+  - `lh`と`rlh`
+
+## 背景画像とテキストのコントラストの確保
+
+- 背景画像とテキスト色のコントラストを動的に確保する
+  - `filter`
+  - `background-clip: text;`
+  - `mix-blend-mode: difference;`
+- テキストを読みやすくするための画像加工
+  - 局所的なOverlay
+    - 局所的に色がつくように`gradient`を重ねる
+    - `mask-image`で局所的に透過させる
+  - テキストの形に合わせて背景色をつける
+    - `box-decoration-break: clone;`
+- ダークモードに対応する
+  - `prefers-color-scheme: dark;`
+  - `filter: grayscale();`
+
+## line-clampによるコンテンツの省略
+
+- 長いテキストを省略する
+  - `-webkit-line-clamp`
+
+## border-radiusに代わるclip-path
+
+- 波紋エフェクトをつける
+  - 正円ではなく、要素幅に合わせた楕円で
+- 画像にフレームをつけて額縁風にする
+  - `clip-path: inset();`
+- 画像の端を切り落とす
+  - `clip-path`によるカットアウト
+
+## 画像の表示範囲を制御する
+
+- 画像のどの範囲を見せるか
+  - `object-view-box`
+  - `aspect-ratio`
