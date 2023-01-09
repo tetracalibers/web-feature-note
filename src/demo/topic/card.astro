@@ -1,0 +1,186 @@
+---
+import ArrowRightIcon from "@/components/icon/arrow-right-icon.astro"
+
+// Math.random() * ( 最大値 + 1 - 最小値 ) + 最小値;
+const genRandom = (min: number, max: number) => Math.floor(Math.random() * (max + 1 - min) + min)
+
+const width = genRandom(200, 600)
+const height = genRandom(200, width)
+const category = ["animals", "arch", "nature", "tech"][genRandom(0, 3)]
+const title = "タイトル".repeat(genRandom(1, 3))
+const text = "この文章はダミーです。".repeat(genRandom(2, 10))
+const linkLabel = "もっと読む".repeat(genRandom(1, 10))
+---
+
+<div class="CardWrapper">
+  <div class="CardTag">
+    <div class="CardTag__text">New</div>
+  </div>
+  <div class="Card">
+    <div class="CardHeader">
+      <img
+        class="CardHeader__image"
+        src={`http://placeimg.com/${width}/${height}/${category}`}
+        alt=""
+      />
+      <h2 class="CardHeader__title">
+        {title}
+      </h2>
+    </div>
+    <div class="CardBody">
+      <p class="CardBody__paragraph">
+        {text}
+      </p>
+    </div>
+    <div class="CardFooter">
+      <a href="" class="MoreLink">
+        <span class="MoreLink__text">{linkLabel}</span>
+        <span class="MoreLink__icon"><ArrowRightIcon /></span>
+      </a>
+    </div>
+  </div>
+</div>
+
+<style>
+  /** CardTagとCardを重ねるためのコンテナ */
+  .CardWrapper {
+    --corner-radius: 10px;
+    display: grid;
+    cursor: pointer;
+    position: relative;
+  }
+
+  /** hover時に波紋アニメーション */
+  .CardWrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #aac4ff;
+    opacity: 0.1;
+    clip-path: circle(0 at center);
+    /** blur時はアニメーションせずすぐに消す */
+    transition: none;
+  }
+  .CardWrapper:hover::before {
+    clip-path: circle(100% at center);
+    /** hover時は0.4sかけて波紋を広げる */
+    transition: 0.4s ease-out;
+  }
+
+  .CardTag {
+    /** Cardと同セルに配置 */
+    grid-area: 1 / 1;
+    /** Card全体に広がらないように、左上に固定 */
+    justify-self: flex-start;
+    align-self: flex-start;
+    /** Cardの上に重ねる */
+    z-index: 1;
+    /** 幅はCard幅の20%とし、高さを幅と等しくする */
+    width: 20%;
+    aspect-ratio: 1;
+    background-color: #b983ff;
+    color: #eef1ff;
+    text-transform: uppercase;
+    /** 斜めの三角形 */
+    clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
+    border-top-left-radius: var(--corner-radius);
+    position: relative;
+  }
+
+  .CardTag__text {
+    width: 125%;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: bottom right;
+    /** cos(-45deg)が約-29.29 */
+    transform: translate(-29.29%, -100%) rotate(-45deg);
+    transform-origin: bottom right;
+  }
+
+  .Card {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    border-radius: var(--corner-radius);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    /** CardTagと同セルに配置 */
+    grid-area: 1 / 1;
+  }
+
+  .CardHeader {
+    display: grid;
+  }
+
+  /** 同一セルに重ねる */
+  .CardHeader__title,
+  .CardHeader__image {
+    grid-area: 1 / 1;
+  }
+
+  .CardHeader__image {
+    border-top-left-radius: var(--corner-radius);
+    border-top-right-radius: var(--corner-radius);
+    /** レスポンシブ化 */
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    /** 歪まないようにする */
+    object-fit: cover;
+    /** 中央より25%上の部分を見せる */
+    /* object-view-box: inset(-25% 0 0 0); */
+    /** グラデーションを挟んでテキストを読みやすく */
+    -webkit-mask-image: linear-gradient(to top, #ffffff00 0%, #ffffff 100%);
+    mask-image: linear-gradient(to top, #ffffff00 0%, #ffffff 100%);
+    /** これを加えるか加えないかで、デザインが大きく変わる */
+    clip-path: inset(1em 1em 0.5em round 20px);
+  }
+
+  .CardHeader__title {
+    /** 画像と同セルのため、画像全体に広がっている */
+    /** この状態ではalign-*は効かないので、新たなgridにして位置を指定する */
+    display: grid;
+    justify-items: center;
+    align-content: flex-end;
+    padding: 0 1.25em 0.75em;
+    margin: 0;
+    color: black;
+  }
+
+  .CardBody {
+    padding: 0 1em;
+  }
+
+  .CardBody__paragraph {
+    margin: 0;
+    /** 3行に収める */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+
+  .CardFooter {
+    padding: 0 1em 1em;
+    /** 下端に配置 */
+    margin-top: auto;
+  }
+
+  .MoreLink {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.25em;
+    /** アイコンとテキストの高さを揃える */
+    align-items: center;
+  }
+
+  .MoreLink__icon {
+    /** リンクテキストが長くなったときに、アイコンが縮まないようにする */
+    flex-shrink: 0;
+    /** 縦中央配置 */
+    /** flex指定により、.MoreLink__iconの高さがその中のiconに一致する */
+    display: flex;
+  }
+</style>
