@@ -17,6 +17,13 @@ const css_modules = defineCollection({
   },
 })
 
+const topic = defineCollection({
+  schema: {
+    title: z.string(),
+  },
+})
+
 export const collections = {
   "css-modules": css_modules,
+  topic: topic,
 }
