@@ -1,0 +1,23 @@
+---
+import Card from "@/demo/topic/card.astro"
+import DemoPage from "@/layouts/DemoPage.astro"
+---
+
+<DemoPage title="Card Component Demo">
+  <div class="ly-card">
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+  </div>
+</DemoPage>
+
+<style>
+  .ly-card {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    padding: 20px;
+  }
+</style>
