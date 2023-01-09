@@ -1,0 +1,69 @@
+---
+export interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="color-scheme" content="light dark" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  body {
+    margin: 0;
+    background: white;
+    color: #263159;
+    color: #2a2a2a;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    /* Invert all elements on the body while attempting to not alter the hue substantially. */
+    body {
+      background: #eef1ff;
+      filter: invert(100%) hue-rotate(180deg);
+    }
+
+    /* Workarounds and optical adjustments. */
+
+    /* Firefox workaround: Set the background colour for the html
+     element separately because, unlike other browsers, Firefox
+     doesn’t apply the filter to the root element’s background. */
+    html {
+      background-color: #111;
+    }
+
+    /* Do not invert media (revert the invert). */
+    img,
+    video,
+    iframe {
+      filter: invert(100%) hue-rotate(180deg);
+    }
+
+    /* Improve contrast on icons. */
+    .icon {
+      filter: invert(15%) hue-rotate(180deg);
+    }
+
+    /* Re-enable code block backgrounds. */
+    pre {
+      filter: invert(6%);
+    }
+
+    /* Improve contrast on list item markers. */
+    li::marker {
+      color: #666;
+    }
+  }
+</style>
