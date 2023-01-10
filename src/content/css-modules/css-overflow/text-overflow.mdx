@@ -13,9 +13,9 @@ styles:
     text-overflow: ellipsis;
 ---
 
-import { TITLE_LV2 } from '@/config/css-modules-structure.js'
-import OtherPageLink from '@/components/link/other-page-link.astro'
-import OneLineTextDemo from '@/demo/css-modules/one-line-text.astro'
+import { TITLE_LV2 } from "@/config/css-modules-structure.js"
+import OtherPageLink from "@/components/link/other-page-link.astro"
+import OneLineTextDemo from "@/demo/css-modules/one-line-text.astro"
 
 ## {TITLE_LV2.summary}
 
@@ -42,11 +42,15 @@ import OneLineTextDemo from '@/demo/css-modules/one-line-text.astro'
 
 `…`で省略されていることを表す。
 
-<OneLineTextDemo style={frontmatter.styles.common + frontmatter.styles.ellipsis} styleClass="ellipsis" />
+<OneLineTextDemo
+  style={frontmatter.styles.common + frontmatter.styles.ellipsis}
+  styleClass="ellipsis"
+/>
 
 ## 複数行に渡るテキストの末尾を省略したい場合
 
-- <OtherPageLink slugs={['css-modules', '-webkit-line-clamp']}>`-webkit-line-clamp`</OtherPageLink>を使う
+- <OtherPageLink slugs={["css-modules", "-webkit-line-clamp"]}>`-webkit-line-clamp`</OtherPageLink>
+  を使う
 
 ## {TITLE_LV2.status}
 

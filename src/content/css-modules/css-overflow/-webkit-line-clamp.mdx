@@ -24,9 +24,9 @@ styles:
     overflow: hidden;
 ---
 
-import { TITLE_LV2 } from '@/config/css-modules-structure.js'
-import OtherPageLink from '@/components/link/other-page-link.astro'
-import MultiLineTextDemo from '@/demo/css-modules/multi-line-text.astro'
+import { TITLE_LV2 } from "@/config/css-modules-structure.js"
+import OtherPageLink from "@/components/link/other-page-link.astro"
+import MultiLineTextDemo from "@/demo/css-modules/multi-line-text.astro"
 
 ## {TITLE_LV2.summary}
 
@@ -36,7 +36,7 @@ import MultiLineTextDemo from '@/demo/css-modules/multi-line-text.astro'
 
 ### 3行表示
 
-<MultiLineTextDemo style={frontmatter.styles.clamp} styleClass='clamp' />
+<MultiLineTextDemo style={frontmatter.styles.clamp} styleClass="clamp" />
 
 ## {TITLE_LV2.bad}
 
@@ -44,19 +44,25 @@ import MultiLineTextDemo from '@/demo/css-modules/multi-line-text.astro'
 
 `-webkit-line-clamp`を指定するとき、上下に`padding`があると、省略行の次の行が見えてしまう。
 
-<MultiLineTextDemo style={frontmatter.styles.padding + frontmatter.styles.clamp} styleClass='has-padding-clamp' />
+<MultiLineTextDemo
+  style={frontmatter.styles.padding + frontmatter.styles.clamp}
+  styleClass="has-padding-clamp"
+/>
 
 この場合、少なくとも`padding-bottom: 0;`が必要。
 
-<MultiLineTextDemo style={frontmatter.styles.padding + frontmatter.styles.padding_bottom_reset + frontmatter.styles.clamp} styleClass='has-padding-clamp' />
+<MultiLineTextDemo
+  style={
+    frontmatter.styles.padding + frontmatter.styles.padding_bottom_reset + frontmatter.styles.clamp
+  }
+  styleClass="has-padding-clamp"
+/>
 
 ### `-webkit-`群の組み合わせでしか機能しない
 
 `-webkit-box`の正体は`flex`プロパティのベンダープレフィックス。
 
-`flex`が草案時代に WebKit で`flex`を利用するときに使われていたプロパティだが、
+`flex`が草案時代にWebKitで`flex`を利用するときに使われていたプロパティだが、
 `-webkit-box`の代わりに`flex`を指定すると`-webkit-line-clamp`は機能しない。
 
-<MultiLineTextDemo style={frontmatter.styles.not_working} styleClass='not-working' />
-
-
+<MultiLineTextDemo style={frontmatter.styles.not_working} styleClass="not-working" />
