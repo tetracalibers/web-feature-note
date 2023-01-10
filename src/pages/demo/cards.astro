@@ -11,6 +11,13 @@ import DemoPage from "@/layouts/DemoPage.astro"
     <Card />
     <Card />
   </div>
+  <div class="ly-card ON-card-clip-image">
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+    <Card />
+  </div>
 </DemoPage>
 
 <style>
@@ -19,5 +26,9 @@ import DemoPage from "@/layouts/DemoPage.astro"
     gap: 20px;
     grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
     padding: 20px;
+  }
+
+  .ON-card-clip-image :global(.CardHeader__image) {
+    clip-path: inset(1em 1em 0.5em round 20px);
   }
 </style>
