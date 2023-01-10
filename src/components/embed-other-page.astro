@@ -11,4 +11,4 @@ const { title, pagePath } = Astro.props
 const url = new URL(path.join(import.meta.env.BASE_URL, pagePath), Astro.url.origin).href
 ---
 
-<Iframe title={title} src={url} client:visible />
+<Iframe title={title} src={url} client:load />
