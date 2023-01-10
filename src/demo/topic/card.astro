@@ -9,7 +9,7 @@ const height = genRandom(200, width)
 const category = ["animals", "arch", "nature", "tech"][genRandom(0, 3)]
 const title = "タイトル".repeat(genRandom(1, 3))
 const text = "この文章はダミーです。".repeat(genRandom(2, 10))
-const avatars = [...new Array(genRandom(1, 6))].map(
+const avatars = [...new Array(genRandom(1, 7))].map(
   _ => `https://i.pravatar.cc/60?img=${genRandom(1, 70)}`,
 )
 ---
@@ -43,7 +43,7 @@ const avatars = [...new Array(genRandom(1, 6))].map(
         {
           avatars.map(avatar => (
             <li class="Avatar">
-              <img class="Avatar__thumb" src={avatar} alt="" />
+              <img class="Avatar__thumb" src={avatar} alt="" loading="lazy" />
             </li>
           ))
         }
@@ -229,12 +229,11 @@ const avatars = [...new Array(genRandom(1, 6))].map(
     counter-increment: over 1;
   }
 
-  .Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:nth-child(4) .Avatar__thumb {
-    -webkit-mask-image: radial-gradient(circle at center, transparent 100%, white 0%);
-    mask-image: radial-gradient(circle at center, transparent 100%, white 0%);
+  /** 全要素に対するカウンタのインクリメントが終わったlast-childで値を表示 */
+  .Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child .Avatar__thumb {
+    visibility: hidden;
   }
-
-  .Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:nth-child(4)::after {
+  .Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child::after {
     content: "+" counter(over);
     display: grid;
     place-content: center;
@@ -245,8 +244,22 @@ const avatars = [...new Array(genRandom(1, 6))].map(
     background: pink;
   }
 
-  .Avatar:nth-child(n + 5) {
-    display: none;
+  /** 4つ目以降は省略（last-childはカウンタ表示用に残しておく） */
+  .Avatar:nth-child(n + 4):not(:last-child) {
+    /** 描画をスキップ */
+    /** display: none;とは異なり、カウンタは機能する */
+    content-visibility: hidden;
+    /** 支援技術から隠す */
+    visibility: hidden;
+    /** 見えなくする */
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
   }
 
   .Avatar__thumb {
