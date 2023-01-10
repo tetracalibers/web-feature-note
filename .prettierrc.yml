@@ -7,3 +7,15 @@ trailingComma: all
 bracketSpacing: true
 jsxBracketSameLine: false
 arrowParens: avoid
+overrides:
+  - files:
+      - "*.md"
+      - README
+    options:
+      parser: markdown-nocjsp
+      quickFix: true
+  - files:
+      - "*.mdx"
+    options:
+      parser: mdx-nocjsp
+      quickFix: true
