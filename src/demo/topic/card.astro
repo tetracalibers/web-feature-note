@@ -66,7 +66,7 @@ const avatars = [...new Array(genRandom(1, 7))].map(
 
   /** CardTagとCardを重ねるためのコンテナ */
   .CardWrapper {
-    --corner-radius: 10px;
+    --card-corner-radius: 10px;
     display: grid;
     cursor: pointer;
     position: relative;
@@ -107,7 +107,7 @@ const avatars = [...new Array(genRandom(1, 7))].map(
     text-transform: uppercase;
     /** 斜めの三角形 */
     clip-path: polygon(0% 0%, 100% 0%, 0% 100%);
-    border-top-left-radius: var(--corner-radius);
+    border-top-left-radius: var(--card-corner-radius);
     position: relative;
   }
 
@@ -125,7 +125,7 @@ const avatars = [...new Array(genRandom(1, 7))].map(
 
   .Card {
     box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
-    border-radius: var(--corner-radius);
+    border-radius: var(--card-corner-radius);
     display: flex;
     flex-direction: column;
     gap: 1em;
@@ -144,8 +144,8 @@ const avatars = [...new Array(genRandom(1, 7))].map(
   }
 
   .CardHeader__image {
-    border-top-left-radius: var(--corner-radius);
-    border-top-right-radius: var(--corner-radius);
+    border-top-left-radius: var(--card-corner-radius);
+    border-top-right-radius: var(--card-corner-radius);
     /** レスポンシブ化 */
     width: 100%;
     aspect-ratio: 3 / 2;
@@ -192,17 +192,15 @@ const avatars = [...new Array(genRandom(1, 7))].map(
 
   .IconText {
     display: flex;
-    justify-content: flex-end;
     gap: 0.25em;
     /** アイコンとテキストの高さを揃える */
     align-items: center;
   }
 
   .IconText__icon {
-    /** リンクテキストが長くなったときに、アイコンが縮まないようにする */
+    /** テキストが長くなったときに、アイコンが縮まないようにする */
     flex-shrink: 0;
     /** 縦中央配置 */
-    /** flex指定により、.MoreLink__iconの高さがその中のiconに一致する */
     display: flex;
   }
 
