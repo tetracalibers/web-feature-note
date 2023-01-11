@@ -1,0 +1,47 @@
+---
+title: 円形アバターを表示する
+markup: |
+  <div class="Card">
+    <div class="CardHeader">
+      <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">
+      <p class="CardBody__paragraph">
+        この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。
+      </p>
+    </div>
+    <div class="CardFooter">
+      <div class="PublishDate">PublishDate</div>
+      <ul class="Avatars">
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=1" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=2" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=3" alt="hogehogeさん" />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+stylesheet: |
+  .Avatars {
+    list-style: none;
+  }
+
+  .Avatar {
+    /** 円形に切り抜く */
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .Avatar__thumb {
+    /** 画像をli.Avatarにフィットさせることで、中央を見せる */
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+  }
+---

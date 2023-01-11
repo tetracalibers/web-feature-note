@@ -8,5 +8,15 @@
   "header-image-clip-path",
   "body-inner-layout",
   "body-content-clamp",
-  "footer-inner-layout"
+  "footer-inner-layout",
+  "avatars-clip-circle",
+  "avatars-hosizontal-stack",
+  "avatars-to-side",
+  "avatars-z-stack",
+  "avatars-over-count",
+  "avatars-over-count-centering",
+  "avatars-over-hide",
+  "icon-text-horizontal-stack",
+  "icon-text-vertical-centering",
+  "icon-text-no-shrink"
 ]

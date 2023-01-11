@@ -1,0 +1,57 @@
+---
+title: 5つ以上アバターがある場合、省略する
+markup: |
+  <div class="Card">
+    <div class="CardHeader">
+      <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">
+      <p class="CardBody__paragraph">
+        この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。
+      </p>
+    </div>
+    <div class="CardFooter">
+      <div class="PublishDate">PublishDate</div>
+      <ul class="Avatars">
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=1" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=2" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=3" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=4" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=5" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=6" alt="hogehogeさん" />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+stylesheet: |
+  /** 4つ目以降は省略（last-childはカウンタ表示用に残しておく） */
+  .Avatar:nth-child(n + 4):not(:last-child) {
+    /** 描画をスキップ */
+    /** display: none;とは異なり、カウンタは機能する */
+    content-visibility: hidden;
+    /** 支援技術から隠す */
+    visibility: hidden;
+    /** display: none;を使わずに見えなくする（.visually-hidden） */
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+  }
+---

@@ -1,0 +1,74 @@
+---
+title: 4つ目以降のアバターは省略し、省略数を表示する
+markup: |
+  <div class="Card">
+    <div class="CardHeader">
+      <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">
+      <p class="CardBody__paragraph">
+        この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。
+      </p>
+    </div>
+    <div class="CardFooter">
+      <div class="PublishDate">PublishDate</div>
+      <ul class="Avatars">
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=1" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=2" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=3" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=4" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=5" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=6" alt="hogehogeさん" />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+stylesheet: |
+  .Avatars {
+    /** 省略数カウンターを用意 */
+    counter-reset: over 0;
+  }
+
+  /** 4番目以降のAvatarに適用される */
+  .Avatar:nth-child(n + 4) {
+    /** 4つ目以降の要素があればカウントを増やす */
+    counter-increment: over 1;
+  }
+
+  /** アバターが5つ以上ある場合のみ、その最後の.Avatar__thumbに適用される */
+  .Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child .Avatar__thumb {
+    /** 領域は保持したまま見えなくする */
+    /** アクセシビリティツリーからも見えなくなる */
+    visibility: hidden;
+  }
+
+  .Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child {
+    /** ::afterの位置をabsoluteで調整するための指定 */
+    position: relative;
+  }
+
+  .Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child::after {
+    /** 全要素に対するカウンタのインクリメントが終わったlast-childで値を表示 */
+    content: "+" counter(over);
+    /** .Avatarの上に完全に被せる */
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    /** top: 0; bottom: 0; left: 0; right: 0; と同義 */
+    inset: 0;
+    background-color: pink;
+  }
+---

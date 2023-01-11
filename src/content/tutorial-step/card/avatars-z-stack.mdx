@@ -1,0 +1,41 @@
+---
+title: アバターを少し重ねて並べる
+markup: |
+  <div class="Card">
+    <div class="CardHeader">
+      <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">
+      <p class="CardBody__paragraph">
+        この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。
+      </p>
+    </div>
+    <div class="CardFooter">
+      <div class="PublishDate">PublishDate</div>
+      <ul class="Avatars">
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=1" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=2" alt="hogehogeさん" />
+        </li>
+        <li class="Avatar">
+          <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=3" alt="hogehogeさん" />
+        </li>
+      </ul>
+    </div>
+  </div>
+
+stylesheet: |
+  .Avatars {
+    /** Card内側の余白を統一するため、Avatars全体が10px右にズレるのを防止 */
+    padding-right: 10px;
+  }
+
+  .Avatar {
+    /** 10px重ねる */
+    margin-right: -10px;
+    border: 2px solid white;
+  }
+---
