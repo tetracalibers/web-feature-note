@@ -14,13 +14,15 @@
     // const escapedCode = formattedCode
     //   .replace(new RegExp("&", "g"), "&")
     //   .replace(new RegExp("<", "g"), "<")
-    styleEl.innerHTML = text
-    const formattedCode = Prettier.format(text, { parser: "css", plugins: [parserCss] }) ?? text
-    const rowCount = formattedCode.split("\n").length + 1
-    textareaEl.innerHTML = formattedCode
-    textareaEl.style.height = rowCount * 1.5 + "em"
-    highlightEl.innerHTML = formattedCode
+    const formattedCode = Prettier.format(text, { parser: "css", plugins: [parserCss] })
+    styleEl.innerHTML = formattedCode ?? ""
+    textareaEl.innerHTML = formattedCode ?? text
+    highlightEl.innerHTML = formattedCode ?? text
     Prism.highlightElement(highlightEl)
+    if (formattedCode) {
+      const rowCount = formattedCode.split("\n")?.length + 1
+      textareaEl.style.height = rowCount * 1.5 + "em"
+    }
   }
 
   onMount(() => {
