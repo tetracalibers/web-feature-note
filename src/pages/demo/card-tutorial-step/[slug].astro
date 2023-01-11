@@ -23,6 +23,8 @@ export async function getStaticPaths() {
         nextSlug: i + 1 < posts.length ? (i + 2).toString() : null,
         entry: post,
         befores: posts.slice(0, i),
+        posts,
+        slug: i + 1,
       },
     }
   })
@@ -33,15 +35,39 @@ interface Props {
   nextSlug: string | null
   entry: CollectionEntry<"tutorial-step">
   befores: CollectionEntry<"tutorial-step">[]
+  posts: CollectionEntry<"tutorial-step">[]
+  slug: number
 }
 
-const { entry, befores, prevSlug, nextSlug } = Astro.props
+const { entry, befores, prevSlug, nextSlug, posts, slug } = Astro.props
 const { title } = entry.data
 const { Content } = await entry.render()
 ---
 
 <TutorialPage title={title}>
   <div class="root">
+    <header>
+      <h1>Card Component Tutorial</h1>
+      <OtherPageLink slugs={["demo", "cards"]}>完成品デモ</OtherPageLink>
+      <details>
+        <summary>TOC - All Steps</summary>
+        <ul>
+          {
+            posts.map((post, i) => (
+              <li>
+                {i + 1 === slug ? (
+                  post.data.title
+                ) : (
+                  <OtherPageLink slugs={["demo", "card-tutorial-step", (i + 1).toString()]}>
+                    {post.data.title}
+                  </OtherPageLink>
+                )}
+              </li>
+            ))
+          }
+        </ul>
+      </details>
+    </header>
     <main>
       <h1>{title}</h1>
       <TutorialStep source={entry} befores={befores} />
