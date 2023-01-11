@@ -24,19 +24,31 @@ const { title } = Astro.props
 </html>
 
 <style is:global>
+  :root {
+    --body-color: hsl(0, 5%, 10%);
+    --body-bg-color: hsl(210, 20%, 98%);
+  }
+
   body {
     width: 90vw;
     max-width: 1000px;
     margin: 0 auto;
-    background: white;
-    color: #2a2a2a;
+    color: var(--body-color);
+    background-color: var(--body-bg-color);
     overflow-x: hidden;
   }
 
+  svg * {
+    fill: currentColor;
+  }
+
   @media (prefers-color-scheme: dark) {
+    :root {
+      --body-bg-color: hsl(0, 0%, 16%);
+    }
+
     /* Invert all elements on the body while attempting to not alter the hue substantially. */
     body {
-      background: #eef1ff;
       filter: invert(100%) hue-rotate(180deg);
     }
 
@@ -45,9 +57,9 @@ const { title } = Astro.props
     /* Firefox workaround: Set the background colour for the html
      element separately because, unlike other browsers, Firefox
      doesn’t apply the filter to the root element’s background. */
-    html {
+    /* html {
       background-color: #111;
-    }
+    } */
 
     /* Do not invert media (revert the invert). */
     img,

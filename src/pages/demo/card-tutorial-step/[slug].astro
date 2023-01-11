@@ -69,22 +69,22 @@ const { Content } = await entry.render()
       </details>
     </header>
     <main>
-      <h1>{title}</h1>
+      <h2>{title}</h2>
       <TutorialStep source={entry} befores={befores} />
-      <Content />
+      <div class="content"><Content /></div>
     </main>
     <footer>
       <div class="prev">
         {
           prevSlug && (
-            <OtherPageLink slugs={["demo", "card-tutorial-step", prevSlug]}>prev</OtherPageLink>
+            <OtherPageLink slugs={["demo", "card-tutorial-step", prevSlug]}>前へ</OtherPageLink>
           )
         }
       </div>
       <div class="next">
         {
           nextSlug && (
-            <OtherPageLink slugs={["demo", "card-tutorial-step", nextSlug]}>next</OtherPageLink>
+            <OtherPageLink slugs={["demo", "card-tutorial-step", nextSlug]}>次へ</OtherPageLink>
           )
         }
       </div>
@@ -93,6 +93,29 @@ const { Content } = await entry.render()
 </TutorialPage>
 
 <style>
+  header,
+  footer,
+  main > h2,
+  main > .content {
+    font-family: "Libertinus", Georgia, Cambria, "Times New Roman", Times, serif;
+    line-height: 1.8;
+  }
+  header,
+  main > h2 {
+    text-align: center;
+  }
+  header :global(a),
+  footer :global(a),
+  header :global(a:visited),
+  footer :global(a:visited) {
+    color: #525e75;
+  }
+  details ul {
+    list-style: none;
+    text-align: left;
+    width: max-content;
+    margin: 0 auto;
+  }
   footer {
     display: flex;
     padding: 2rem 0;
