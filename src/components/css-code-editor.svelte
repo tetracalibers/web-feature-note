@@ -6,9 +6,14 @@
   import { onMount } from "svelte"
 
   export let defaultCode = ""
-  let highlightEl: HTMLElement
+  let preEl: HTMLPreElement
+  let codeEl: HTMLElement
   let textareaEl: HTMLTextAreaElement
   let styleEl: HTMLStyleElement
+
+  const syncScroll = () => {
+    preEl.scrollLeft = textareaEl.scrollLeft
+  }
 
   const updateCode = (text: string) => {
     // const escapedCode = formattedCode
@@ -17,8 +22,8 @@
     const formattedCode = Prettier.format(text, { parser: "css", plugins: [parserCss] })
     styleEl.innerHTML = formattedCode ?? ""
     textareaEl.innerHTML = formattedCode ?? text
-    highlightEl.innerHTML = formattedCode ?? text
-    Prism.highlightElement(highlightEl)
+    codeEl.innerHTML = formattedCode ?? text
+    Prism.highlightElement(codeEl)
     if (formattedCode) {
       const rowCount = formattedCode.split("\n")?.length + 1
       textareaEl.style.height = rowCount * 1.5 + "em"
@@ -34,11 +39,12 @@
   <textarea
     bind:this={textareaEl}
     on:input={e => updateCode(e.currentTarget.value)}
+    on:scroll={syncScroll}
     spellcheck="false"
     class="same-layer"
   />
-  <pre aria-hidden="true" class="same-layer">
-    <code class="language-css" bind:this={highlightEl} />
+  <pre bind:this={preEl} aria-hidden="true" class="same-layer">
+    <code class="language-css" bind:this={codeEl} />
   </pre>
   <style bind:this={styleEl}>
   </style>
@@ -51,7 +57,8 @@
 
   .same-layer {
     grid-area: 1 / 1;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: auto;
     white-space: nowrap;
     line-height: 1.5;
     font-size: 16px;
