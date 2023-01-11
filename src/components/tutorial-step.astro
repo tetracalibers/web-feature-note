@@ -1,0 +1,19 @@
+---
+import CssCodeEditor from "@/components/css-code-editor.svelte"
+import DemoMarkupStory from "@/components/demo-markup-story.astro"
+import Prism from "@astrojs/prism/Prism.astro"
+import prettier from "prettier"
+import { CollectionEntry, getEntry } from "astro:content"
+
+interface Props {
+  stepId: CollectionEntry<"tutorial-step">["id"]
+}
+
+const { stepId } = Astro.props
+const source = await getEntry("tutorial-step", stepId)
+const markup = prettier.format(source.body, { parser: "html" })
+---
+
+<DemoMarkupStory html={markup} />
+<Prism lang="html" code={markup} />
+<CssCodeEditor client:load defaultCode={source.data.stylesheet} />
