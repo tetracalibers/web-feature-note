@@ -18,5 +18,10 @@
   "avatars-over-hide",
   "icon-text-horizontal-stack",
   "icon-text-vertical-centering",
-  "icon-text-no-shrink"
+  "icon-text-no-shrink",
+  "card-tag-overlay",
+  "card-tag-fill",
+  "card-tag-shape",
+  "card-tag-text-position",
+  "card-ripple-effect"
 ]

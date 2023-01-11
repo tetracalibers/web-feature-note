@@ -1,0 +1,75 @@
+---
+title: Cardをhoverした時に波紋アニメーションを加える
+markup: |
+  <div class="CardWrapper">
+    <div class="CardTag">
+      <div class="CardTag__text">New</div>
+    </div>
+    <div class="Card">
+      <div class="CardHeader">
+        <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+        <h2 class="CardHeader__title">タイトル</h2>
+      </div>
+      <div class="CardBody">
+        <p class="CardBody__paragraph">
+          この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。
+        </p>
+      </div>
+      <div class="CardFooter">
+        <div class="PublishDate IconText">
+          <span class="IconText__icon PublishDate__icon">
+            <svg version="1.1" width="1em" height="1em" viewBox="0 0 36 36" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+              <title>clock-line</title>
+              <path d="M18,2A16,16,0,1,0,34,18,16,16,0,0,0,18,2Zm0,30A14,14,0,1,1,32,18,14,14,0,0,1,18,32Z" class="clr-i-outline clr-i-outline-path-1"></path><path d="M18.92,18.4V10.75a1,1,0,0,0-2,0v8.72l5.9,4a1,1,0,1,0,1.11-1.66Z" class="clr-i-outline clr-i-outline-path-2"></path><path d="M8,17.94A9.94,9.94,0,0,1,23.41,9.59l.85-1.36a11.55,11.55,0,1,0-8.53,21L16,27.7A10,10,0,0,1,8,17.94Z" class="clr-i-outline clr-i-outline-path-3"></path>
+              <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
+            </svg>
+          </span>
+          <time class="IconText__text PublishDate__date" datetime="2022-12-03">2022/12/03</time>
+        </div>
+        <ul class="Avatars">
+          <li class="Avatar">
+            <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=1" alt="hogehogeさん" />
+          </li>
+          <li class="Avatar">
+            <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=2" alt="hogehogeさん" />
+          </li>
+          <li class="Avatar">
+            <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=3" alt="hogehogeさん" />
+          </li>
+          <li class="Avatar">
+            <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=4" alt="hogehogeさん" />
+          </li>
+          <li class="Avatar">
+            <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=5" alt="hogehogeさん" />
+          </li>
+          <li class="Avatar">
+            <img class="Avatar__thumb" src="https://i.pravatar.cc/60?img=6" alt="hogehogeさん" />
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+stylesheet: |
+  .CardWrapper {
+    position: relative;
+  }
+
+  .CardWrapper::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #aac4ff;
+    opacity: 0.1;
+    clip-path: circle(0 at center);
+    /** blur時はアニメーションせずすぐに消す */
+    transition: none;
+  }
+  .CardWrapper:hover::before {
+    clip-path: circle(100% at center);
+    /** hover時は0.4sかけて波紋を広げる */
+    transition: 0.4s ease-out;
+  }
+---
