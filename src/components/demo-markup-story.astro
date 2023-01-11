@@ -6,9 +6,7 @@ interface Props {
 const { html } = Astro.props
 ---
 
-<div class="story">
-  <div class="demo-area" set:html={html} />
-</div>
+<div class="story" set:html={html} />
 
 <style>
   .story {
@@ -16,9 +14,9 @@ const { html } = Astro.props
     margin: 0 auto;
     padding: 1rem;
     box-sizing: border-box;
-  }
-  .demo-area {
     color: black;
+  }
+  .story > :global(*) {
     background: white;
   }
 </style>
