@@ -33,6 +33,8 @@ stylesheet: |
   }
 
   .Avatar {
+    /** 正方形を維持する */
+    aspect-ratio: 1;
     /** 円形に切り抜く */
     border-radius: 50%;
     overflow: hidden;
@@ -41,7 +43,5 @@ stylesheet: |
   .Avatar__thumb {
     /** 画像をli.Avatarにフィットさせることで、中央を見せる */
     width: 100%;
-    height: 100%;
-    box-sizing: border-box;
   }
 ---
