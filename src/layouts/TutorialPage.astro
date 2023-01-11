@@ -51,7 +51,8 @@ const { title } = Astro.props
     /* Do not invert media (revert the invert). */
     img,
     video,
-    iframe {
+    iframe,
+    pre {
       filter: invert(100%) hue-rotate(180deg);
     }
 
@@ -61,9 +62,9 @@ const { title } = Astro.props
     }
 
     /* Re-enable code block backgrounds. */
-    pre {
+    /* pre {
       filter: invert(6%);
-    }
+    } */
 
     /* Improve contrast on list item markers. */
     li::marker {
