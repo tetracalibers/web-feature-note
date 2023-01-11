@@ -1,0 +1,19 @@
+---
+interface Props {
+  html: string
+}
+
+const { html } = Astro.props
+---
+
+<div class="story" set:html={html} />
+
+<style>
+  .story {
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    padding: 2rem;
+    box-sizing: border-box;
+  }
+</style>
