@@ -1,0 +1,24 @@
+---
+title: 画像のレスポンシブ化
+markup: |
+  <div class="Card">
+    <div class="CardHeader">
+      <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">CardBody</div>
+    <div class="CardFooter">CardFooter</div>
+  </div>
+
+stylesheet: |
+  .CardHeader__image {
+    /** 親要素いっぱいに広げる */
+    width: 100%;
+    /** 横:縦 = 3:2 の比率で動的にheightを決める */
+    aspect-ratio: 3 / 2;
+    /** 歪まないようにする */
+    object-fit: cover;
+    /** [option] 25%下にずらして見せる */
+    object-view-box: inset(25% 0 0 0);
+  }
+---

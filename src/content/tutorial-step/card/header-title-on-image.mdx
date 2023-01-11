@@ -1,0 +1,23 @@
+---
+title: 画像とタイトルを重ねる ~ gridの同セル配置 ~
+markup: |
+  <div class="Card">
+    <div class="CardHeader">
+      <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">CardBody</div>
+    <div class="CardFooter">CardFooter</div>
+  </div>
+
+stylesheet: |
+  .CardHeader {
+    display: grid;
+  }
+
+  /** 同一セルに重ねる */
+  .CardHeader__title,
+  .CardHeader__image {
+    grid-area: 1 / 1;
+  }
+---

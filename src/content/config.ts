@@ -26,6 +26,8 @@ const topic = defineCollection({
 const tutorial_step = defineCollection({
   schema: {
     stylesheet: z.string(),
+    markup: z.string(),
+    title: z.string(),
   },
 })
 

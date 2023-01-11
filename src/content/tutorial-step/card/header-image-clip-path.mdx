@@ -1,0 +1,18 @@
+---
+title: 画像の形をアレンジする ~ clip-path ~
+markup: |
+  <div class="Card">
+    <div class="CardHeader">
+      <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">CardBody</div>
+    <div class="CardFooter">CardFooter</div>
+  </div>
+
+stylesheet: |
+  .CardHeader__image {
+    /** [option] margin: 1em 1em 0.5em; と border-radius: 20px; と同等 */
+    clip-path: inset(1em 1em 0.5em round 20px);
+  }
+---

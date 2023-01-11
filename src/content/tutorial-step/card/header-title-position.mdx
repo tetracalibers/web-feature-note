@@ -1,0 +1,25 @@
+---
+title: 画像下部にテキストを配置する
+markup: |
+  <div class="Card">
+    <div class="CardHeader">
+      <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">CardBody</div>
+    <div class="CardFooter">CardFooter</div>
+  </div>
+
+stylesheet: |
+  .CardHeader__title {
+    /** 画像と同セルのため、画像全体に広がっている */
+    /** この状態ではalign-*は効かないので、新たなgridにして位置を指定する */
+    display: grid;
+    /** 横中央配置 */
+    justify-items: center;
+    /** 縦下部配置 */
+    align-content: flex-end;
+    /** デフォルトmarginの削除 */
+    margin: 0;
+  }
+---

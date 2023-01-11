@@ -1,0 +1,77 @@
+---
+import OtherPageLink from "@/components/link/other-page-link.astro"
+import TutorialStep from "@/components/tutorial-step.astro"
+import TutorialPage from "@/layouts/TutorialPage.astro"
+import { CollectionEntry, getEntry } from "astro:content"
+import fs from "node:fs/promises"
+
+export async function getStaticPaths() {
+  const orderJson = await fs.readFile("src/content/tutorial-step/card/_order.json", "utf-8")
+  const order: string[] = await JSON.parse(orderJson)
+  const posts = await Promise.all(
+    order.map(async (name, i) => {
+      // @ts-ignore
+      return await getEntry("tutorial-step", `card/${name}.mdx`)
+    }),
+  )
+
+  return posts.map((post, i) => {
+    return {
+      params: { slug: i + 1 },
+      props: {
+        prevSlug: i > 0 ? i.toString() : null,
+        nextSlug: i + 1 < posts.length ? (i + 2).toString() : null,
+        entry: post,
+        befores: posts.slice(0, i),
+      },
+    }
+  })
+}
+
+interface Props {
+  prevSlug: string | null
+  nextSlug: string | null
+  entry: CollectionEntry<"tutorial-step">
+  befores: CollectionEntry<"tutorial-step">[]
+}
+
+const { entry, befores, prevSlug, nextSlug } = Astro.props
+const { title } = entry.data
+const { Content } = await entry.render()
+---
+
+<TutorialPage title={title}>
+  <div class="root">
+    <main>
+      <h1>{title}</h1>
+      <TutorialStep source={entry} befores={befores} />
+      <Content />
+    </main>
+    <footer>
+      <div class="prev">
+        {
+          prevSlug && (
+            <OtherPageLink slugs={["demo", "card-tutorial-step", prevSlug]}>prev</OtherPageLink>
+          )
+        }
+      </div>
+      <div class="next">
+        {
+          nextSlug && (
+            <OtherPageLink slugs={["demo", "card-tutorial-step", nextSlug]}>next</OtherPageLink>
+          )
+        }
+      </div>
+    </footer>
+  </div>
+</TutorialPage>
+
+<style>
+  footer {
+    display: flex;
+    padding: 2rem 0;
+  }
+  .next {
+    margin-left: auto;
+  }
+</style>

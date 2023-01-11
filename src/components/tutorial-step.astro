@@ -3,17 +3,19 @@ import CssCodeEditor from "@/components/css-code-editor.svelte"
 import DemoMarkupStory from "@/components/demo-markup-story.astro"
 import Prism from "@astrojs/prism/Prism.astro"
 import prettier from "prettier"
-import { CollectionEntry, getEntry } from "astro:content"
+import type { CollectionEntry } from "astro:content"
 
 interface Props {
-  stepId: CollectionEntry<"tutorial-step">["id"]
+  source: CollectionEntry<"tutorial-step">
+  befores?: CollectionEntry<"tutorial-step">[]
 }
 
-const { stepId } = Astro.props
-const source = await getEntry("tutorial-step", stepId)
-const markup = prettier.format(source.body, { parser: "html" })
+const { source, befores = [] } = Astro.props
+const inheritStyle = befores.map(entry => entry.data.stylesheet).join("\n")
+const inheritStyleTag = "<style>" + inheritStyle + "</style>"
+const markup = prettier.format(source.data.markup, { parser: "html" })
 ---
 
-<DemoMarkupStory html={markup} />
-<Prism lang="html" code={markup} />
+<DemoMarkupStory html={markup + inheritStyleTag} />
 <CssCodeEditor client:load defaultCode={source.data.stylesheet} />
+<Prism lang="html" code={markup} />

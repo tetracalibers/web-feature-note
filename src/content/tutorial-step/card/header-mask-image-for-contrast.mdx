@@ -1,0 +1,26 @@
+---
+title: 画像とテキストのコントラストを確保する ~ mask-image ~
+markup: |
+  <div class="Card">
+    <div class="CardHeader">
+      <img class="CardHeader__image" src="https://placekitten.com/500/500" alt="猫" />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">CardBody</div>
+    <div class="CardFooter">CardFooter</div>
+  </div>
+
+stylesheet: |
+  .CardHeader__image {
+    /** グラデーションを重ねてテキストを読みやすく */
+    -webkit-mask-image: linear-gradient(to top, #ffffff00 0%, #ffffff 100%);
+    mask-image: linear-gradient(to top, #ffffff00 0%, #ffffff 100%);
+  }
+
+  .CardHeader__title {
+    /** グラデーション部分にうまく重なるよう位置を微調整 */
+    padding: 0 1.25em 0.75em;
+    /** 白グラデーション上で常に映えるように */
+    color: black;
+  }
+---

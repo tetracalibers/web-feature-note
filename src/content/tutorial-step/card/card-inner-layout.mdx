@@ -1,0 +1,35 @@
+---
+title: ベースとなるレイアウト ~ flexによる縦組み ~
+markup: |
+  <div class="Card">
+    <div class="CardHeader">CardHeader</div>
+    <div class="CardBody">CardBody</div>
+    <div class="CardFooter">CardFooter</div>
+  </div>
+
+stylesheet: |
+  .Card {
+    --card-corner-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    border-radius: var(--card-corner-radius);
+    /** Header, Body, Footerを縦並びにする */
+    display: flex;
+    flex-direction: column;
+    /** 各エリアの間にだけ余白を設ける */
+    gap: 1em;
+  }
+
+  /** CardHeaderは画像をカードの縁まで広げたい場合もあるので、paddingを指定しない */
+
+  .CardBody {
+    /** 左右に余白 */
+    padding: 0 1em;
+  }
+
+  .CardFooter {
+    /** 左右と下部に余白 */
+    padding: 0 1em 1em;
+    /** Cardの下端に配置 */
+    margin-top: auto;
+  }
+---
