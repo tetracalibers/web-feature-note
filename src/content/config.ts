@@ -23,7 +23,14 @@ const topic = defineCollection({
   },
 })
 
+const tutorial_step = defineCollection({
+  schema: {
+    stylesheet: z.string(),
+  },
+})
+
 export const collections = {
   "css-modules": css_modules,
   topic: topic,
+  "tutorial-step": tutorial_step,
 }
