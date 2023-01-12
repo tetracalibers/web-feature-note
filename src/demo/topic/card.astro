@@ -202,7 +202,20 @@ const avatars = [...new Array(genRandom(1, 7))].map(
     grid-template-columns: repeat(4, minmax(auto, 40px));
     counter-reset: over 0;
     margin: 0;
-    direction: rtl;
+  }
+
+  .Avatar:first-child:nth-last-child(3) {
+    grid-column-end: -3;
+  }
+
+  .Avatar:first-child:nth-last-child(2),
+  .Avatar:first-child:nth-last-child(-n + 3) ~ .Avatar:has(~ .Avatar:last-child) {
+    grid-column-end: -2;
+  }
+
+  .Avatar:first-child:nth-last-child(1),
+  .Avatar:first-child:nth-last-child(-n + 3) ~ .Avatar:last-child {
+    grid-column-end: -1;
   }
 
   .Avatar {
