@@ -1,0 +1,77 @@
+---
+import TutorialPage from "@/layouts/TutorialPage.astro"
+---
+
+<TutorialPage title="矢印が縮む">
+  <div class="root"><button class="base ef-ShrinkArrow">Shrink Arrow</button></div>
+</TutorialPage>
+
+<style>
+  .root {
+    display: grid;
+    min-height: 100vh;
+    place-content: center;
+  }
+
+  button {
+    appearance: none;
+    border: 0;
+    background: inherit;
+    cursor: pointer;
+  }
+
+  .base {
+    --bg-color: #333;
+    --color: #fff;
+    padding-block: 0.75em;
+    padding-inline: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--bg-color);
+    color: var(--color);
+    border: transparent 2px solid;
+  }
+
+  .ef-ShrinkArrow {
+    display: grid;
+    gap: 1em;
+    align-items: center;
+  }
+
+  .ef-ShrinkArrow::before,
+  .ef-ShrinkArrow::after {
+    --duration: 0.2s;
+    --timing-fn: linear;
+    content: "";
+    background-color: var(--color);
+    grid-column: 2;
+    grid-row: 1;
+    transition-duration: var(--duration);
+    transition-timing-function: var(--timing-fn);
+    transition-property: transform;
+    transform-origin: left;
+  }
+
+  /** 矢印の線 */
+  .ef-ShrinkArrow::before {
+    width: 1.5em;
+    height: 1px;
+  }
+
+  /** 矢印の矢 */
+  .ef-ShrinkArrow::after {
+    width: 0.5em;
+    aspect-ratio: 1;
+    clip-path: polygon(100% 50%, 0% 0%, 0% 100%);
+    justify-self: flex-end;
+    transform: translateX(50%);
+  }
+
+  .ef-ShrinkArrow:hover::before {
+    transform: scaleX(0.5);
+  }
+
+  .ef-ShrinkArrow:hover::after {
+    transform: translateX(-50%);
+  }
+</style>

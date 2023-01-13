@@ -1,0 +1,60 @@
+---
+import TutorialPage from "@/layouts/TutorialPage.astro"
+---
+
+<TutorialPage title="矢印が縮む">
+  <div class="root"><button class="base ef-SlideLight">Slide Light</button></div>
+</TutorialPage>
+
+<style>
+  .root {
+    display: grid;
+    min-height: 100vh;
+    place-content: center;
+  }
+
+  button {
+    appearance: none;
+    border: 0;
+    background: inherit;
+    cursor: pointer;
+  }
+
+  .base {
+    --bg-color: #333;
+    --color: #fff;
+    padding-block: 1em;
+    padding-inline: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--bg-color);
+    color: var(--color);
+  }
+
+  .ef-SlideLight {
+    position: relative;
+  }
+
+  .ef-SlideLight::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 50%;
+    height: 100%;
+    background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.3) 100%
+    );
+    transform: skewX(-25deg);
+    transform-origin: top;
+    transition: none;
+  }
+
+  .ef-SlideLight:hover::before {
+    transform: skewX(-25deg) translateX(350%);
+    transition-duration: 0.7s;
+    transition-property: transform;
+  }
+</style>

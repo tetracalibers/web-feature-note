@@ -1,0 +1,59 @@
+---
+import TutorialPage from "@/layouts/TutorialPage.astro"
+---
+
+<TutorialPage title="線の上を別の線が伸びる">
+  <div class="root"><button class="base ef-LineStretchOnLine">Streatch Line On Line</button></div>
+</TutorialPage>
+
+<style>
+  .root {
+    display: grid;
+    min-height: 100vh;
+    place-content: center;
+  }
+
+  button {
+    appearance: none;
+    border: 0;
+    background: inherit;
+    cursor: pointer;
+  }
+
+  .base {
+    --bg-color: #333;
+    --color: #fff;
+    padding-block: 1em;
+    padding-inline: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .ef-LineStretchOnLine {
+    position: relative;
+  }
+
+  .ef-LineStretchOnLine::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    height: 3px;
+    border-radius: 1.5px;
+    overflow: hidden;
+    background-color: #ccc;
+    background-image: linear-gradient(90deg, #333 50%, #333 0, #ccc 50%, #ccc 0);
+    background-size: 200% 100%;
+    background-position: 100% 100%;
+    background-repeat: no-repeat;
+    transition: none;
+  }
+
+  .ef-LineStretchOnLine:hover::after {
+    background-position: -100% 100%;
+    transition-duration: 0.7s;
+    transition-timing-function: ease-in-out;
+    transition-property: background-position;
+  }
+</style>

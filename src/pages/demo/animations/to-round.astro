@@ -1,0 +1,42 @@
+---
+import TutorialPage from "@/layouts/TutorialPage.astro"
+---
+
+<TutorialPage title="角丸に変わる">
+  <div class="root"><button class="base ef-ToRound">To Round</button></div>
+</TutorialPage>
+
+<style>
+  .root {
+    display: grid;
+    min-height: 100vh;
+    place-content: center;
+  }
+
+  button {
+    appearance: none;
+    border: 0;
+    background: inherit;
+    cursor: pointer;
+  }
+
+  .base {
+    --bg-color: #333;
+    --color: #fff;
+    padding-block: 1em;
+    padding-inline: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--bg-color);
+    color: var(--color);
+    border: 5px white double;
+  }
+
+  .ef-ToRound {
+    transition: border-radius 0.3s ease-out;
+  }
+
+  .ef-ToRound:hover {
+    border-radius: 20px;
+  }
+</style>
