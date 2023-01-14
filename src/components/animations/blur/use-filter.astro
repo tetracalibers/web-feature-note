@@ -1,0 +1,32 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes Blur {
+  0% {
+    filter: blur(0);
+  }
+  100% {
+    filter: blur(2px);
+  }
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-Blur">Animate filter</button>
+</ButtonDemo>
+
+<style>
+  .ef-Blur {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    filter: blur(0);
+    transition-property: filter;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+  }
+
+  .ef-Blur:hover {
+    filter: blur(2px);
+  }
+</style>
