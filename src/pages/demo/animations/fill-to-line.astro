@@ -52,9 +52,10 @@ import TutorialPage from "@/layouts/TutorialPage.astro"
     transform: scaleX(0);
     opacity: 0;
     transform-origin: center;
-    transition-duration: var(--duration);
+    transition-duration: var(--duration), var(--duration);
     transition-property: transform, opacity;
     transition-delay: 0s;
+    transition-timing-function: ease;
   }
 
   .ef-FillToLine::before {
