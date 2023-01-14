@@ -47,9 +47,6 @@ import TutorialPage from "@/layouts/TutorialPage.astro"
     padding-inline: 2em;
     box-sizing: border-box;
     border-radius: var(--radius);
-    transition-duration: var(--duration);
-    transition-property: opacity, visibility;
-    transition-delay: 0s;
   }
 
   .Layer.--before {
@@ -57,6 +54,7 @@ import TutorialPage from "@/layouts/TutorialPage.astro"
     visibility: visible;
     background-color: var(--bg-color);
     color: var(--color);
+    transition: opacity var(--duration), visibility var(--duration);
   }
 
   .Layer.--after {
@@ -64,14 +62,17 @@ import TutorialPage from "@/layouts/TutorialPage.astro"
     visibility: hidden;
     background-color: var(--color);
     color: var(--bg-color);
+    transition: opacity var(--duration), visibility 0s var(--duration);
   }
 
-  .ef-FadeToggleLayer:hover .Layer.--after {
+  .ef-FadeToggleLayer:hover .Layer.--after,
+  .ef-FadeToggleLayer:active .Layer.--after {
     opacity: 1;
     visibility: visible;
   }
 
-  .ef-FadeToggleLayer:hover .Layer.--before:hover {
+  .ef-FadeToggleLayer:hover .Layer.--before,
+  .ef-FadeToggleLayer:active .Layer.--before {
     opacity: 0;
     visibility: hidden;
   }
