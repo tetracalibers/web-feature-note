@@ -15,6 +15,7 @@
     "@astrojs/mdx": "^0.14.0",
     "@astrojs/svelte": "^1.0.2",
     "astro": "^1.9.0",
+    "astro-icon": "^0.8.0",
     "latex.css": "^1.8.0",
     "prismjs": "^1.29.0",
     "svelte": "^3.46.4"

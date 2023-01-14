@@ -1,5 +1,5 @@
 ---
-import ClockIcon from "@/components/icon/clock-icon.astro"
+import { Icon } from "astro-icon"
 
 // Math.random() * ( 最大値 + 1 - 最小値 ) + 最小値;
 const genRandom = (min: number, max: number) => Math.floor(Math.random() * (max + 1 - min) + min)
@@ -36,7 +36,11 @@ const avatars = [...new Array(genRandom(1, 7))].map(
     </div>
     <div class="CardFooter">
       <div class="PublishDate IconText">
-        <span class="IconText__icon PublishDate__icon"><ClockIcon /></span>
+        <Icon
+          name="clarity:clock-line"
+          class="IconText__icon PublishDate__icon"
+          aria-hidden="true"
+        />
         <time class="IconText__text PublishDate__date" datetime="2022-12-03">2022/12/03</time>
       </div>
       <ul class="Avatars">
@@ -275,6 +279,7 @@ const avatars = [...new Array(genRandom(1, 7))].map(
   }
 
   .PublishDate__icon {
-    font-size: 1.75em;
+    width: 1.75em;
+    height: 1.75em;
   }
 </style>
