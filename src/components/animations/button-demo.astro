@@ -1,0 +1,33 @@
+---
+import Prism from "@astrojs/prism/Prism.astro"
+import prettier from "prettier"
+
+interface Props {
+  css: string
+}
+
+const { css } = Astro.props
+const formattedCss = prettier.format(css, { parser: "css" })
+---
+
+<slot />
+
+<Prism lang="css" code={formattedCss} />
+
+<style>
+  :global(button) {
+    /** def */
+    --dark-color: #333;
+    --light-color: #fff;
+    /** reset */
+    appearance: none;
+    border: 0;
+    background: inherit;
+    cursor: pointer;
+    /** base */
+    padding-block: 1em;
+    padding-inline: 1.2em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+</style>

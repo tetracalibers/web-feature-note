@@ -1,23 +1,22 @@
 ---
-import "./base.css"
-import Prism from "@astrojs/prism/Prism.astro"
----
+import ButtonDemo from "../button-demo.astro"
 
-<button class="ef-FlowBg">
-  <div class="ef-FlowBg__inner">Animate width</div>
-</button>
-
-<Prism
-  lang="css"
-  code={`@keyframes FlowBg_useWidth {
+const css = `
+@keyframes FlowBg_useWidth {
   0% {
     inline-size: 0;
   }
   100% {
     inline-size: 100%;
   }
-}`}
-/>
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-FlowBg">
+    <div class="ef-FlowBg__inner">Animate width</div>
+  </button>
+</ButtonDemo>
 
 <style>
   .ef-FlowBg {

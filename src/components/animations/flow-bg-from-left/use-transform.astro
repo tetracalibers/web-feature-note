@@ -1,15 +1,8 @@
 ---
-import "./base.css"
-import Prism from "@astrojs/prism/Prism.astro"
----
+import ButtonDemo from "../button-demo.astro"
 
-<button class="ef-FlowBg">
-  <div class="ef-FlowBg__inner">Animate Transform</div>
-</button>
-
-<Prism
-  lang="css"
-  code={`@keyframes FlowBg_useTransform {
+const css = `
+@keyframes FlowBg_useTransform {
   0% {
     transform-origin: left;
     transform: scaleX(0);
@@ -18,8 +11,14 @@ import Prism from "@astrojs/prism/Prism.astro"
     transform-origin: left;
     transform: scaleX(1);
   }
-}`}
-/>
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-FlowBg">
+    <div class="ef-FlowBg__inner">Animate Transform</div>
+  </button>
+</ButtonDemo>
 
 <style>
   .ef-FlowBg {

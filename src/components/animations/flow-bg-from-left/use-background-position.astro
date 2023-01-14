@@ -1,15 +1,8 @@
 ---
-import "./base.css"
-import Prism from "@astrojs/prism/Prism.astro"
----
+import ButtonDemo from "../button-demo.astro"
 
-<button class="ef-FlowBg">
-  <div class="ef-FlowBg__inner">Animate Background-Position</div>
-</button>
-
-<Prism
-  lang="css"
-  code={`@keyframes FlowBg_useBackgroundPosition {
+const css = `
+@keyframes FlowBg_useBackgroundPosition {
   0% {
     background-image: linear-gradient(to right, #ecc5fb 0%, #ecc5fb 100%);
     background-size: 200% 100%;
@@ -22,8 +15,14 @@ import Prism from "@astrojs/prism/Prism.astro"
     background-repeat: no-repeat;
     background-position: 100% 100%;
   }
-}`}
-/>
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-FlowBg">
+    <div class="ef-FlowBg__inner">Animate Background-Position</div>
+  </button>
+</ButtonDemo>
 
 <style>
   .ef-FlowBg {

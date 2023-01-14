@@ -1,23 +1,22 @@
 ---
-import "./base.css"
-import Prism from "@astrojs/prism/Prism.astro"
----
+import ButtonDemo from "../button-demo.astro"
 
-<button class="ef-FlowBg">
-  <div class="ef-FlowBg__inner">Animate Clip-Path</div>
-</button>
-
-<Prism
-  lang="css"
-  code={`@keyframes FlowBg_useClipPath {
+const css = `
+@keyframes FlowBg_useClipPath {
   0% {
     clip-path: inset(0 100% 0 0);
   }
   100% {
     clip-path: inset(0);
   }
-}`}
-/>
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-FlowBg">
+    <div class="ef-FlowBg__inner">Animate Clip-Path</div>
+  </button>
+</ButtonDemo>
 
 <style>
   .ef-FlowBg {
