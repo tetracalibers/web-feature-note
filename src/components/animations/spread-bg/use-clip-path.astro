@@ -1,0 +1,50 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes SpreadBg {
+  0% {
+    clip-path: inset(50%);
+  }
+  100% {
+    clip-path: inset(0);
+  }
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-SpreadBg">
+    <div class="ef-SpreadBg__inner">Animate clip-path</div>
+  </button>
+</ButtonDemo>
+
+<style>
+  .ef-SpreadBg {
+    position: relative;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+  }
+
+  .ef-SpreadBg__inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .ef-SpreadBg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    background-color: #ecc5fb;
+    clip-path: inset(50%);
+    transition-property: clip-path;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    z-index: 1;
+  }
+
+  .ef-SpreadBg:hover::before {
+    clip-path: inset(0);
+  }
+</style>
