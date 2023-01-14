@@ -4,11 +4,9 @@ import ButtonDemo from "../button-demo.astro"
 const css = `
 @keyframes AddBoxShadow {
   0% {
-    opacity: 0;
     clip-path: inset(1px);
   }
   100% {
-    opacity: 1;
     clip-path: inset(-10px);
   }
 }`
@@ -32,15 +30,13 @@ const css = `
     padding: 7px;
     box-sizing: border-box;
     box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
-    opacity: 0;
     clip-path: inset(1px);
-    transition-property: clip-path, opacity;
+    transition-property: clip-path;
     transition-duration: 0.5s;
-    transition-timing-function: ease-out;
+    transition-timing-function: cubic-bezier(0.12, 0, 0.39, 0);
   }
 
   .ef-AddBoxShadow:hover::after {
     clip-path: inset(-10px);
-    opacity: 1;
   }
 </style>
