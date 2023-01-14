@@ -1,0 +1,72 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes ShrinkArrowLine {
+  0% {
+    transform: scaleX(1);
+  }
+  100% {
+    transform: scaleX(0.5);
+  }
+}
+
+@keyframes ShrinkArrowMoveTriangle {
+  0% {
+    transform: translateX(0.25em);
+  }
+  100% {
+    transform: translateX(-1.25em);
+  }
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-ShrinkArrow"> Animate transform</button>
+</ButtonDemo>
+
+<style>
+  .ef-ShrinkArrow {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    display: grid;
+    gap: 1em;
+    align-items: center;
+  }
+
+  .ef-ShrinkArrow::before,
+  .ef-ShrinkArrow::after {
+    content: "";
+    grid-column: 2;
+    grid-row: 1;
+    background-color: var(--light-color);
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transition-property: transform;
+    transform-origin: left;
+  }
+
+  /** 矢印の線 */
+  .ef-ShrinkArrow::before {
+    width: 3em;
+    height: 2px;
+    transform: scaleX(1);
+  }
+
+  /** 矢印の矢 */
+  .ef-ShrinkArrow::after {
+    width: 0.5em;
+    aspect-ratio: 1 / 2;
+    clip-path: polygon(100% 50%, 0% 0%, 0% 100%);
+    transform: translateX(0.25em);
+    justify-self: flex-end;
+  }
+
+  .ef-ShrinkArrow:hover::before {
+    transform: scaleX(0.5);
+  }
+
+  .ef-ShrinkArrow:hover::after {
+    transform: translateX(-1.25em);
+  }
+</style>

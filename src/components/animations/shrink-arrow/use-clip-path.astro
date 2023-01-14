@@ -1,0 +1,44 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes ShrinkArrow {
+  0% {
+    clip-path: polygon(0% 42%, 85% 42%, 85% 0%, 100% 50%, 85% 100%, 85% 58%, 0% 58%);
+  }
+  100% {
+    clip-path: polygon(0% 42%, 45% 42%, 45% 0%, 60% 50%, 45% 100%, 45% 58%, 0% 58%);
+  }
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-ShrinkArrow"> Animate clip-path</button>
+</ButtonDemo>
+
+<style>
+  .ef-ShrinkArrow {
+    background-color: var(--dark-color);
+    color: var(--light-color);
+    display: grid;
+    gap: 1em;
+    align-items: center;
+  }
+
+  .ef-ShrinkArrow::after {
+    content: "";
+    grid-column: 2;
+    grid-row: 1;
+    width: 3.5em;
+    height: 1em;
+    background-color: var(--light-color);
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    transition-property: clip-path;
+    clip-path: polygon(0% 42%, 85% 42%, 85% 0%, 100% 50%, 85% 100%, 85% 58%, 0% 58%);
+  }
+
+  .ef-ShrinkArrow:hover::after {
+    clip-path: polygon(0% 42%, 45% 42%, 45% 0%, 60% 50%, 45% 100%, 45% 58%, 0% 58%);
+  }
+</style>
