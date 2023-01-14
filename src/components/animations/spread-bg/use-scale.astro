@@ -1,0 +1,50 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes SpreadBg {
+  0% {
+    scale: 0 0;
+  }
+  100% {
+    scale: 1 1;
+  }
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-SpreadBg">
+    <div class="ef-SpreadBg__inner">Animate scale</div>
+  </button>
+</ButtonDemo>
+
+<style>
+  .ef-SpreadBg {
+    position: relative;
+    color: var(--dark-color);
+    border: 1px solid var(--dark-color);
+  }
+
+  .ef-SpreadBg__inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .ef-SpreadBg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    background-color: #ecc5fb;
+    scale: 0 0;
+    transition-property: scale;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-in-out;
+    z-index: 1;
+  }
+
+  .ef-SpreadBg:hover::before {
+    scale: 1 1;
+  }
+</style>
