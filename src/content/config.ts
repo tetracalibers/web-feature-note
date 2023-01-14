@@ -34,7 +34,6 @@ const tutorial_step = defineCollection({
 const compare_pattern = defineCollection({
   schema: {
     title: z.string(),
-    directory: z.string(),
   },
 })
 

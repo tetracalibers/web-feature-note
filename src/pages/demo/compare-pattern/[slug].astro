@@ -20,7 +20,7 @@ interface Props {
 }
 
 const { entry } = Astro.props
-const { title, directory } = entry.data
+const { title } = entry.data
 
 const module = await import.meta.glob<true, string, AstroInstance>(
   ["../../../components/animations/**/*.astro"],
@@ -30,7 +30,7 @@ const module = await import.meta.glob<true, string, AstroInstance>(
 )
 
 const demos = Object.entries(module)
-  .filter(([path]) => path.split("/").at(-2) === directory)
+  .filter(([path]) => path.split("/").at(-2) === entry.slug)
   .map(([, content]) => content.default)
   .reverse()
 ---
