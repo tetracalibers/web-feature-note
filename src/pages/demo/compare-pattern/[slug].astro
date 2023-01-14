@@ -1,0 +1,35 @@
+---
+import TutorialPage from "@/layouts/TutorialPage.astro"
+import { CollectionEntry, getCollection } from "astro:content"
+
+export async function getStaticPaths() {
+  const posts = await getCollection("compare-pattern")
+  return posts.map(entry => {
+    return {
+      params: { slug: entry.slug },
+      props: {
+        entry,
+      },
+    }
+  })
+}
+
+interface Props {
+  entry: CollectionEntry<"compare-pattern">
+}
+
+const { entry } = Astro.props
+const { title } = entry.data
+const { Content } = await entry.render()
+---
+
+<TutorialPage title={title}>
+  <h1>{title}</h1>
+  <Content />
+</TutorialPage>
+
+<style>
+  * {
+    font-family: "Libertinus", Georgia, Cambria, "Times New Roman", Times, serif;
+  }
+</style>

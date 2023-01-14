@@ -1,0 +1,15 @@
+button {
+  /** def */
+  --dark-color: #333;
+  --light-color: #fff;
+  /** reset */
+  appearance: none;
+  border: 0;
+  background: inherit;
+  cursor: pointer;
+  /** base */
+  padding-block: 1em;
+  padding-inline: 1.2em;
+  text-align: center;
+  text-transform: uppercase;
+}

@@ -1,0 +1,22 @@
+---
+import OtherPageLink from "@/components/link/other-page-link.astro"
+import Layout from "@/layouts/Layout.astro"
+import { getCollection } from "astro:content"
+
+const entries = await getCollection("compare-pattern")
+---
+
+<Layout title="CSS Animation Compare Patterns">
+  <h1>CSS Animation Compare Patterns</h1>
+  <ul>
+    {
+      entries.map(entry => (
+        <li>
+          <OtherPageLink slugs={["demo", "compare-pattern", entry.slug]}>
+            {entry.data.title}
+          </OtherPageLink>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

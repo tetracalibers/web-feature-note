@@ -1,0 +1,50 @@
+---
+import Prism from "@astrojs/prism/Prism.astro"
+---
+
+<button class="ef-FlowBg">
+  <div class="ef-FlowBg__inner">Animate width</div>
+</button>
+
+<Prism
+  lang="css"
+  code={`@keyframes FlowBg_useWidth {
+  0% {
+    inline-size: 0;
+  }
+  100% {
+    inline-size: 100%;
+  }
+}`}
+/>
+
+<style>
+  @import "./base.css";
+
+  .ef-FlowBg {
+    position: relative;
+    color: var(--dark-color);
+  }
+
+  .ef-FlowBg__inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .ef-FlowBg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    inline-size: 0;
+    block-size: 100%;
+    background-color: #ecc5fb;
+    transition-property: inline-size;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    z-index: 1;
+  }
+
+  .ef-FlowBg:hover::before {
+    inline-size: 100%;
+  }
+</style>

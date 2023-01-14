@@ -1,0 +1,59 @@
+---
+import Prism from "@astrojs/prism/Prism.astro"
+---
+
+<button class="ef-FlowBg">
+  <div class="ef-FlowBg__inner">Animate Background-Position</div>
+</button>
+
+<Prism
+  lang="css"
+  code={`@keyframes FlowBg_useBackgroundPosition {
+  0% {
+    background-image: linear-gradient(to right, #ecc5fb 0%, #ecc5fb 100%);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-position: 200% 100%;
+  }
+  100% {
+    background-image: linear-gradient(to right, #ecc5fb 0%, #ecc5fb 100%);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-position: 100% 100%;
+  }
+}`}
+/>
+
+<style>
+  @import "./base.css";
+
+  .ef-FlowBg {
+    position: relative;
+    color: var(--dark-color);
+  }
+
+  .ef-FlowBg__inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .ef-FlowBg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    inline-size: 100%;
+    block-size: 100%;
+    background-image: linear-gradient(to right, #ecc5fb 0%, #ecc5fb 100%);
+    background-size: 200% 100%;
+    background-repeat: no-repeat;
+    background-position: 200% 100%;
+    transition-property: background-position;
+    transition-duration: 0.5s;
+    transition-timing-function: ease;
+    z-index: 1;
+  }
+
+  .ef-FlowBg:hover::before {
+    background-position: 100% 100%;
+  }
+</style>

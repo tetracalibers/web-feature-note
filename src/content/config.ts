@@ -31,8 +31,15 @@ const tutorial_step = defineCollection({
   },
 })
 
+const compare_pattern = defineCollection({
+  schema: {
+    title: z.string(),
+  },
+})
+
 export const collections = {
   "css-modules": css_modules,
   topic: topic,
   "tutorial-step": tutorial_step,
+  "compare-pattern": compare_pattern,
 }
