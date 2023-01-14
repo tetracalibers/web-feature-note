@@ -1,0 +1,46 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes AddBoxShadow {
+  0% {
+    opacity: 0;
+    clip-path: inset(1px);
+  }
+  100% {
+    opacity: 1;
+    clip-path: inset(-10px);
+  }
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-AddBoxShadow">Animate opacity</button>
+</ButtonDemo>
+
+<style>
+  .ef-AddBoxShadow {
+    position: relative;
+  }
+
+  .ef-AddBoxShadow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    padding: 7px;
+    box-sizing: border-box;
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    clip-path: inset(1px);
+    transition-property: clip-path, opacity;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+  }
+
+  .ef-AddBoxShadow:hover::after {
+    clip-path: inset(-10px);
+    opacity: 1;
+  }
+</style>
