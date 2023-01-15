@@ -75,6 +75,7 @@ const avatars = [...new Array(genRandom(1, 7))].map(
     border-radius: var(--card-corner-radius);
     cursor: pointer;
     position: relative;
+    container-type: inline-size;
   }
 
   /** hover時に波紋アニメーション */
@@ -281,5 +282,109 @@ const avatars = [...new Array(genRandom(1, 7))].map(
   .PublishDate__icon {
     width: 1.75em;
     height: 1.75em;
+  }
+
+  @container (width > 40vw) and (width > 540px) {
+    .CardTag {
+      display: none;
+    }
+    .Card {
+      display: grid;
+      column-gap: 0;
+    }
+    .CardHeader {
+      display: contents;
+    }
+    .CardHeader__image {
+      grid-column: 1;
+      grid-row: 1 / 4;
+      -webkit-mask-image: none;
+      mask-image: none;
+      border-radius: var(--card-corner-radius) 0 0 var(--card-corner-radius);
+      height: 100%;
+      object-position: center center;
+      opacity: 0.8;
+    }
+    .CardHeader__title {
+      grid-column: 2;
+      grid-row: 1;
+      padding: 0.75em 1.25em;
+    }
+    .CardBody {
+      grid-column: 2;
+      grid-row: 2;
+    }
+    .CardFooter {
+      grid-column: 2;
+      grid-row: 3;
+    }
+  }
+
+  @container (width > 90vw) and (width > 540px) {
+    .CardTag {
+      display: none;
+    }
+    .Card {
+      display: grid;
+    }
+    .CardHeader {
+      grid-row: 1 / 10;
+      grid-column: 1;
+      display: contents;
+    }
+    .CardHeader__image {
+      grid-row: 1 / 10;
+      grid-column: 1;
+      filter: blur(2px);
+      margin: -1px;
+      object-position: top;
+      -webkit-mask-image: linear-gradient(
+        9deg,
+        hsla(0, 0%, 35.29%, 0) 0%,
+        hsla(0, 0%, 34.53%, 0.034375) 16.36%,
+        hsla(0, 0%, 32.42%, 0.125) 33.34%,
+        hsla(0, 0%, 29.18%, 0.253125) 50.1%,
+        hsla(0, 0%, 24.96%, 0.4) 65.75%,
+        hsla(0, 0%, 19.85%, 0.546875) 79.43%,
+        hsla(0, 0%, 13.95%, 0.675) 90.28%,
+        hsla(0, 0%, 7.32%, 0.765625) 97.43%,
+        hsla(0, 0%, 0%, 0.8) 100%
+      );
+      mask-image: linear-gradient(
+        9deg,
+        hsla(0, 0%, 35.29%, 0) 0%,
+        hsla(0, 0%, 34.53%, 0.034375) 16.36%,
+        hsla(0, 0%, 32.42%, 0.125) 33.34%,
+        hsla(0, 0%, 29.18%, 0.253125) 50.1%,
+        hsla(0, 0%, 24.96%, 0.4) 65.75%,
+        hsla(0, 0%, 19.85%, 0.546875) 79.43%,
+        hsla(0, 0%, 13.95%, 0.675) 90.28%,
+        hsla(0, 0%, 7.32%, 0.765625) 97.43%,
+        hsla(0, 0%, 0%, 0.8) 100%
+      );
+      border-radius: var(--card-corner-radius);
+      max-height: 95vh;
+    }
+    .CardHeader__title {
+      grid-row: 5 / 6;
+      grid-column: 1;
+      font-size: 2em;
+      padding: 0;
+    }
+    .CardBody {
+      grid-row: 7 / 8;
+      grid-column: 1;
+      z-index: 2;
+      width: 80%;
+      justify-self: center;
+    }
+    .CardFooter {
+      grid-row: 8 / 9;
+      grid-column: 1;
+      z-index: 2;
+      width: 80%;
+      justify-self: center;
+      padding: 0;
+    }
   }
 </style>
