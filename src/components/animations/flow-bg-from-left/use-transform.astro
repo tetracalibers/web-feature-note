@@ -40,13 +40,36 @@ const css = `
     background-color: #ecc5fb;
     transform: scaleX(0);
     transform-origin: left;
-    transition-property: transform;
-    transition-duration: 0.5s;
-    transition-timing-function: var(--ease-out);
     z-index: 1;
+    animation-name: returnSlide;
+    animation-timing-function: var(--ease-out);
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
   }
 
   .ef-FlowBg:hover::before {
     transform: scaleX(1);
+    animation-name: slide;
+    animation-timing-function: var(--ease-out);
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: scaleX(0);
+    }
+    100% {
+      transform: scaleX(1);
+    }
+  }
+
+  @keyframes returnSlide {
+    0% {
+      transform: scaleX(1);
+    }
+    100% {
+      transform: scaleX(0);
+    }
   }
 </style>
