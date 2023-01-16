@@ -1,28 +1,31 @@
 ---
 import Card from "@/demo/topic/card.astro"
 import DemoPage from "@/layouts/DemoPage.astro"
+import { Sprite } from "astro-icon"
 ---
 
 <DemoPage title="Card Component Demo">
-  <div class="ly-card">
-    <Card />
-  </div>
-  <div class="ly-card">
-    <Card />
-    <Card />
-  </div>
-  <div class="ly-card">
-    <Card />
-    <Card />
-    <Card />
-  </div>
-  <div class="ly-card ON-card-clip-image">
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-    <Card />
-  </div>
+  <Sprite.Provider>
+    <div class="ly-card">
+      <Card />
+    </div>
+    <div class="ly-card">
+      <Card />
+      <Card />
+    </div>
+    <div class="ly-card">
+      <Card />
+      <Card />
+      <Card />
+    </div>
+    <div class="ly-card ON-card-clip-image">
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+      <Card />
+    </div>
+  </Sprite.Provider>
 </DemoPage>
 
 <style>

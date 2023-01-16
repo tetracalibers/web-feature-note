@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon"
+import { Sprite } from "astro-icon"
 
 // Math.random() * ( 最大値 + 1 - 最小値 ) + 最小値;
 const genRandom = (min: number, max: number) => Math.floor(Math.random() * (max + 1 - min) + min)
@@ -36,7 +36,7 @@ const avatars = [...new Array(genRandom(1, 7))].map(
     </div>
     <div class="CardFooter">
       <div class="PublishDate IconText">
-        <Icon
+        <Sprite
           name="clarity:clock-line"
           class="IconText__icon PublishDate__icon"
           aria-hidden="true"
