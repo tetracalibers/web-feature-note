@@ -1,0 +1,24 @@
+<button class="hvr-RoundCorners">RoundCorners</button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    background: #e1e1e1;
+    color: #666;
+    position: relative;
+    transition-duration: 0.3s;
+  }
+
+  .hvr-RoundCorners {
+    clip-path: inset(0 round 0);
+    transition-property: clip-path;
+  }
+
+  .hvr-RoundCorners:hover {
+    clip-path: inset(0 round 1em);
+  }
+</style>

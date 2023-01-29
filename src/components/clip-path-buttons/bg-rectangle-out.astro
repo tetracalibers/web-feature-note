@@ -1,0 +1,47 @@
+<button class="hvr-RectangleOut"><div class="button-inner">RectangleOut</div></button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    background: #e1e1e1;
+    position: relative;
+    transition-duration: 0.3s;
+  }
+
+  button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #2098d1;
+    transition-duration: 0.3s;
+    margin: -1px;
+    z-index: 1;
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hvr-RectangleOut {
+    color: #666;
+    transition-property: color;
+  }
+
+  .hvr-RectangleOut:hover {
+    color: white;
+  }
+
+  .hvr-RectangleOut::before {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+    transition-property: clip-path;
+  }
+
+  .hvr-RectangleOut:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+</style>

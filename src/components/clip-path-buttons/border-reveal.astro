@@ -1,0 +1,38 @@
+<button class="hvr-BorderReveal"><div class="button-inner">BorderReveal</div></button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    background: #e1e1e1;
+    color: #666;
+    position: relative;
+    border: 4px solid #2098d1;
+  }
+
+  button::before {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    background: #e1e1e1;
+    transition-duration: 0.1s;
+    z-index: 1;
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hvr-BorderReveal::before {
+    clip-path: inset(0);
+    transition-property: clip-path;
+  }
+
+  .hvr-BorderReveal:hover::before {
+    clip-path: inset(4px);
+  }
+</style>

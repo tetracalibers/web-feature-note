@@ -1,0 +1,152 @@
+---
+import BgRadialIn from "@/components/clip-path-buttons/bg-radial-in.astro"
+import BgRadialOut from "@/components/clip-path-buttons/bg-radial-out.astro"
+import BgRectangleIn from "@/components/clip-path-buttons/bg-rectangle-in.astro"
+import BgRectangleOut from "@/components/clip-path-buttons/bg-rectangle-out.astro"
+import BgShutterCrossHorizontal from "@/components/clip-path-buttons/bg-shutter-cross-horizontal.astro"
+import BgShutterInHorizontal from "@/components/clip-path-buttons/bg-shutter-in-horizontal.astro"
+import BgShutterInVertical from "@/components/clip-path-buttons/bg-shutter-in-vertical.astro"
+import BgShutterOutHorizontal from "@/components/clip-path-buttons/bg-shutter-out-horizontal.astro"
+import BgShutterOutVertical from "@/components/clip-path-buttons/bg-shutter-out-vertical.astro"
+import BgSweepToBottom from "@/components/clip-path-buttons/bg-sweep-to-bottom.astro"
+import BgSweepToLeft from "@/components/clip-path-buttons/bg-sweep-to-left.astro"
+import BgSweepToRight from "@/components/clip-path-buttons/bg-sweep-to-right.astro"
+import BgSweepToTop from "@/components/clip-path-buttons/bg-sweep-to-top.astro"
+import BorderFade from "@/components/clip-path-buttons/border-fade.astro"
+import BorderReveal from "@/components/clip-path-buttons/border-reveal.astro"
+import BorderRightTopToFill from "@/components/clip-path-buttons/border-right-top-to-fill.astro"
+import Float from "@/components/clip-path-buttons/float.astro"
+import Grow from "@/components/clip-path-buttons/grow.astro"
+import Line2CornerToBorder from "@/components/clip-path-buttons/line-2-corner-to-border.astro"
+import Line2CornerToCrossBorder from "@/components/clip-path-buttons/line-2-corner-to-cross-border.astro"
+import Line2CornerToDoubleOutline from "@/components/clip-path-buttons/line-2-corner-to-double-outline.astro"
+import Line2CornerToOutline from "@/components/clip-path-buttons/line-2-corner-to-outline.astro"
+import LineUpFillDown from "@/components/clip-path-buttons/line-up-fill-down.astro"
+import OutlineIn from "@/components/clip-path-buttons/outline-in.astro"
+import OutlineOut from "@/components/clip-path-buttons/outline-out.astro"
+import OverlineFromCenter from "@/components/clip-path-buttons/overline-from-center.astro"
+import OverlineFromLeft from "@/components/clip-path-buttons/overline-from-left.astro"
+import OverlineFromRight from "@/components/clip-path-buttons/overline-from-right.astro"
+import OverlineReveal from "@/components/clip-path-buttons/overline-reveal.astro"
+import RoundCorners from "@/components/clip-path-buttons/round-corners.astro"
+import Shrink from "@/components/clip-path-buttons/shrink.astro"
+import UnderlineFromCenter from "@/components/clip-path-buttons/underline-from-center.astro"
+import UnderlineFromLeft from "@/components/clip-path-buttons/underline-from-left.astro"
+import UnderlineFromRight from "@/components/clip-path-buttons/underline-from-right.astro"
+import UnderlineReveal from "@/components/clip-path-buttons/underline-reveal.astro"
+import DemoPage from "@/layouts/DemoPage.astro"
+---
+
+<DemoPage title="clip-pathによるアニメーションチャレンジ">
+  <section>
+    <h1>2D transform</h1>
+    <div class="ly">
+      <Grow />
+      <Shrink />
+      <Float />
+    </div>
+    <ul>
+      <li>
+        <code>clip-path</code>は子要素まで<code>scale</code>させることはできない
+      </li>
+      <li>
+        <code>clip-path</code>での<code>rotate</code>や<code>skew</code>は、<code>polygon</code
+        >で地道にやるしかない
+      </li>
+      <li>
+        <code>clip-path</code>だけで要素自体を<code>translate</code>させるのは厳しそう
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h2>Background</h2>
+    <div class="ly">
+      <BgSweepToRight />
+      <BgSweepToLeft />
+      <BgSweepToBottom />
+      <BgSweepToTop />
+      <BgRadialOut />
+      <BgRadialIn />
+      <BgRectangleOut />
+      <BgRectangleIn />
+      <BgShutterOutHorizontal />
+      <BgShutterInHorizontal />
+      <BgShutterCrossHorizontal />
+      <BgShutterOutVertical />
+      <BgShutterInVertical />
+    </div>
+    <ul>
+      <li>背景アニメーションは大抵<code>clip-path</code>でできる</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Border</h2>
+    <div class="ly">
+      <BorderFade />
+      <BorderReveal />
+      <UnderlineReveal />
+      <OverlineReveal />
+      <UnderlineFromLeft />
+      <UnderlineFromRight />
+      <UnderlineFromCenter />
+      <OverlineFromLeft />
+      <OverlineFromRight />
+      <OverlineFromCenter />
+      <RoundCorners />
+      <OutlineOut />
+      <OutlineIn />
+    </div>
+    <ul>
+      <li><code>clip-path</code>は<code>opacity</code>の代替にはならない</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Border To Background</h2>
+    <div class="ly">
+      <BorderRightTopToFill />
+    </div>
+  </section>
+  <section>
+    <h2>Line To Border</h2>
+    <div class="ly">
+      <Line2CornerToBorder />
+      <Line2CornerToCrossBorder />
+      <Line2CornerToDoubleOutline />
+      <Line2CornerToOutline />
+    </div>
+  </section>
+  <section>
+    <h2>Line & Background</h2>
+    <div class="ly">
+      <LineUpFillDown />
+    </div>
+  </section>
+</DemoPage>
+
+<style>
+  section {
+    padding: 1em;
+  }
+
+  .ly {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1em;
+  }
+
+  .codepen {
+    --bg-codepen: #17181c;
+    background: var(--bg-codepen);
+    padding: 1em;
+  }
+
+  h1 {
+    margin-inline: 0;
+  }
+
+  code,
+  kbd {
+    font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 85%;
+  }
+</style>

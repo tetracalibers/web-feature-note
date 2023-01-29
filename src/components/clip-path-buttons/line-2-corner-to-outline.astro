@@ -1,0 +1,50 @@
+<button><div class="button-inner">Line2CornerToOutline</div></button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    background: #e1e1e1;
+    font-size: 1em;
+    cursor: pointer;
+    position: relative;
+    color: #666;
+    padding: 0;
+  }
+
+  .button-inner {
+    padding: 1em;
+    border: 6px white solid;
+  }
+
+  button::before,
+  button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid #2098d1;
+    transition-property: clip-path;
+    transition-duration: 0.3s;
+  }
+
+  button::before {
+    right: 8px;
+    bottom: 8px;
+    border-right: 0;
+    border-bottom: 0;
+    clip-path: inset(0 80% 50% 0);
+  }
+
+  button::after {
+    top: 8px;
+    left: 8px;
+    border-top: 0;
+    border-left: 0;
+    clip-path: inset(50% 0 0 80%);
+  }
+
+  button:hover::before,
+  button:hover::after {
+    clip-path: inset(0);
+  }
+</style>

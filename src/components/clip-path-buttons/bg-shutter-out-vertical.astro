@@ -1,0 +1,63 @@
+<button class="hvr-ShutterOutVertical"><div class="button-inner">ShutterOutVertical</div></button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    padding: 1em;
+    font-size: 1em;
+    background: #2098d1;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 0.3s;
+  }
+
+  button::before,
+  button::after {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    background: #e1e1e1;
+    transition-duration: 0.3s;
+    margin: -1px;
+    z-index: 1;
+  }
+
+  button::before {
+    inset-block-start: 0;
+    inset-block-end: 50%;
+  }
+
+  button::after {
+    inset-block-start: 50%;
+    inset-block-end: 0;
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hvr-ShutterOutVertical {
+    color: #666;
+    transition-property: color;
+  }
+
+  .hvr-ShutterOutVertical:hover {
+    color: white;
+  }
+
+  .hvr-ShutterOutVertical::before,
+  .hvr-ShutterOutVertical::after {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition-property: clip-path;
+  }
+
+  .hvr-ShutterOutVertical:hover::after {
+    clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+  }
+
+  .hvr-ShutterOutVertical:hover::before {
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+</style>

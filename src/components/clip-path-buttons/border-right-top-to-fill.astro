@@ -1,0 +1,60 @@
+<button class="hvr-BorderRightTopToFill"
+  ><div class="button-inner">BorderRightTopToFill</div></button
+>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    background: #e1e1e1;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 0.3s;
+  }
+
+  button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    top: -0.3em;
+    left: -0.3em;
+    background: #2098d1;
+    margin: -1px;
+    z-index: 1;
+  }
+
+  button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #e1e1e1;
+    transition-duration: 0.3s;
+    margin: -1px;
+    z-index: 1;
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hvr-BorderRightTopToFill {
+    color: #666;
+    transition-property: color;
+  }
+
+  .hvr-BorderRightTopToFill:hover {
+    color: white;
+  }
+
+  .hvr-BorderRightTopToFill::after {
+    clip-path: polygon(100% 100%, 0 100%, 0 0, 100% 0);
+    transition-property: clip-path;
+  }
+
+  .hvr-BorderRightTopToFill:hover::after {
+    clip-path: polygon(100% 100%, 100% 100%, 100% 100%, 100% 100%);
+  }
+</style>

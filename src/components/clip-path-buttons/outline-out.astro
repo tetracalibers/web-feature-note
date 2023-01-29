@@ -1,0 +1,54 @@
+<button class="hvr-OutlineOut"><div class="button-inner">OutlineOut</div></button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    font-size: 1em;
+    cursor: pointer;
+    background: #e1e1e1;
+    color: #666;
+    position: relative;
+    padding: 0;
+  }
+
+  button::before {
+    content: "";
+    position: absolute;
+    inset: -8px;
+    background: #e1e1e1;
+    transition-duration: 0.3s;
+    z-index: 1;
+  }
+
+  button::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    background: white;
+    transition-duration: 0.3s;
+    z-index: 2;
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 3;
+    background: #e1e1e1;
+    padding: 1em;
+  }
+
+  .hvr-OutlineOut::before {
+    clip-path: inset(8px);
+    transition-property: clip-path;
+  }
+
+  .hvr-OutlineOut::after {
+    clip-path: inset(4px);
+    transition-property: clip-path;
+  }
+
+  .hvr-OutlineOut:hover::before,
+  .hvr-OutlineOut:hover::after {
+    clip-path: inset(0);
+  }
+</style>

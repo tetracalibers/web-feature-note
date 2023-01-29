@@ -1,0 +1,47 @@
+<button class="hvr-RectangleIn"><div class="button-inner">RectangleIn</div></button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    background: #2098d1;
+    padding: 1em;
+    font-size: 1em;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 0.3s;
+  }
+
+  button::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #e1e1e1;
+    transition-duration: 0.3s;
+    margin: -1px;
+    z-index: 1;
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hvr-RectangleIn {
+    color: #666;
+    transition-property: color;
+  }
+
+  .hvr-RectangleIn:hover {
+    color: white;
+  }
+
+  .hvr-RectangleIn::before {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    transition-property: clip-path;
+  }
+
+  .hvr-RectangleIn:hover::before {
+    clip-path: polygon(50% 50%, 50% 50%, 50% 50%, 50% 50%);
+  }
+</style>

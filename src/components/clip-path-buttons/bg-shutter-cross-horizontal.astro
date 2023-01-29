@@ -1,0 +1,63 @@
+<button><div class="button-inner">ShutterCrossHorizontal</div></button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    padding: 1em;
+    font-size: 1em;
+    background: #e1e1e1;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 0.3s;
+  }
+
+  button::before,
+  button::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #2098d1;
+    transition-duration: 0.3s;
+    z-index: 1;
+  }
+
+  button::before {
+    inset-block-start: 0;
+    inset-block-end: 50%;
+  }
+
+  button::after {
+    inset-block-start: 50%;
+    inset-block-end: 0;
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  button {
+    color: #666;
+    transition-property: color;
+  }
+
+  button:hover {
+    color: white;
+  }
+
+  button::before {
+    clip-path: inset(0 0 0 100%);
+    transition-property: clip-path;
+  }
+
+  button::after {
+    clip-path: inset(0 100% 0 0);
+    transition-property: clip-path;
+  }
+
+  button:hover::before,
+  button:hover::after {
+    clip-path: inset(0);
+  }
+</style>

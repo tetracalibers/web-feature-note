@@ -1,0 +1,53 @@
+<button class="hvr-OutlineIn"><div class="button-inner">OutlineIn</div></button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    font-size: 1em;
+    cursor: pointer;
+    background: #e1e1e1;
+    color: #666;
+    position: relative;
+    padding: 0;
+  }
+
+  button::before {
+    content: "";
+    position: absolute;
+    inset: -16px;
+    background: #e1e1e1;
+    transition-duration: 0.3s;
+    z-index: 1;
+  }
+
+  button::after {
+    content: "";
+    position: absolute;
+    inset: -12px;
+    background: white;
+    border: 4px solid white;
+    transition-duration: 0.3s;
+    z-index: 2;
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 3;
+    background: #e1e1e1;
+    padding: 1em;
+  }
+
+  .hvr-OutlineIn::before,
+  .hvr-OutlineIn::after {
+    clip-path: inset(0);
+    opacity: 0;
+    transition-property: clip-path;
+  }
+
+  .hvr-OutlineIn:hover::before,
+  .hvr-OutlineIn:hover::after {
+    clip-path: inset(8px);
+    opacity: 1;
+  }
+</style>

@@ -1,0 +1,64 @@
+<button class="hvr-ShutterInHorizontal"><div class="button-inner">ShutterInHorizontal</div></button>
+
+<style>
+  button {
+    appearance: none;
+    border: 0;
+    padding: 1em;
+    font-size: 1em;
+    background: #e1e1e1;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 0.3s;
+  }
+
+  button::before,
+  button::after {
+    content: "";
+    position: absolute;
+    inset-block: 0;
+    background: #2098d1;
+    transition-duration: 0.3s;
+    margin: -1px;
+    z-index: 1;
+  }
+
+  button::before {
+    inset-inline-start: 0;
+    inset-inline-end: 50%;
+  }
+
+  button::after {
+    inset-inline-start: 50%;
+    inset-inline-end: 0;
+  }
+
+  .button-inner {
+    position: relative;
+    z-index: 2;
+  }
+
+  .hvr-ShutterInHorizontal {
+    color: #666;
+    transition-property: color;
+  }
+
+  .hvr-ShutterInHorizontal:hover {
+    color: white;
+  }
+
+  .hvr-ShutterInHorizontal::before {
+    clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+    transition-property: clip-path;
+  }
+
+  .hvr-ShutterInHorizontal::after {
+    clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+    transition-property: clip-path;
+  }
+
+  .hvr-ShutterInHorizontal:hover::before,
+  .hvr-ShutterInHorizontal:hover::after {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+</style>
