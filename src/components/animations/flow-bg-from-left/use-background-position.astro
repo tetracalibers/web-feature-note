@@ -2,7 +2,7 @@
 import ButtonDemo from "../button-demo.astro"
 
 const css = `
-@keyframes FlowBg_useBackgroundPosition {
+@keyframes background_position {
   0% {
     background-image: linear-gradient(to right, #ecc5fb 0%, #ecc5fb 100%);
     background-size: 200% 100%;
@@ -20,7 +20,7 @@ const css = `
 
 <ButtonDemo css={css}>
   <button class="ef-FlowBg">
-    <div class="ef-FlowBg__inner">Animate Background-Position</div>
+    <div class="ef-FlowBg__inner">Animate</div>
   </button>
 </ButtonDemo>
 
@@ -45,13 +45,14 @@ const css = `
     background-size: 200% 100%;
     background-repeat: no-repeat;
     background-position: 200% 100%;
-    transition-property: background-position;
-    transition-duration: 0.5s;
-    transition-timing-function: var(--ease-out);
+    transition: none;
     z-index: 1;
   }
 
   .ef-FlowBg:hover::before {
     background-position: 100% 100%;
+    transition-property: background-position;
+    transition-duration: 0.5s;
+    transition-timing-function: var(--ease-out);
   }
 </style>

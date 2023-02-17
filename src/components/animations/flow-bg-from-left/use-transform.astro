@@ -2,7 +2,7 @@
 import ButtonDemo from "../button-demo.astro"
 
 const css = `
-@keyframes FlowBg_useTransform {
+@keyframes transform {
   0% {
     transform-origin: left;
     transform: scaleX(0);
@@ -16,7 +16,7 @@ const css = `
 
 <ButtonDemo css={css}>
   <button class="ef-FlowBg">
-    <div class="ef-FlowBg__inner">Animate Transform</div>
+    <div class="ef-FlowBg__inner">Animate</div>
   </button>
 </ButtonDemo>
 
@@ -41,35 +41,14 @@ const css = `
     transform: scaleX(0);
     transform-origin: left;
     z-index: 1;
-    animation-name: returnSlide;
-    animation-timing-function: var(--ease-out);
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
+    transition: none;
+    transform: scaleX(0);
   }
 
   .ef-FlowBg:hover::before {
     transform: scaleX(1);
-    animation-name: slide;
-    animation-timing-function: var(--ease-out);
-    animation-duration: 0.5s;
-    animation-fill-mode: forwards;
-  }
-
-  @keyframes slide {
-    0% {
-      transform: scaleX(0);
-    }
-    100% {
-      transform: scaleX(1);
-    }
-  }
-
-  @keyframes returnSlide {
-    0% {
-      transform: scaleX(1);
-    }
-    100% {
-      transform: scaleX(0);
-    }
+    transition-property: transform;
+    transition-timing-function: var(--ease-out);
+    transition-duration: 0.5s;
   }
 </style>

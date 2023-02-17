@@ -2,7 +2,7 @@
 import ButtonDemo from "../button-demo.astro"
 
 const css = `
-@keyframes FlowBg_useClipPath {
+@keyframes clip_path {
   0% {
     clip-path: inset(0 100% 0 0);
   }
@@ -14,7 +14,7 @@ const css = `
 
 <ButtonDemo css={css}>
   <button class="ef-FlowBg">
-    <div class="ef-FlowBg__inner">Animate Clip-Path</div>
+    <div class="ef-FlowBg__inner">Animate</div>
   </button>
 </ButtonDemo>
 
@@ -37,13 +37,14 @@ const css = `
     block-size: 100%;
     background-color: #ecc5fb;
     clip-path: inset(0 100% 0 0);
-    transition-property: clip-path;
-    transition-duration: 0.5s;
-    transition-timing-function: var(--ease-out);
+    transition: none;
     z-index: 1;
   }
 
   .ef-FlowBg:hover::before {
     clip-path: inset(0);
+    transition-property: clip-path;
+    transition-duration: 0.5s;
+    transition-timing-function: var(--ease-out);
   }
 </style>

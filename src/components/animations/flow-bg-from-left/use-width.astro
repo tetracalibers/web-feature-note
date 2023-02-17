@@ -2,7 +2,7 @@
 import ButtonDemo from "../button-demo.astro"
 
 const css = `
-@keyframes FlowBg_useWidth {
+@keyframes width {
   0% {
     inline-size: 0;
   }
@@ -14,7 +14,7 @@ const css = `
 
 <ButtonDemo css={css}>
   <button class="ef-FlowBg">
-    <div class="ef-FlowBg__inner">Animate width</div>
+    <div class="ef-FlowBg__inner">Animate</div>
   </button>
 </ButtonDemo>
 
@@ -36,13 +36,14 @@ const css = `
     inline-size: 0;
     block-size: 100%;
     background-color: #ecc5fb;
-    transition-property: inline-size;
-    transition-duration: 0.5s;
-    transition-timing-function: var(--ease-out);
+    transition: none;
     z-index: 1;
   }
 
   .ef-FlowBg:hover::before {
     inline-size: 100%;
+    transition-property: inline-size;
+    transition-duration: 0.5s;
+    transition-timing-function: var(--ease-out);
   }
 </style>
