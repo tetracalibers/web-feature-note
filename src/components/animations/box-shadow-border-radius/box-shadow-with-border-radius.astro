@@ -1,0 +1,34 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes AddBoxShadow_WithBorderRadius {
+  0% {
+    box-shadow: 0;
+    border-radius: 20px;
+  }
+  100% {
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+  }
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-AddBoxShadow">Animate</button>
+</ButtonDemo>
+
+<style>
+  .ef-AddBoxShadow {
+    box-shadow: 0;
+    border-radius: 20px;
+    transition: none;
+  }
+
+  .ef-AddBoxShadow:hover {
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+    transition-property: box-shadow;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+  }
+</style>
