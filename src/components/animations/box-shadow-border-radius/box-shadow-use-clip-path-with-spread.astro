@@ -1,0 +1,35 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes AddBoxShadow_UseClipPath_WithSpread {
+  0% {
+    box-shadow: 0 7px 10px -10px rgba(0, 0, 0, 0.3);
+    clip-path: inset(1px);
+  }
+  100% {
+    box-shadow: 0 7px 10px 0px rgba(0, 0, 0, 0.3);
+    clip-path: inset(-10px);
+  }
+}`
+---
+
+<ButtonDemo css={css}>
+  <button class="ef-AddBoxShadow">Animate</button>
+</ButtonDemo>
+
+<style>
+  .ef-AddBoxShadow {
+    clip-path: inset(1px);
+    box-shadow: 0 7px 10px -10px rgba(0, 0, 0, 0.3);
+    transition: none;
+  }
+
+  .ef-AddBoxShadow:hover {
+    clip-path: inset(-10px);
+    box-shadow: 0 7px 10px 0px rgba(0, 0, 0, 0.3);
+    transition-property: clip-path, box-shadow;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+  }
+</style>

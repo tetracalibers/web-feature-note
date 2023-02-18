@@ -2,14 +2,12 @@
 import ButtonDemo from "../button-demo.astro"
 
 const css = `
-@keyframes AddBoxShadow_WithClipPath {
+@keyframes AddBoxShadow_UseClipPath {
   0% {
-    box-shadow: 0;
-    clip-path: inset(0 round 20px);
+    clip-path: inset(1px);
   }
   100% {
-    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
-    clip-path: inset(0 round 20px);
+    clip-path: inset(-10px);
   }
 }`
 ---
@@ -20,14 +18,14 @@ const css = `
 
 <style>
   .ef-AddBoxShadow {
-    box-shadow: 0;
-    clip-path: inset(0 round 20px);
+    clip-path: inset(1px);
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
     transition: none;
   }
 
   .ef-AddBoxShadow:hover {
-    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
-    transition-property: box-shadow;
+    clip-path: inset(-10px);
+    transition-property: clip-path;
     transition-duration: 0.5s;
     transition-timing-function: ease-out;
   }
