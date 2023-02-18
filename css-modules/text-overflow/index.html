@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Astro v1.9.1">
+    <title>text-overflow - css-overflow</title>
+  <link rel="stylesheet" href="/web-feature-note/assets/_slug_.cbfa8383.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/_slug_.ade13eeb.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/_slug_.89f18ba4.css" /></head>
+  <body class="latex-dark-auto libertinus">
+    <div class="root astro-HDL3PXRG">
+    <header class="astro-HDL3PXRG">
+      <div class="back-link astro-HDL3PXRG">
+        <a href="/web-feature-note/#CSS_Overflow">
+  back to top
+</a>
+      </div>
+    </header>
+    <main class="astro-HDL3PXRG">
+      <h1 class="astro-HDL3PXRG">text-overflow</h1>
+      <dl class="astro-HDL3PXRG">
+        <dt class="astro-HDL3PXRG">Module Reference</dt>
+        <dd class="astro-HDL3PXRG"><a href="https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Overflow" class="astro-HDL3PXRG">CSS Overflow</a></dd>
+        <dt class="astro-HDL3PXRG">Feature Reference</dt>
+        <dd class="astro-HDL3PXRG"><a href="https://developer.mozilla.org/ja/docs/Web/CSS/text-overflow" class="astro-HDL3PXRG">text-overflow</a></dd>
+      </dl>
+      <h2 id="title_lv2summary">What is this?</h2>
+<p>長いテキストの溢れた部分をどう省略するか、省略されていることをどのような記号で表現するかを指定する。</p>
+<h2 id="そもそもテキストを溢れさせるには">そもそもテキストを溢れさせるには</h2>
+<pre class="language-css"><code class="language-css"><span class="token selector">.text</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="title_lv2values">Values</h2>
+<h3 id="clip"><code>clip</code></h3>
+<p>溢れた文字列は切り取って非表示にする。</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.clip</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">text-overflow</span><span class="token punctuation">:</span> clip<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<div class="demo-space pd-1rem" style="overflow: hidden;white-space: nowrap;width: 100px;text-overflow: clip;">
+  Lorem ipsum dolor sit amet, consectetuer adipiscin
+</div>
+<h3 id="ellipsis"><code>ellipsis</code></h3>
+<p><code>…</code>で省略されていることを表す。</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.ellipsis</span> <span class="token punctuation">{</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100px<span class="token punctuation">;</span>
+  <span class="token property">text-overflow</span><span class="token punctuation">:</span> ellipsis<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<div class="demo-space pd-1rem" style="overflow: hidden;white-space: nowrap;width: 100px;text-overflow: ellipsis;">
+  Lorem ipsum dolor sit amet, consectetuer adipiscin
+</div>
+<h2 id="複数行に渡るテキストの末尾を省略したい場合">複数行に渡るテキストの末尾を省略したい場合</h2>
+<ul>
+<li><a href="/web-feature-note/css-modules/-webkit-line-clamp">
+  <code>-webkit-line-clamp</code>
+</a>
+を使う</li>
+</ul>
+<h2 id="title_lv2status">Status</h2>
+<p>2023/01/08時点では、</p>
+<ul>
+<li>カスタム省略文字列の適用は<strong>Firefox</strong>のみ対応</li>
+<li>値を2つ設定して、行頭にも省略文字列を適用できるのも<strong>Firefox</strong>のみ</li>
+</ul>
+      <div class="related astro-HDL3PXRG">
+        <h2 class="astro-HDL3PXRG">Related Features</h2><ul class="astro-HDL3PXRG">
+                <li class="astro-HDL3PXRG">
+                    <a href="/web-feature-note/css-modules/overflow">
+  overflow
+</a>
+                  </li><li class="astro-HDL3PXRG">
+                    <a href="/web-feature-note/css-modules/white-space">
+  white-space
+</a>
+                  </li>
+              </ul>
+        <h2 class="astro-HDL3PXRG">Related Article</h2><ul class="astro-HDL3PXRG">
+                <li class="astro-HDL3PXRG">
+                    <a href="https://css-tricks.com/almanac/properties/t/text-overflow" class="astro-HDL3PXRG">
+                      CSS Trick - text-overflow
+                    </a>
+                  </li>
+                
+              </ul>
+      </div>
+    </main>
+    <footer class="astro-HDL3PXRG">
+      <div class="prev astro-HDL3PXRG">
+            <a href="/web-feature-note/css-modules/overflow">
+  overflow
+</a>
+          </div>
+      <div class="next astro-HDL3PXRG">
+            <a href="/web-feature-note/css-modules/overscroll-behavior-block">
+  overscroll-behavior-block
+</a>
+          </div>
+    </footer>
+  </div>
+  </body></html>
+

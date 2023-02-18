@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Astro v1.9.1">
+    <meta name="color-scheme" content="light dark">
+    <title>box-shadowとborder-radiusの組み合わせ</title>
+  <link rel="stylesheet" href="/web-feature-note/assets/_slug_.cca0791d.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/_slug_.ade13eeb.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/circle-to-button.ca644e08.css" /><script type="module">const e=document.querySelector("#trigger-use-position"),t=document.querySelector("#target-use-position");e?.addEventListener("click",()=>t?.classList.add("ef-ChangePosition"));const r=document.querySelector("#trigger-use-translate"),s=document.querySelector("#target-use-translate");r?.addEventListener("click",()=>s?.classList.add("ef-Translate"));
+</script></head>
+  <body>
+    <h1 class="astro-3IEZY6ZX">box-shadowとborder-radiusの組み合わせ</h1><button class="ef-AddBoxShadow astro-JZIECF5M">Animate</button>
+
+<pre class="astro-C5XPNIRN language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> AddBoxShadow_UseOpacity</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">opacity</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+
+
+<button class="ef-AddBoxShadow astro-3UQ2R6CU">Animate</button>
+
+<pre class="astro-C5XPNIRN language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> AddBoxShadow_WithClipPath</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">inset</span><span class="token punctuation">(</span>0 round 20px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 7px 10px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">inset</span><span class="token punctuation">(</span>0 round 20px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+
+
+<button class="ef-AddBoxShadow astro-HPXDHNYL">Animate</button>
+
+<pre class="astro-C5XPNIRN language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> AddBoxShadow_WithBorderRadius</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 7px 10px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+
+
+<button class="ef-AddBoxShadow astro-LCV5N4EP">Animate</button>
+
+<pre class="astro-C5XPNIRN language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> AddBoxShadow</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 7px 10px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+
+
+<button class="ef-AddBoxShadow astro-UAZWWCQ3">Animate</button>
+
+<pre class="astro-C5XPNIRN language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> AddBoxShadow_NoBlurRadius</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">box-shadow</span><span class="token punctuation">:</span> 0 7px <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.3<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+
+
+
+  
+</body></html>
+

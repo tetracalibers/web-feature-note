@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Astro v1.9.1">
+    <title>CSS All Modules Note</title>
+  <link rel="stylesheet" href="/web-feature-note/assets/_slug_.ade13eeb.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/_slug_.89f18ba4.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/index.a6a07447.css" /></head>
+  <body class="latex-dark-auto libertinus">
+    <div class="root astro-5Z2FCSBG">
+    <header class="astro-5Z2FCSBG"><h1 class="astro-5Z2FCSBG">CSS All Modules Note</h1></header>
+    <details class="toc astro-5Z2FCSBG" open>
+      <summary class="astro-5Z2FCSBG">TOC</summary>
+      <ul class="astro-5Z2FCSBG">
+        <li class="astro-5Z2FCSBG">
+              <a href="#Compositing_and_Blending" class="astro-5Z2FCSBG">Compositing and Blending</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Animations" class="astro-5Z2FCSBG">CSS Animations</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Backgrounds_and_Borders" class="astro-5Z2FCSBG">CSS Backgrounds and Borders</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Basic_User_Interface" class="astro-5Z2FCSBG">CSS Basic User Interface</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Box_Alignment" class="astro-5Z2FCSBG">CSS Box Alignment</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Box_Model" class="astro-5Z2FCSBG">CSS Box Model</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Box_Sizing" class="astro-5Z2FCSBG">CSS Box Sizing</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Colors" class="astro-5Z2FCSBG">CSS Colors</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Containment" class="astro-5Z2FCSBG">CSS Containment</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Counter_Styles" class="astro-5Z2FCSBG">CSS Counter Styles</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Display" class="astro-5Z2FCSBG">CSS Display</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Flexible_Box_Layout" class="astro-5Z2FCSBG">CSS Flexible Box Layout</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Fonts" class="astro-5Z2FCSBG">CSS Fonts</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Fragmentation" class="astro-5Z2FCSBG">CSS Fragmentation</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Generated_Content" class="astro-5Z2FCSBG">CSS Generated Content</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Grid_Layout" class="astro-5Z2FCSBG">CSS Grid Layout</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Images" class="astro-5Z2FCSBG">CSS Images</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Lists_and_Counters" class="astro-5Z2FCSBG">CSS Lists</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Masking" class="astro-5Z2FCSBG">CSS Masking</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Motion_Path" class="astro-5Z2FCSBG">CSS Motion Path</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Columns" class="astro-5Z2FCSBG">CSS Multi-column Layout</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Overflow" class="astro-5Z2FCSBG">CSS Overflow</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Overscroll_Behavior" class="astro-5Z2FCSBG">CSS Overscroll Behavior</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Paged_Media" class="astro-5Z2FCSBG">CSS Paged Media</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Positioning" class="astro-5Z2FCSBG">CSS Positioning</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Round_Display" class="astro-5Z2FCSBG">CSS Round Display</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Ruby" class="astro-5Z2FCSBG">CSS Ruby Layout</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Scroll_Snap" class="astro-5Z2FCSBG">CSS Scroll Snap</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Scrollbars" class="astro-5Z2FCSBG">CSS Scrollbars</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Shapes" class="astro-5Z2FCSBG">CSS Shapes</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Table" class="astro-5Z2FCSBG">CSS Table</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Text_Decoration" class="astro-5Z2FCSBG">CSS Text Decoration</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Text" class="astro-5Z2FCSBG">CSS Text</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Transforms" class="astro-5Z2FCSBG">CSS Transforms</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Transitions" class="astro-5Z2FCSBG">CSS Transitions</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSS_Writing_Modes" class="astro-5Z2FCSBG">CSS Writing Modes</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#CSSOM_View" class="astro-5Z2FCSBG">CSSOM View</a>
+            </li><li class="astro-5Z2FCSBG">
+              <a href="#Filter_Effects" class="astro-5Z2FCSBG">Filter Effects</a>
+            </li>
+      </ul>
+    </details>
+    <ul class="list-root astro-5Z2FCSBG">
+      <li class="astro-5Z2FCSBG">
+            <h2 id="Compositing_and_Blending" class="astro-5Z2FCSBG">Compositing and Blending</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-blend-mode" class="astro-5Z2FCSBG">background-blend-mode</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/isolation" class="astro-5Z2FCSBG">isolation</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mix-blend-mode" class="astro-5Z2FCSBG">mix-blend-mode</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Animations" class="astro-5Z2FCSBG">CSS Animations</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/animation" class="astro-5Z2FCSBG">animation</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/animation-delay" class="astro-5Z2FCSBG">animation-delay</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/animation-direction" class="astro-5Z2FCSBG">animation-direction</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/animation-duration" class="astro-5Z2FCSBG">animation-duration</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/animation-fill-mode" class="astro-5Z2FCSBG">animation-fill-mode</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/animation-iteration-count" class="astro-5Z2FCSBG">animation-iteration-count</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/animation-name" class="astro-5Z2FCSBG">animation-name</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/animation-play-state" class="astro-5Z2FCSBG">animation-play-state</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/animation-timing-function" class="astro-5Z2FCSBG">animation-timing-function</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Backgrounds_and_Borders" class="astro-5Z2FCSBG">CSS Backgrounds and Borders</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background" class="astro-5Z2FCSBG">background</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-attachment" class="astro-5Z2FCSBG">background-attachment</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-clip" class="astro-5Z2FCSBG">background-clip</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-color" class="astro-5Z2FCSBG">background-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-image" class="astro-5Z2FCSBG">background-image</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-origin" class="astro-5Z2FCSBG">background-origin</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-position" class="astro-5Z2FCSBG">background-position</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-position-x" class="astro-5Z2FCSBG">background-position-x</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-position-y" class="astro-5Z2FCSBG">background-position-y</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-repeat" class="astro-5Z2FCSBG">background-repeat</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/background-size" class="astro-5Z2FCSBG">background-size</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border" class="astro-5Z2FCSBG">border</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block" class="astro-5Z2FCSBG">border-block</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-color" class="astro-5Z2FCSBG">border-block-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-end" class="astro-5Z2FCSBG">border-block-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-end-color" class="astro-5Z2FCSBG">border-block-end-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-end-style" class="astro-5Z2FCSBG">border-block-end-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-end-width" class="astro-5Z2FCSBG">border-block-end-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-start" class="astro-5Z2FCSBG">border-block-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-start-color" class="astro-5Z2FCSBG">border-block-start-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-start-style" class="astro-5Z2FCSBG">border-block-start-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-start-width" class="astro-5Z2FCSBG">border-block-start-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-style" class="astro-5Z2FCSBG">border-block-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-block-width" class="astro-5Z2FCSBG">border-block-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-bottom" class="astro-5Z2FCSBG">border-bottom</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-bottom-color" class="astro-5Z2FCSBG">border-bottom-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-bottom-left-radius" class="astro-5Z2FCSBG">border-bottom-left-radius</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-bottom-right-radius" class="astro-5Z2FCSBG">border-bottom-right-radius</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-bottom-style" class="astro-5Z2FCSBG">border-bottom-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-bottom-width" class="astro-5Z2FCSBG">border-bottom-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-collapse" class="astro-5Z2FCSBG">border-collapse</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-color" class="astro-5Z2FCSBG">border-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-end-end-radius" class="astro-5Z2FCSBG">border-end-end-radius</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-end-start-radius" class="astro-5Z2FCSBG">border-end-start-radius</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-image" class="astro-5Z2FCSBG">border-image</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-image-outset" class="astro-5Z2FCSBG">border-image-outset</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-image-repeat" class="astro-5Z2FCSBG">border-image-repeat</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-image-slice" class="astro-5Z2FCSBG">border-image-slice</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-image-source" class="astro-5Z2FCSBG">border-image-source</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-image-width" class="astro-5Z2FCSBG">border-image-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline" class="astro-5Z2FCSBG">border-inline</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-color" class="astro-5Z2FCSBG">border-inline-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-end" class="astro-5Z2FCSBG">border-inline-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-end-color" class="astro-5Z2FCSBG">border-inline-end-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-end-style" class="astro-5Z2FCSBG">border-inline-end-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-end-width" class="astro-5Z2FCSBG">border-inline-end-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-start" class="astro-5Z2FCSBG">border-inline-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-start-color" class="astro-5Z2FCSBG">border-inline-start-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-start-style" class="astro-5Z2FCSBG">border-inline-start-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-start-width" class="astro-5Z2FCSBG">border-inline-start-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-style" class="astro-5Z2FCSBG">border-inline-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-inline-width" class="astro-5Z2FCSBG">border-inline-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-left" class="astro-5Z2FCSBG">border-left</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-left-color" class="astro-5Z2FCSBG">border-left-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-left-style" class="astro-5Z2FCSBG">border-left-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-left-width" class="astro-5Z2FCSBG">border-left-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-right" class="astro-5Z2FCSBG">border-right</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-right-color" class="astro-5Z2FCSBG">border-right-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-right-style" class="astro-5Z2FCSBG">border-right-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-right-width" class="astro-5Z2FCSBG">border-right-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-start-end-radius" class="astro-5Z2FCSBG">border-start-end-radius</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-start-start-radius" class="astro-5Z2FCSBG">border-start-start-radius</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-style" class="astro-5Z2FCSBG">border-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-top" class="astro-5Z2FCSBG">border-top</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-top-color" class="astro-5Z2FCSBG">border-top-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-top-left-radius" class="astro-5Z2FCSBG">border-top-left-radius</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-top-right-radius" class="astro-5Z2FCSBG">border-top-right-radius</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-top-style" class="astro-5Z2FCSBG">border-top-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-top-width" class="astro-5Z2FCSBG">border-top-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-width" class="astro-5Z2FCSBG">border-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/box-shadow" class="astro-5Z2FCSBG">box-shadow</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Basic_User_Interface" class="astro-5Z2FCSBG">CSS Basic User Interface</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/accent-color" class="astro-5Z2FCSBG">accent-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/appearance" class="astro-5Z2FCSBG">appearance</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/box-sizing" class="astro-5Z2FCSBG">box-sizing</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/cursor" class="astro-5Z2FCSBG">cursor</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/outline" class="astro-5Z2FCSBG">outline</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/outline-color" class="astro-5Z2FCSBG">outline-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/outline-offset" class="astro-5Z2FCSBG">outline-offset</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/outline-style" class="astro-5Z2FCSBG">outline-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/outline-width" class="astro-5Z2FCSBG">outline-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/resize" class="astro-5Z2FCSBG">resize</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/user-select" class="astro-5Z2FCSBG">user-select</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Box_Alignment" class="astro-5Z2FCSBG">CSS Box Alignment</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/align-content" class="astro-5Z2FCSBG">align-content</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/align-items" class="astro-5Z2FCSBG">align-items</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/align-self" class="astro-5Z2FCSBG">align-self</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-gap" class="astro-5Z2FCSBG">column-gap</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/gap" class="astro-5Z2FCSBG">gap</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/justify-content" class="astro-5Z2FCSBG">justify-content</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/justify-items" class="astro-5Z2FCSBG">justify-items</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/justify-self" class="astro-5Z2FCSBG">justify-self</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/place-content" class="astro-5Z2FCSBG">place-content</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/place-items" class="astro-5Z2FCSBG">place-items</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/place-self" class="astro-5Z2FCSBG">place-self</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/row-gap" class="astro-5Z2FCSBG">row-gap</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Box_Model" class="astro-5Z2FCSBG">CSS Box Model</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin" class="astro-5Z2FCSBG">margin</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-block" class="astro-5Z2FCSBG">margin-block</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-block-end" class="astro-5Z2FCSBG">margin-block-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-block-start" class="astro-5Z2FCSBG">margin-block-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-bottom" class="astro-5Z2FCSBG">margin-bottom</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-inline" class="astro-5Z2FCSBG">margin-inline</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-inline-end" class="astro-5Z2FCSBG">margin-inline-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-inline-start" class="astro-5Z2FCSBG">margin-inline-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-left" class="astro-5Z2FCSBG">margin-left</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-right" class="astro-5Z2FCSBG">margin-right</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-top" class="astro-5Z2FCSBG">margin-top</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/margin-trim" class="astro-5Z2FCSBG">margin-trim</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding" class="astro-5Z2FCSBG">padding</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-block" class="astro-5Z2FCSBG">padding-block</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-block-end" class="astro-5Z2FCSBG">padding-block-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-block-start" class="astro-5Z2FCSBG">padding-block-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-bottom" class="astro-5Z2FCSBG">padding-bottom</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-inline" class="astro-5Z2FCSBG">padding-inline</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-inline-end" class="astro-5Z2FCSBG">padding-inline-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-inline-start" class="astro-5Z2FCSBG">padding-inline-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-left" class="astro-5Z2FCSBG">padding-left</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-right" class="astro-5Z2FCSBG">padding-right</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/padding-top" class="astro-5Z2FCSBG">padding-top</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Box_Sizing" class="astro-5Z2FCSBG">CSS Box Sizing</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/block-size" class="astro-5Z2FCSBG">block-size</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/inline-size" class="astro-5Z2FCSBG">inline-size</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/max-block-size" class="astro-5Z2FCSBG">max-block-size</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/max-inline-size" class="astro-5Z2FCSBG">max-inline-size</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/min-block-size" class="astro-5Z2FCSBG">min-block-size</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/min-inline-size" class="astro-5Z2FCSBG">min-inline-size</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Colors" class="astro-5Z2FCSBG">CSS Colors</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/color" class="astro-5Z2FCSBG">color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/color-adjust" class="astro-5Z2FCSBG">color-adjust</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/opacity" class="astro-5Z2FCSBG">opacity</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Containment" class="astro-5Z2FCSBG">CSS Containment</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/contain" class="astro-5Z2FCSBG">contain</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/content-visibility" class="astro-5Z2FCSBG">content-visibility</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Counter_Styles" class="astro-5Z2FCSBG">CSS Counter Styles</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/counter-increment" class="astro-5Z2FCSBG">counter-increment</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/counter-reset" class="astro-5Z2FCSBG">counter-reset</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Display" class="astro-5Z2FCSBG">CSS Display</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/display" class="astro-5Z2FCSBG">display</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Flexible_Box_Layout" class="astro-5Z2FCSBG">CSS Flexible Box Layout</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/flex" class="astro-5Z2FCSBG">flex</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/flex-basis" class="astro-5Z2FCSBG">flex-basis</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/flex-direction" class="astro-5Z2FCSBG">flex-direction</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/flex-flow" class="astro-5Z2FCSBG">flex-flow</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/flex-grow" class="astro-5Z2FCSBG">flex-grow</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/flex-shrink" class="astro-5Z2FCSBG">flex-shrink</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/flex-wrap" class="astro-5Z2FCSBG">flex-wrap</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/order" class="astro-5Z2FCSBG">order</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Fonts" class="astro-5Z2FCSBG">CSS Fonts</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font" class="astro-5Z2FCSBG">font</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-family" class="astro-5Z2FCSBG">font-family</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-feature-setting" class="astro-5Z2FCSBG">font-feature-setting</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-kerning" class="astro-5Z2FCSBG">font-kerning</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-language-override" class="astro-5Z2FCSBG">font-language-override</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-optical-sizing" class="astro-5Z2FCSBG">font-optical-sizing</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-size" class="astro-5Z2FCSBG">font-size</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-size-adjust" class="astro-5Z2FCSBG">font-size-adjust</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-stretch" class="astro-5Z2FCSBG">font-stretch</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-synthesis" class="astro-5Z2FCSBG">font-synthesis</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-valiation-settings" class="astro-5Z2FCSBG">font-valiation-settings</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-variant" class="astro-5Z2FCSBG">font-variant</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-variant-alternates" class="astro-5Z2FCSBG">font-variant-alternates</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-variant-caps" class="astro-5Z2FCSBG">font-variant-caps</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-variant-east-asian" class="astro-5Z2FCSBG">font-variant-east-asian</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-variant-ligatures" class="astro-5Z2FCSBG">font-variant-ligatures</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-variant-numeric" class="astro-5Z2FCSBG">font-variant-numeric</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-variant-position" class="astro-5Z2FCSBG">font-variant-position</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/font-weight" class="astro-5Z2FCSBG">font-weight</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/line-height" class="astro-5Z2FCSBG">line-height</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Fragmentation" class="astro-5Z2FCSBG">CSS Fragmentation</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/box-decoration-break" class="astro-5Z2FCSBG">box-decoration-break</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/break-after" class="astro-5Z2FCSBG">break-after</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/break-before" class="astro-5Z2FCSBG">break-before</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/break-inside" class="astro-5Z2FCSBG">break-inside</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/orphans" class="astro-5Z2FCSBG">orphans</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/widows" class="astro-5Z2FCSBG">widows</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Generated_Content" class="astro-5Z2FCSBG">CSS Generated Content</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/content" class="astro-5Z2FCSBG">content</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/quotes" class="astro-5Z2FCSBG">quotes</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Grid_Layout" class="astro-5Z2FCSBG">CSS Grid Layout</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/align-tracks" class="astro-5Z2FCSBG">align-tracks</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-gap" class="astro-5Z2FCSBG">column-gap</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/gap" class="astro-5Z2FCSBG">gap</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid" class="astro-5Z2FCSBG">grid</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-area" class="astro-5Z2FCSBG">grid-area</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-auto-columns" class="astro-5Z2FCSBG">grid-auto-columns</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-auto-flow" class="astro-5Z2FCSBG">grid-auto-flow</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-auto-rows" class="astro-5Z2FCSBG">grid-auto-rows</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-column" class="astro-5Z2FCSBG">grid-column</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-column-end" class="astro-5Z2FCSBG">grid-column-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-column-start" class="astro-5Z2FCSBG">grid-column-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-row" class="astro-5Z2FCSBG">grid-row</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-row-end" class="astro-5Z2FCSBG">grid-row-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-row-start" class="astro-5Z2FCSBG">grid-row-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-template" class="astro-5Z2FCSBG">grid-template</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-template-areas" class="astro-5Z2FCSBG">grid-template-areas</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-template-columns" class="astro-5Z2FCSBG">grid-template-columns</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/grid-template-rows" class="astro-5Z2FCSBG">grid-template-rows</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/justify-tracks" class="astro-5Z2FCSBG">justify-tracks</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/masonry-auto-flow" class="astro-5Z2FCSBG">masonry-auto-flow</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/row-gap" class="astro-5Z2FCSBG">row-gap</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Images" class="astro-5Z2FCSBG">CSS Images</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/conic-gradient" class="astro-5Z2FCSBG">conic-gradient</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/cross-fade" class="astro-5Z2FCSBG">cross-fade</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/element" class="astro-5Z2FCSBG">element</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/image" class="astro-5Z2FCSBG">image</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/image-orientaton" class="astro-5Z2FCSBG">image-orientaton</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/image-rendering" class="astro-5Z2FCSBG">image-rendering</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/image-resolution" class="astro-5Z2FCSBG">image-resolution</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/linear-gradient" class="astro-5Z2FCSBG">linear-gradient</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/object-fit" class="astro-5Z2FCSBG">object-fit</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/object-position" class="astro-5Z2FCSBG">object-position</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/radial-gradient" class="astro-5Z2FCSBG">radial-gradient</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/repeating-conic-gradient" class="astro-5Z2FCSBG">repeating-conic-gradient</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/repeating-linear-gradient" class="astro-5Z2FCSBG">repeating-linear-gradient</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/repeating-radial-gradient" class="astro-5Z2FCSBG">repeating-radial-gradient</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/url" class="astro-5Z2FCSBG">url</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Lists_and_Counters" class="astro-5Z2FCSBG">CSS Lists</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/list-style" class="astro-5Z2FCSBG">list-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/list-style-image" class="astro-5Z2FCSBG">list-style-image</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/list-style-position" class="astro-5Z2FCSBG">list-style-position</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/list-style-type" class="astro-5Z2FCSBG">list-style-type</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Masking" class="astro-5Z2FCSBG">CSS Masking</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/clip" class="astro-5Z2FCSBG">clip</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/clip-path" class="astro-5Z2FCSBG">clip-path</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask" class="astro-5Z2FCSBG">mask</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-border" class="astro-5Z2FCSBG">mask-border</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-border-mode" class="astro-5Z2FCSBG">mask-border-mode</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-border-outset" class="astro-5Z2FCSBG">mask-border-outset</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-border-repeat" class="astro-5Z2FCSBG">mask-border-repeat</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-border-slice" class="astro-5Z2FCSBG">mask-border-slice</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-border-source" class="astro-5Z2FCSBG">mask-border-source</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-border-width" class="astro-5Z2FCSBG">mask-border-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-clip" class="astro-5Z2FCSBG">mask-clip</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-composite" class="astro-5Z2FCSBG">mask-composite</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-image" class="astro-5Z2FCSBG">mask-image</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-mode" class="astro-5Z2FCSBG">mask-mode</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-origin" class="astro-5Z2FCSBG">mask-origin</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-position" class="astro-5Z2FCSBG">mask-position</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-repeat" class="astro-5Z2FCSBG">mask-repeat</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-size" class="astro-5Z2FCSBG">mask-size</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/mask-type" class="astro-5Z2FCSBG">mask-type</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Motion_Path" class="astro-5Z2FCSBG">CSS Motion Path</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/offset" class="astro-5Z2FCSBG">offset</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/offset-anchor" class="astro-5Z2FCSBG">offset-anchor</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/offset-distance" class="astro-5Z2FCSBG">offset-distance</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/offset-path" class="astro-5Z2FCSBG">offset-path</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/offset-position" class="astro-5Z2FCSBG">offset-position</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/offset-rotate" class="astro-5Z2FCSBG">offset-rotate</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Columns" class="astro-5Z2FCSBG">CSS Multi-column Layout</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-count" class="astro-5Z2FCSBG">column-count</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-fill" class="astro-5Z2FCSBG">column-fill</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-gap" class="astro-5Z2FCSBG">column-gap</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-rule" class="astro-5Z2FCSBG">column-rule</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-rule-color" class="astro-5Z2FCSBG">column-rule-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-rule-style" class="astro-5Z2FCSBG">column-rule-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-rule-width" class="astro-5Z2FCSBG">column-rule-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-span" class="astro-5Z2FCSBG">column-span</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/column-width" class="astro-5Z2FCSBG">column-width</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/columns" class="astro-5Z2FCSBG">columns</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Overflow" class="astro-5Z2FCSBG">CSS Overflow</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/-webkit-line-clamp" class="astro-5Z2FCSBG">-webkit-line-clamp</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/block-overflow" class="astro-5Z2FCSBG">block-overflow</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overflow" class="astro-5Z2FCSBG">overflow</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overflow-block" class="astro-5Z2FCSBG">overflow-block</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overflow-inline" class="astro-5Z2FCSBG">overflow-inline</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overflow-x" class="astro-5Z2FCSBG">overflow-x</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overflow-y" class="astro-5Z2FCSBG">overflow-y</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-overflow" class="astro-5Z2FCSBG">text-overflow</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Overscroll_Behavior" class="astro-5Z2FCSBG">CSS Overscroll Behavior</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overscroll-behavior" class="astro-5Z2FCSBG">overscroll-behavior</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overscroll-behavior-block" class="astro-5Z2FCSBG">overscroll-behavior-block</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overscroll-behavior-inline" class="astro-5Z2FCSBG">overscroll-behavior-inline</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overscroll-behavior-x" class="astro-5Z2FCSBG">overscroll-behavior-x</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overscroll-behavior-y" class="astro-5Z2FCSBG">overscroll-behavior-y</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Paged_Media" class="astro-5Z2FCSBG">CSS Paged Media</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/bleed" class="astro-5Z2FCSBG">bleed</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/page-break-after" class="astro-5Z2FCSBG">page-break-after</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/page-break-before" class="astro-5Z2FCSBG">page-break-before</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/page-break-inside" class="astro-5Z2FCSBG">page-break-inside</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Positioning" class="astro-5Z2FCSBG">CSS Positioning</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/bottom" class="astro-5Z2FCSBG">bottom</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/clear" class="astro-5Z2FCSBG">clear</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/float" class="astro-5Z2FCSBG">float</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/inset" class="astro-5Z2FCSBG">inset</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/inset-block" class="astro-5Z2FCSBG">inset-block</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/inset-block-end" class="astro-5Z2FCSBG">inset-block-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/inset-block-start" class="astro-5Z2FCSBG">inset-block-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/inset-inline" class="astro-5Z2FCSBG">inset-inline</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/inset-inline-end" class="astro-5Z2FCSBG">inset-inline-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/inset-inline-start" class="astro-5Z2FCSBG">inset-inline-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/left" class="astro-5Z2FCSBG">left</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/position" class="astro-5Z2FCSBG">position</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/right" class="astro-5Z2FCSBG">right</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/top" class="astro-5Z2FCSBG">top</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/z-index" class="astro-5Z2FCSBG">z-index</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Round_Display" class="astro-5Z2FCSBG">CSS Round Display</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-boundary" class="astro-5Z2FCSBG">border-boundary</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Ruby" class="astro-5Z2FCSBG">CSS Ruby Layout</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/ruby-align" class="astro-5Z2FCSBG">ruby-align</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/ruby-position" class="astro-5Z2FCSBG">ruby-position</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Scroll_Snap" class="astro-5Z2FCSBG">CSS Scroll Snap</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding" class="astro-5Z2FCSBG">scroll-padding</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-block" class="astro-5Z2FCSBG">scroll-padding-block</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-block-end" class="astro-5Z2FCSBG">scroll-padding-block-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-block-start" class="astro-5Z2FCSBG">scroll-padding-block-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-bottom" class="astro-5Z2FCSBG">scroll-padding-bottom</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-inline" class="astro-5Z2FCSBG">scroll-padding-inline</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-inline-end" class="astro-5Z2FCSBG">scroll-padding-inline-end</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-inline-start" class="astro-5Z2FCSBG">scroll-padding-inline-start</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-left" class="astro-5Z2FCSBG">scroll-padding-left</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-right" class="astro-5Z2FCSBG">scroll-padding-right</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-padding-top" class="astro-5Z2FCSBG">scroll-padding-top</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-snap-type" class="astro-5Z2FCSBG">scroll-snap-type</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Scrollbars" class="astro-5Z2FCSBG">CSS Scrollbars</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scrollbar-color" class="astro-5Z2FCSBG">scrollbar-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scrollbar-width" class="astro-5Z2FCSBG">scrollbar-width</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Shapes" class="astro-5Z2FCSBG">CSS Shapes</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/shape-image-threshold" class="astro-5Z2FCSBG">shape-image-threshold</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/shape-margin" class="astro-5Z2FCSBG">shape-margin</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/shape-outside" class="astro-5Z2FCSBG">shape-outside</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Table" class="astro-5Z2FCSBG">CSS Table</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-collapse" class="astro-5Z2FCSBG">border-collapse</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/border-spacing" class="astro-5Z2FCSBG">border-spacing</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/caption-side" class="astro-5Z2FCSBG">caption-side</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/empty-cells" class="astro-5Z2FCSBG">empty-cells</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/table-layout" class="astro-5Z2FCSBG">table-layout</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/vertical-align" class="astro-5Z2FCSBG">vertical-align</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Text_Decoration" class="astro-5Z2FCSBG">CSS Text Decoration</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-decoration" class="astro-5Z2FCSBG">text-decoration</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-decoration-color" class="astro-5Z2FCSBG">text-decoration-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-decoration-line" class="astro-5Z2FCSBG">text-decoration-line</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-decoration-skip-ink" class="astro-5Z2FCSBG">text-decoration-skip-ink</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-decoration-style" class="astro-5Z2FCSBG">text-decoration-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-decoration-thickness" class="astro-5Z2FCSBG">text-decoration-thickness</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-emphasis" class="astro-5Z2FCSBG">text-emphasis</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-emphasis-color" class="astro-5Z2FCSBG">text-emphasis-color</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-emphasis-position" class="astro-5Z2FCSBG">text-emphasis-position</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-emphasis-style" class="astro-5Z2FCSBG">text-emphasis-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-shadow" class="astro-5Z2FCSBG">text-shadow</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-underline-offset" class="astro-5Z2FCSBG">text-underline-offset</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-underline-position" class="astro-5Z2FCSBG">text-underline-position</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Text" class="astro-5Z2FCSBG">CSS Text</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/hanging-punctuation" class="astro-5Z2FCSBG">hanging-punctuation</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/hyphens" class="astro-5Z2FCSBG">hyphens</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/letter-spacing" class="astro-5Z2FCSBG">letter-spacing</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/line-break" class="astro-5Z2FCSBG">line-break</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/overflow-wrap" class="astro-5Z2FCSBG">overflow-wrap</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/tab-size" class="astro-5Z2FCSBG">tab-size</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-align" class="astro-5Z2FCSBG">text-align</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-align-last" class="astro-5Z2FCSBG">text-align-last</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-indent" class="astro-5Z2FCSBG">text-indent</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-justigy" class="astro-5Z2FCSBG">text-justigy</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-size-adjust" class="astro-5Z2FCSBG">text-size-adjust</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-transform" class="astro-5Z2FCSBG">text-transform</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/white-space" class="astro-5Z2FCSBG">white-space</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/word-break" class="astro-5Z2FCSBG">word-break</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/word-spacing" class="astro-5Z2FCSBG">word-spacing</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Transforms" class="astro-5Z2FCSBG">CSS Transforms</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/backface-visibility" class="astro-5Z2FCSBG">backface-visibility</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/perspective" class="astro-5Z2FCSBG">perspective</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/perspective-origin" class="astro-5Z2FCSBG">perspective-origin</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scale" class="astro-5Z2FCSBG">scale</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/transform" class="astro-5Z2FCSBG">transform</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/transform-box" class="astro-5Z2FCSBG">transform-box</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/transform-origin" class="astro-5Z2FCSBG">transform-origin</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/transform-style" class="astro-5Z2FCSBG">transform-style</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/translate" class="astro-5Z2FCSBG">translate</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Transitions" class="astro-5Z2FCSBG">CSS Transitions</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/transition" class="astro-5Z2FCSBG">transition</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/transition-delay" class="astro-5Z2FCSBG">transition-delay</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/transition-duration" class="astro-5Z2FCSBG">transition-duration</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/transition-property" class="astro-5Z2FCSBG">transition-property</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/transition-timing-function" class="astro-5Z2FCSBG">transition-timing-function</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSS_Writing_Modes" class="astro-5Z2FCSBG">CSS Writing Modes</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/direction" class="astro-5Z2FCSBG">direction</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-combine-upright" class="astro-5Z2FCSBG">text-combine-upright</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/text-orientation" class="astro-5Z2FCSBG">text-orientation</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/unicode-bidi" class="astro-5Z2FCSBG">unicode-bidi</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/writing-mode" class="astro-5Z2FCSBG">writing-mode</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="CSSOM_View" class="astro-5Z2FCSBG">CSSOM View</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/scroll-behavior" class="astro-5Z2FCSBG">scroll-behavior</a>
+                    </li>
+              </ul>
+          </li><li class="astro-5Z2FCSBG">
+            <h2 id="Filter_Effects" class="astro-5Z2FCSBG">Filter Effects</h2><ul class="feature-list astro-5Z2FCSBG">
+                <li class="astro-5Z2FCSBG">
+                      <a href="css-modules/backdrop-filter" class="astro-5Z2FCSBG">backdrop-filter</a>
+                    </li><li class="astro-5Z2FCSBG">
+                      <a href="css-modules/filter" class="astro-5Z2FCSBG">filter</a>
+                    </li>
+              </ul>
+          </li>
+    </ul>
+  </div>
+  </body></html>
+

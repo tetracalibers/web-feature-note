@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Astro v1.9.1">
+    <title>カードコンポーネントでつまみ食いCSS Tips</title>
+  <link rel="stylesheet" href="/web-feature-note/assets/_slug_.ade13eeb.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/_slug_.89f18ba4.css" /></head>
+  <body class="latex-dark-auto libertinus">
+    <div class="root">
+    <main>
+      <h1>カードコンポーネントでつまみ食いCSS Tips</h1>
+      <a href="/web-feature-note/demo/cards">
+  デモをフルスクリーンで表示
+</a>
+<h2 id="card">Card</h2>
+<h3 id="ベースとなるレイアウト--flexによる縦組み">ベースとなるレイアウト ~ <code>flex</code>による縦組み ~</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Card<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardHeader<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ slot }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardBody<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ slot }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardFooter<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ slot }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.Card</span> <span class="token punctuation">{</span>
+  <span class="token property">--card-corner-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+  <span class="token property">box-shadow</span><span class="token punctuation">:</span> <span class="token function">rgba</span><span class="token punctuation">(</span>0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0<span class="token punctuation">,</span> 0.15<span class="token punctuation">)</span> 0px 5px 15px 0px<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--card-corner-radius<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/** Header, Body, Footerを縦並びにする */</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">flex-direction</span><span class="token punctuation">:</span> column<span class="token punctuation">;</span>
+  <span class="token comment">/** 各エリアの間にだけ余白を設ける */</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 1em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/** CardHeaderは画像をカードの縁まで広げたい場合もあるので、paddingを指定しない */</span>
+
+<span class="token selector">.CardBody</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** 左右に余白 */</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 1em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.CardFooter</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** 左右と下部に余白 */</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 1em 1em<span class="token punctuation">;</span>
+  <span class="token comment">/** Cardの下端に配置 */</span>
+  <span class="token property">margin-top</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="cardheader">CardHeader</h2>
+<h3 id="画像とタイトルを重ねる--gridの同セル配置">画像とタイトルを重ねる ~ <code>grid</code>の同セル配置 ~</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardHeader<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardHeader__image<span class="token punctuation">&quot;</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardHeader__title<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ title }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardHeader</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/** 同一セルに重ねる */</span>
+<span class="token selector">.CardHeader__title,
+.CardHeader__image</span> <span class="token punctuation">{</span>
+  <span class="token property">grid-area</span><span class="token punctuation">:</span> 1 / 1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="画像のレスポンシブ化--aspect-ratioとobject-fit">画像のレスポンシブ化 ~ <code>aspect-ratio</code>と<code>object-fit</code> ~</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardHeader__image</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** 親要素いっぱいに広げる */</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token comment">/** 横:縦 = 3:2 の比率で動的にheightを決める */</span>
+  <span class="token property">aspect-ratio</span><span class="token punctuation">:</span> 3 / 2<span class="token punctuation">;</span>
+  <span class="token comment">/** 歪まないようにする */</span>
+  <span class="token property">object-fit</span><span class="token punctuation">:</span> cover<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="画像の表示範囲制御--object-view-box">画像の表示範囲制御 ~ <code>object-view-box</code> ~</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardHeader__image</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** [option] 中央より25%上の部分を見せる */</span>
+  <span class="token property">object-view-box</span><span class="token punctuation">:</span> <span class="token function">inset</span><span class="token punctuation">(</span>-25% 0 0 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="画像下部にテキストを配置する--align-の有効化">画像下部にテキストを配置する ~ <code>align-*</code>の有効化 ~</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardHeader__title</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** 画像と同セルのため、画像全体に広がっている */</span>
+  <span class="token comment">/** この状態ではalign-*は効かないので、新たなgridにして位置を指定する */</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token comment">/** 横中央配置 */</span>
+  <span class="token property">justify-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token comment">/** 縦下部配置 */</span>
+  <span class="token property">align-content</span><span class="token punctuation">:</span> flex-end<span class="token punctuation">;</span>
+  <span class="token comment">/** デフォルトmarginの削除 */</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="画像とテキストのコントラストを確保する--mask-image">画像とテキストのコントラストを確保する ~ <code>mask-image</code> ~</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardHeader__image</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** グラデーションを重ねてテキストを読みやすく */</span>
+  <span class="token property">-webkit-mask-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to top<span class="token punctuation">,</span> #ffffff00 0%<span class="token punctuation">,</span> #ffffff 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">mask-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to top<span class="token punctuation">,</span> #ffffff00 0%<span class="token punctuation">,</span> #ffffff 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.CardHeader__title</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** グラデーション部分にうまく重なるよう位置を微調整 */</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 1.25em 0.75em<span class="token punctuation">;</span>
+  <span class="token comment">/** 白グラデーション上で常に映えるように */</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> black<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="cardの上下の角の丸みに合わせる--border-top--radius">Cardの上/下の角の丸みに合わせる ~ <code>border-top-*-radius</code> ~</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardHeader__image</span> <span class="token punctuation">{</span>
+  <span class="token property">border-top-left-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--card-corner-radius<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border-top-right-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--card-corner-radius<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="画像の形をアレンジする--clip-path">画像の形をアレンジする ~ <code>clip-path</code> ~</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardHeader__image</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** [option] margin: 1em 1em 0.5em; と border-radius: 20px; と同等 */</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">inset</span><span class="token punctuation">(</span>1em 1em 0.5em round 20px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="cardbody">CardBody</h2>
+<h3 id="ベーススタイル">ベーススタイル</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardBody<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardBody__paragraph<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardBody__paragraph</span> <span class="token punctuation">{</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="3行以上は省略する---webkit-line-clamp">3行以上は省略する ~ <code>-webkit-line-clamp</code> ~</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardBody__paragraph</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** 3行で収まらない分は「…」で表示 */</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> -webkit-box<span class="token punctuation">;</span>
+  <span class="token property">-webkit-box-orient</span><span class="token punctuation">:</span> vertical<span class="token punctuation">;</span>
+  <span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+  <span class="token comment">/** 4行目以降は隠す */</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="cardfooter">CardFooter</h2>
+<h3 id="2つの子要素を両端に寄せる--space-between">2つの子要素を両端に寄せる ~ <code>space-between</code> ~</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardFooter<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>PublishDate<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ slot }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Avatars<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    {{ slot }}
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardFooter</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token comment">/** PublishDateを左寄せ、Avatorsを右寄せ */</span>
+  <span class="token property">justify-content</span><span class="token punctuation">:</span> space-between<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="icontext-in-cardfooter">IconText (in CardFooter)</h2>
+<h3 id="アイコンとテキストを横並びにする">アイコンとテキストを横並びにする</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>PublishDate IconText<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>IconText__icon<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ icon }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>IconText__text<span class="token punctuation">&quot;</span></span> <span class="token attr-name">datetime</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2022-12-03<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>2022/12/03<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.IconText</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** 子要素を横並びに */</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token comment">/** テキストとアイコンの間の余白 */</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 0.25em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="アイコンとテキストを縦中央に揃える">アイコンとテキストを縦中央に揃える</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.IconText</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** アイコンとテキストを縦中央に揃える */</span>
+  <span class="token property">align-items</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.IconText__icon</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** 今、アイコンを囲むspanの高さが、テキストのBoxと等しくなっている */</span>
+  <span class="token comment">/** アイコンの実際の高さが異なる場合、align-items: center;を指定しても綺麗に中央に並ばない */</span>
+  <span class="token comment">/** このflex指定により、アイコンの実際の高さにBoxの高さを一致させる */</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="テキストが長い場合にアイコンが縮まないようにする">テキストが長い場合に、アイコンが縮まないようにする</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.IconText__icon</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** アイコンがテキストに押し潰されないようにする */</span>
+  <span class="token property">flex-shrink</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="publishdatein-cardfooter">PublishDate(in CardFooter)</h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>PublishDate IconText<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>IconText__icon PublishDate__icon<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ icon }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>IconText__text PublishDate__date<span class="token punctuation">&quot;</span></span> <span class="token attr-name">datetime</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>2022-12-03<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>2022/12/03<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+<h3 id="改行の禁止--white-space-nowrap">改行の禁止 ~ <code>white-space: nowrap;</code> ~</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.PublishDate</span> <span class="token punctuation">{</span>
+  <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h3 id="アイコンのスタイルをfont系プロパティで制御できるようにする--1emとcurrentcolor">アイコンのスタイルをfont系プロパティで制御できるようにする ~ <code>1em</code>と<code>currentColor</code> ~</h3>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>IconText__icon PublishDate__icon<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>1em<span class="token punctuation">&quot;</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>1em<span class="token punctuation">&quot;</span></span> <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>0 0 24 24<span class="token punctuation">&quot;</span></span> <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>none<span class="token punctuation">&quot;</span></span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>http://www.w3.org/2000/svg<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span>
+      <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>M12 2C6.49 2 2 6.49 2 12C2 17.51 6.49 22 12 22C17.51 22 22 17.51 22 12C22 6.49 17.51 2 12 2ZM16.35 15.57C16.21 15.81 15.96 15.94 15.7 15.94C15.57 15.94 15.44 15.91 15.32 15.83L12.22 13.98C11.45 13.52 10.88 12.51 10.88 11.62V7.52C10.88 7.11 11.22 6.77 11.63 6.77C12.04 6.77 12.38 7.11 12.38 7.52V11.62C12.38 11.98 12.68 12.51 12.99 12.69L16.09 14.54C16.45 14.75 16.57 15.21 16.35 15.57Z<span class="token punctuation">&quot;</span></span>
+      <span class="token attr-name">fill</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>currentColor<span class="token punctuation">&quot;</span></span>
+    <span class="token punctuation">&gt;</span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">&gt;</span></span></code></pre>
+<h3 id="フォントサイズを調整する">フォントサイズを調整する</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.PublishDate</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 0.8rem<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.PublishDate__icon</span> <span class="token punctuation">{</span>
+  <span class="token property">font-size</span><span class="token punctuation">:</span> 1.3em<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="avatars-in-cardfooter">Avatars (in CardFooter)</h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Avatars<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Avatar<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Avatar__thumb<span class="token punctuation">&quot;</span></span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span><span class="token punctuation">&quot;</span></span> <span class="token attr-name">loading</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>lazy<span class="token punctuation">&quot;</span></span> <span class="token punctuation">/&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- li.Avatar 繰り返し --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">&gt;</span></span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.Avatars</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">list-style</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0 10px 0 0<span class="token punctuation">;</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>4<span class="token punctuation">,</span> <span class="token function">minmax</span><span class="token punctuation">(</span>auto<span class="token punctuation">,</span> 40px<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">counter-reset</span><span class="token punctuation">:</span> over 0<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">direction</span><span class="token punctuation">:</span> rtl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.Avatar</span> <span class="token punctuation">{</span>
+  <span class="token property">aspect-ratio</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token property">margin-right</span><span class="token punctuation">:</span> -10px<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 3px solid white<span class="token punctuation">;</span>
+  <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.Avatar:nth-child(n + 4)</span> <span class="token punctuation">{</span>
+  <span class="token property">counter-increment</span><span class="token punctuation">:</span> over 1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/** 全要素に対するカウンタのインクリメントが終わったlast-childで値を表示 */</span>
+<span class="token selector">.Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child .Avatar__thumb</span> <span class="token punctuation">{</span>
+  <span class="token property">visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child::after</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;+&quot;</span> <span class="token function">counter</span><span class="token punctuation">(</span>over<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">place-content</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">inset</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">background</span><span class="token punctuation">:</span> pink<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/** 4つ目以降は省略（last-childはカウンタ表示用に残しておく） */</span>
+<span class="token selector">.Avatar:nth-child(n + 4):not(:last-child)</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** 描画をスキップ */</span>
+  <span class="token comment">/** display: none;とは異なり、カウンタは機能する */</span>
+  <span class="token property">content-visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token comment">/** 支援技術から隠す */</span>
+  <span class="token property">visibility</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token comment">/** 見えなくする */</span>
+  <span class="token property">clip</span><span class="token punctuation">:</span> <span class="token function">rect</span><span class="token punctuation">(</span>1px<span class="token punctuation">,</span> 1px<span class="token punctuation">,</span> 1px<span class="token punctuation">,</span> 1px<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">inset</span><span class="token punctuation">(</span>50%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 1px<span class="token punctuation">;</span>
+  <span class="token property">margin</span><span class="token punctuation">:</span> -1px<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.Avatar__thumb</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="cardの角にリボンを被せる">Cardの角にリボンを被せる</h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardWrapper<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardTag<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardTag__text<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>New<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>Card<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ slot }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token comment">/** CardTagとCardを重ねるためのコンテナ */</span>
+<span class="token selector">.CardWrapper</span> <span class="token punctuation">{</span>
+  <span class="token property">--card-corner-radius</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.CardTag</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** Cardと同セルに配置 */</span>
+  <span class="token property">grid-area</span><span class="token punctuation">:</span> 1 / 1<span class="token punctuation">;</span>
+  <span class="token comment">/** Cardの上に重ねる */</span>
+  <span class="token property">z-index</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token comment">/** 幅はCard幅の20%とし、高さを幅と等しくする */</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 20%<span class="token punctuation">;</span>
+  <span class="token property">aspect-ratio</span><span class="token punctuation">:</span> 1<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #b983ff<span class="token punctuation">;</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> #eef1ff<span class="token punctuation">;</span>
+  <span class="token property">text-transform</span><span class="token punctuation">:</span> uppercase<span class="token punctuation">;</span>
+  <span class="token comment">/** 斜めの三角形 */</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">polygon</span><span class="token punctuation">(</span>0% 0%<span class="token punctuation">,</span> 100% 0%<span class="token punctuation">,</span> 0% 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">border-top-left-radius</span><span class="token punctuation">:</span> <span class="token function">var</span><span class="token punctuation">(</span>--card-corner-radius<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.CardTag__text</span> <span class="token punctuation">{</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 129.29%<span class="token punctuation">;</span>
+  <span class="token property">text-align</span><span class="token punctuation">:</span> center<span class="token punctuation">;</span>
+  <span class="token comment">/** cos(-45deg)が約-29.29 */</span>
+  <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">translate</span><span class="token punctuation">(</span>-29.29%<span class="token punctuation">,</span> -100%<span class="token punctuation">)</span> <span class="token function">rotate</span><span class="token punctuation">(</span>-45deg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">transform-origin</span><span class="token punctuation">:</span> bottom right<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">.Card</span> <span class="token punctuation">{</span>
+  <span class="token comment">/** CardTagと同セルに配置 */</span>
+  <span class="token property">grid-area</span><span class="token punctuation">:</span> 1 / 1<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="cardに波紋アニメーションを加える">Cardに波紋アニメーションを加える</h2>
+<pre class="language-css"><code class="language-css"><span class="token selector">.CardWrapper</span> <span class="token punctuation">{</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/** hover時に波紋アニメーション */</span>
+<span class="token selector">.CardWrapper::before</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">&quot;&quot;</span><span class="token punctuation">;</span>
+  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span>
+  <span class="token property">inset</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">width</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">height</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token property">background-color</span><span class="token punctuation">:</span> #aac4ff<span class="token punctuation">;</span>
+  <span class="token property">opacity</span><span class="token punctuation">:</span> 0.1<span class="token punctuation">;</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">circle</span><span class="token punctuation">(</span>0 at center<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/** blur時はアニメーションせずすぐに消す */</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token selector">.CardWrapper:hover::before</span> <span class="token punctuation">{</span>
+  <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">circle</span><span class="token punctuation">(</span>100% at center<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">/** hover時は0.4sかけて波紋を広げる */</span>
+  <span class="token property">transition</span><span class="token punctuation">:</span> 0.4s ease-out<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+<h2 id="複数cardのレイアウト">複数Cardのレイアウト</h2>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>ly-Card<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">&quot;</span>CardWrapper<span class="token punctuation">&quot;</span></span><span class="token punctuation">&gt;</span></span>{{ slot }}<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span>
+  <span class="token comment">&lt;!-- div.CardWrapper 繰り返し --&gt;</span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span></code></pre>
+<pre class="language-css"><code class="language-css"><span class="token selector">.ly-Card</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> grid<span class="token punctuation">;</span>
+  <span class="token property">gap</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+  <span class="token property">grid-template-columns</span><span class="token punctuation">:</span> <span class="token function">repeat</span><span class="token punctuation">(</span>auto-fit<span class="token punctuation">,</span> <span class="token function">minmax</span><span class="token punctuation">(</span>270px<span class="token punctuation">,</span> 1fr<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 20px<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre>
+    </main>
+  </div>
+  </body></html>

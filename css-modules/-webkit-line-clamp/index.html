@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Astro v1.9.1">
+    <title>-webkit-line-clamp - css-overflow</title>
+  <link rel="stylesheet" href="/web-feature-note/assets/_slug_.cbfa8383.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/_slug_.ade13eeb.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/_slug_.89f18ba4.css" /></head>
+  <body class="latex-dark-auto libertinus">
+    <div class="root astro-HDL3PXRG">
+    <header class="astro-HDL3PXRG">
+      <div class="back-link astro-HDL3PXRG">
+        <a href="/web-feature-note/#CSS_Overflow">
+  back to top
+</a>
+      </div>
+    </header>
+    <main class="astro-HDL3PXRG">
+      <h1 class="astro-HDL3PXRG">-webkit-line-clamp</h1>
+      <dl class="astro-HDL3PXRG">
+        <dt class="astro-HDL3PXRG">Module Reference</dt>
+        <dd class="astro-HDL3PXRG"><a href="https://developer.mozilla.org/ja/docs/Web/CSS/CSS_Overflow" class="astro-HDL3PXRG">CSS Overflow</a></dd>
+        <dt class="astro-HDL3PXRG">Feature Reference</dt>
+        <dd class="astro-HDL3PXRG"><a href="https://developer.mozilla.org/ja/docs/Web/CSS/-webkit-line-clamp" class="astro-HDL3PXRG">-webkit-line-clamp</a></dd>
+      </dl>
+      <h2 id="title_lv2summary">What is this?</h2>
+<p>テキストを複数行に渡って表示し、指定した行数で収まらない部分は省略する。</p>
+<h2 id="title_lv2usage">Usage</h2>
+<h3 id="3行表示">3行表示</h3>
+<pre class="language-css"><code class="language-css"><span class="token selector">.clamp</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> -webkit-box<span class="token punctuation">;</span>
+  <span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+  <span class="token property">-webkit-box-orient</span><span class="token punctuation">:</span> vertical<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<div class="demo-space pd-x-1rem" style="display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
+  massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
+  quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+  Donec pede justo, fringilla vel, aliquet nec, vulputate
+</div>
+<h2 id="title_lv2bad">Bad Practices</h2>
+<h3 id="上下のpaddingがあると綺麗に見えない">上下の<code>padding</code>があると綺麗に見えない</h3>
+<p><code>-webkit-line-clamp</code>を指定するとき、上下に<code>padding</code>があると、省略行の次の行が見えてしまう。</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.has-padding-clamp</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> -webkit-box<span class="token punctuation">;</span>
+  <span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+  <span class="token property">-webkit-box-orient</span><span class="token punctuation">:</span> vertical<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<div class="demo-space pd-x-1rem" style="padding: 1rem;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
+  massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
+  quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+  Donec pede justo, fringilla vel, aliquet nec, vulputate
+</div>
+<p>この場合、少なくとも<code>padding-bottom: 0;</code>が必要。</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.has-padding-clamp</span> <span class="token punctuation">{</span>
+  <span class="token property">padding</span><span class="token punctuation">:</span> 1rem<span class="token punctuation">;</span>
+  <span class="token property">padding-bottom</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> -webkit-box<span class="token punctuation">;</span>
+  <span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+  <span class="token property">-webkit-box-orient</span><span class="token punctuation">:</span> vertical<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<div class="demo-space pd-x-1rem" style="padding: 1rem;padding-bottom: 0;display: -webkit-box;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
+  massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
+  quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+  Donec pede justo, fringilla vel, aliquet nec, vulputate
+</div>
+<h3 id="-webkit-群の組み合わせでしか機能しない"><code>-webkit-</code>群の組み合わせでしか機能しない</h3>
+<p><code>-webkit-box</code>の正体は<code>flex</code>プロパティのベンダープレフィックス。</p>
+<p><code>flex</code>が草案時代にWebKitで<code>flex</code>を利用するときに使われていたプロパティだが、
+<code>-webkit-box</code>の代わりに<code>flex</code>を指定すると<code>-webkit-line-clamp</code>は機能しない。</p>
+<pre class="language-css"><code class="language-css"><span class="token selector">.not-working</span> <span class="token punctuation">{</span>
+  <span class="token property">display</span><span class="token punctuation">:</span> flex<span class="token punctuation">;</span>
+  <span class="token property">-webkit-line-clamp</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+  <span class="token property">-webkit-box-orient</span><span class="token punctuation">:</span> vertical<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+<div class="demo-space pd-x-1rem" style="display: flex;-webkit-line-clamp: 3;-webkit-box-orient: vertical;overflow: hidden;">
+  Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean
+  massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec
+  quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim.
+  Donec pede justo, fringilla vel, aliquet nec, vulputate
+</div>
+      <div class="related astro-HDL3PXRG">
+        <h2 class="astro-HDL3PXRG">Related Features</h2><ul class="astro-HDL3PXRG">
+                <li class="astro-HDL3PXRG">
+                    <a href="/web-feature-note/css-modules/text-overflow">
+  text-overflow
+</a>
+                  </li>
+              </ul>
+        <h2 class="astro-HDL3PXRG">Related Article</h2><ul class="astro-HDL3PXRG">
+                <li class="astro-HDL3PXRG">
+                    <a href="https://css-tricks.com/almanac/properties/l/line-clamp" class="astro-HDL3PXRG">
+                      CSS Trick - line-clamp
+                    </a>
+                  </li>
+                <li class="astro-HDL3PXRG">
+                      <a href="https://kumaweb-d.com/blog/css3-box-orient/" class="astro-HDL3PXRG">box-orientでフレキシブルボックス内の配置方向を指定する</a>
+                    </li><li class="astro-HDL3PXRG">
+                      <a href="https://t-yng.jp/post/wh-webkit-box" class="astro-HDL3PXRG">複数行テキストの省略と-webkit-boxについて</a>
+                    </li>
+              </ul>
+      </div>
+    </main>
+    <footer class="astro-HDL3PXRG">
+      <div class="prev astro-HDL3PXRG">
+            <a href="/web-feature-note/css-modules/columns">
+  columns
+</a>
+          </div>
+      <div class="next astro-HDL3PXRG">
+            <a href="/web-feature-note/css-modules/block-overflow">
+  block-overflow
+</a>
+          </div>
+    </footer>
+  </div>
+  </body></html>
+

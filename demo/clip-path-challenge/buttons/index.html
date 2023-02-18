@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Astro v1.9.1">
+    <meta name="color-scheme" content="light dark">
+    <title>clip-pathによるアニメーションチャレンジ</title>
+  <link rel="stylesheet" href="/web-feature-note/assets/buttons.9ac22158.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/cards.45cebfc2.css" /></head>
+  <body>
+    <section class="astro-6M7XRFZF">
+    <h1 class="astro-6M7XRFZF">2D transform</h1>
+    <div class="ly astro-6M7XRFZF">
+      <button class="hvr-Grow astro-2FW7ABQI">Grow</button>
+
+
+      <button class="hvr-Shrink astro-SX3UQBJW">Shrink</button>
+
+
+      <button class="hvr-Float astro-5JUHMLCI">Float</button>
+
+
+    </div>
+    <ul class="astro-6M7XRFZF">
+      <li class="astro-6M7XRFZF">
+        <code class="astro-6M7XRFZF">clip-path</code>は子要素まで<code class="astro-6M7XRFZF">scale</code>させることはできない
+      </li>
+      <li class="astro-6M7XRFZF">
+        <code class="astro-6M7XRFZF">clip-path</code>での<code class="astro-6M7XRFZF">rotate</code>や<code class="astro-6M7XRFZF">skew</code>は、<code class="astro-6M7XRFZF">polygon</code>で地道にやるしかない
+      </li>
+      <li class="astro-6M7XRFZF">
+        <code class="astro-6M7XRFZF">clip-path</code>だけで要素自体を<code class="astro-6M7XRFZF">translate</code>させるのは厳しそう
+      </li>
+    </ul>
+  </section><section class="astro-6M7XRFZF">
+    <h2 class="astro-6M7XRFZF">Background</h2>
+    <div class="ly astro-6M7XRFZF">
+      <button class="hvr-SweepToRight astro-FZKQ4XVO"><div class="button-inner astro-FZKQ4XVO">SweepToRight</div></button>
+
+
+      <button class="hvr-SweepToLeft astro-PFKVBPTT"><div class="button-inner astro-PFKVBPTT">SweepToLeft</div></button>
+
+
+      <button class="hvr-SweepToBottom astro-NTNG7EUC"><div class="button-inner astro-NTNG7EUC">SweepToBottom</div></button>
+
+
+      <button class="hvr-SweepToTop astro-SVRSLTNY"><div class="button-inner astro-SVRSLTNY">SweepToTop</div></button>
+
+
+      <button class="hvr-RadialOut astro-ZJRQO476"><div class="button-inner astro-ZJRQO476">RadialOut</div></button>
+
+
+      <button class="hvr-RadialIn astro-XTKU3TH3"><div class="button-inner astro-XTKU3TH3">RadialIn</div></button>
+
+
+      <button class="hvr-RectangleOut astro-5IFCSAH5"><div class="button-inner astro-5IFCSAH5">RectangleOut</div></button>
+
+
+      <button class="hvr-RectangleIn astro-PDESEOAN"><div class="button-inner astro-PDESEOAN">RectangleIn</div></button>
+
+
+      <button class="hvr-ShutterOutHorizontal astro-VSSEP5DC"><div class="button-inner astro-VSSEP5DC">ShutterOutHorizontal</div></button>
+
+
+      <button class="hvr-ShutterInHorizontal astro-GAYKBTWW"><div class="button-inner astro-GAYKBTWW">ShutterInHorizontal</div></button>
+
+
+      <button class="astro-WSKCSKAV"><div class="button-inner astro-WSKCSKAV">ShutterCrossHorizontal</div></button>
+
+
+      <button class="hvr-ShutterOutVertical astro-Z2YXZFCF"><div class="button-inner astro-Z2YXZFCF">ShutterOutVertical</div></button>
+
+
+      <button class="hvr-ShutterInVertical astro-MFU3LSIT"><div class="button-inner astro-MFU3LSIT">ShutterInVertical</div></button>
+
+
+    </div>
+    <ul class="astro-6M7XRFZF">
+      <li class="astro-6M7XRFZF">背景アニメーションは大抵<code class="astro-6M7XRFZF">clip-path</code>でできる</li>
+    </ul>
+  </section><section class="astro-6M7XRFZF">
+    <h2 class="astro-6M7XRFZF">Border</h2>
+    <div class="ly astro-6M7XRFZF">
+      <button class="hvr-BorderFade astro-WPXUEBHB">BorderFade</button>
+
+
+      <button class="hvr-BorderReveal astro-EYCSZYJ6"><div class="button-inner astro-EYCSZYJ6">BorderReveal</div></button>
+
+
+      <button class="hvr-UnderlineReveal astro-DTT2M3ZM"><div class="button-inner astro-DTT2M3ZM">UnderlineReveal</div></button>
+
+
+      <button class="hvr-OverlineReveal astro-7FQZGRIY"><div class="button-inner astro-7FQZGRIY">OverlineReveal</div></button>
+
+
+      <button class="hvr-UnderlineFromLeft astro-E5PB5SYI"><div class="button-inner astro-E5PB5SYI">UnderlineFromLeft</div></button>
+
+
+      <button class="hvr-UnderlineFromRight astro-FABVL3DO"><div class="button-inner astro-FABVL3DO">UnderlineFromRight</div></button>
+
+
+      <button class="hvr-UnderlineFromCenter astro-UFUBBJ4U"><div class="button-inner astro-UFUBBJ4U">UnderlineFromCenter</div></button>
+
+
+      <button class="hvr-OverlineFromLeft astro-YWRWQKFT"><div class="button-inner astro-YWRWQKFT">OverlineFromLeft</div></button>
+
+
+      <button class="hvr-OverlineFromRight astro-X4Y26LLE"><div class="button-inner astro-X4Y26LLE">OverlineFromRight</div></button>
+
+
+      <button class="hvr-OverlineFromCenter astro-JV2WVSVF"><div class="button-inner astro-JV2WVSVF">OverlineFromCenter</div></button>
+
+
+      <button class="hvr-RoundCorners astro-C2OIUF5O">RoundCorners</button>
+
+
+      <button class="hvr-OutlineOut astro-GYGMPCF4"><div class="button-inner astro-GYGMPCF4">OutlineOut</div></button>
+
+
+      <button class="hvr-OutlineIn astro-QYTDVWCE"><div class="button-inner astro-QYTDVWCE">OutlineIn</div></button>
+
+
+    </div>
+    <ul class="astro-6M7XRFZF">
+      <li class="astro-6M7XRFZF"><code class="astro-6M7XRFZF">clip-path</code>は<code class="astro-6M7XRFZF">opacity</code>の代替にはならない</li>
+    </ul>
+  </section><section class="astro-6M7XRFZF">
+    <h2 class="astro-6M7XRFZF">Border To Background</h2>
+    <div class="ly astro-6M7XRFZF">
+      <button class="hvr-BorderRightTopToFill astro-42GYJHIG"><div class="button-inner astro-42GYJHIG">BorderRightTopToFill</div></button>
+
+
+    </div>
+  </section><section class="astro-6M7XRFZF">
+    <h2 class="astro-6M7XRFZF">Line To Border</h2>
+    <div class="ly astro-6M7XRFZF">
+      <button class="astro-4CLT237E">Line2CornerToBorder</button>
+
+
+      <button class="astro-QXPJQTAH">Line2CornerToCrossBorder</button>
+
+
+      <button class="astro-BZ7S4DD3">Line2CornerToDoubleOutline</button>
+
+
+      <button class="astro-B4ST4FB7"><div class="button-inner astro-B4ST4FB7">Line2CornerToOutline</div></button>
+
+
+    </div>
+  </section><section class="astro-6M7XRFZF">
+    <h2 class="astro-6M7XRFZF">Line & Background</h2>
+    <div class="ly astro-6M7XRFZF">
+      <button class="astro-LBGVPNS3"><div class="button-inner astro-LBGVPNS3">LineUpFillDown</div></button>
+
+
+    </div>
+  </section>
+  
+</body></html>
+

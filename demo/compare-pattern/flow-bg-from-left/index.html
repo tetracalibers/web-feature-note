@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Astro v1.9.1">
+    <meta name="color-scheme" content="light dark">
+    <title>背景が左から流れる</title>
+  <link rel="stylesheet" href="/web-feature-note/assets/_slug_.cca0791d.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/_slug_.ade13eeb.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/circle-to-button.ca644e08.css" /><script type="module">const e=document.querySelector("#trigger-use-position"),t=document.querySelector("#target-use-position");e?.addEventListener("click",()=>t?.classList.add("ef-ChangePosition"));const r=document.querySelector("#trigger-use-translate"),s=document.querySelector("#target-use-translate");r?.addEventListener("click",()=>s?.classList.add("ef-Translate"));
+</script></head>
+  <body>
+    <h1 class="astro-3IEZY6ZX">背景が左から流れる</h1><button class="ef-FlowBg astro-RPQZ5UHL">
+    <div class="ef-FlowBg__inner astro-RPQZ5UHL">Animate</div>
+  </button>
+
+<pre class="astro-C5XPNIRN language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> width</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+    <span class="token property">inline-size</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">inline-size</span><span class="token punctuation">:</span> 100%<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+
+
+<button class="ef-FlowBg astro-7AICMQN6">
+    <div class="ef-FlowBg__inner astro-7AICMQN6">Animate</div>
+  </button>
+
+<pre class="astro-C5XPNIRN language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> transform</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+    <span class="token property">transform-origin</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scaleX</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">transform-origin</span><span class="token punctuation">:</span> left<span class="token punctuation">;</span>
+    <span class="token property">transform</span><span class="token punctuation">:</span> <span class="token function">scaleX</span><span class="token punctuation">(</span>1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+
+
+<button class="ef-FlowBg astro-MWXTY3PK">
+    <div class="ef-FlowBg__inner astro-MWXTY3PK">Animate</div>
+  </button>
+
+<pre class="astro-C5XPNIRN language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> clip_path</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+    <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">inset</span><span class="token punctuation">(</span>0 100% 0 0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">clip-path</span><span class="token punctuation">:</span> <span class="token function">inset</span><span class="token punctuation">(</span>0<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+
+
+<button class="ef-FlowBg astro-BXIFGG72">
+    <div class="ef-FlowBg__inner astro-BXIFGG72">Animate</div>
+  </button>
+
+<pre class="astro-C5XPNIRN language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@keyframes</span> background_position</span> <span class="token punctuation">{</span>
+  <span class="token selector">0%</span> <span class="token punctuation">{</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to right<span class="token punctuation">,</span> #ecc5fb 0%<span class="token punctuation">,</span> #ecc5fb 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">background-size</span><span class="token punctuation">:</span> 200% 100%<span class="token punctuation">;</span>
+    <span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span>
+    <span class="token property">background-position</span><span class="token punctuation">:</span> 200% 100%<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+  <span class="token selector">100%</span> <span class="token punctuation">{</span>
+    <span class="token property">background-image</span><span class="token punctuation">:</span> <span class="token function">linear-gradient</span><span class="token punctuation">(</span>to right<span class="token punctuation">,</span> #ecc5fb 0%<span class="token punctuation">,</span> #ecc5fb 100%<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token property">background-size</span><span class="token punctuation">:</span> 200% 100%<span class="token punctuation">;</span>
+    <span class="token property">background-repeat</span><span class="token punctuation">:</span> no-repeat<span class="token punctuation">;</span>
+    <span class="token property">background-position</span><span class="token punctuation">:</span> 100% 100%<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+
+
+
+
+
+  
+</body></html>
+

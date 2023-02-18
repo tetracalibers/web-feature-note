@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="generator" content="Astro v1.9.1">
+    <meta name="color-scheme" content="light dark">
+    <title>「New」タグを三角形に整形する - Card Component Tutorial</title>
+  <link rel="stylesheet" href="/web-feature-note/assets/_slug_.ade13eeb.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/_slug_.773e2efe.css" />
+<link rel="stylesheet" href="/web-feature-note/assets/circle-to-button.ca644e08.css" /></head>
+  <body>
+    <style>astro-island,astro-slot{display:contents}</style><script>(self.Astro=self.Astro||{}).load=a=>{(async()=>await(await a())())()},window.dispatchEvent(new Event("astro:load"));var l;{const c={0:t=>t,1:t=>JSON.parse(t,o),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(JSON.parse(t,o)),5:t=>new Set(JSON.parse(t,o)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(JSON.parse(t)),9:t=>new Uint16Array(JSON.parse(t)),10:t=>new Uint32Array(JSON.parse(t))},o=(t,s)=>{if(t===""||!Array.isArray(s))return s;const[e,n]=s;return e in c?c[e](n):void 0};customElements.get("astro-island")||customElements.define("astro-island",(l=class extends HTMLElement{constructor(){super(...arguments);this.hydrate=()=>{if(!this.hydrator||this.parentElement&&this.parentElement.closest("astro-island[ssr]"))return;const s=this.querySelectorAll("astro-slot"),e={},n=this.querySelectorAll("template[data-astro-template]");for(const r of n){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("data-astro-template")||"default"]=r.innerHTML,r.remove())}for(const r of s){const i=r.closest(this.tagName);!i||!i.isSameNode(this)||(e[r.getAttribute("name")||"default"]=r.innerHTML)}const a=this.hasAttribute("props")?JSON.parse(this.getAttribute("props"),o):{};this.hydrator(this)(this.Component,a,e,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),window.removeEventListener("astro:hydrate",this.hydrate),window.dispatchEvent(new CustomEvent("astro:hydrate"))}}connectedCallback(){!this.hasAttribute("await-children")||this.firstChild?this.childrenConnectedCallback():new MutationObserver((s,e)=>{e.disconnect(),this.childrenConnectedCallback()}).observe(this,{childList:!0})}async childrenConnectedCallback(){window.addEventListener("astro:hydrate",this.hydrate);let s=this.getAttribute("before-hydration-url");s&&await import(s),this.start()}start(){const s=JSON.parse(this.getAttribute("opts")),e=this.getAttribute("client");if(Astro[e]===void 0){window.addEventListener(`astro:${e}`,()=>this.start(),{once:!0});return}Astro[e](async()=>{const n=this.getAttribute("renderer-url"),[a,{default:r}]=await Promise.all([import(this.getAttribute("component-url")),n?import(n):()=>()=>{}]),i=this.getAttribute("component-export")||"default";if(!i.includes("."))this.Component=a[i];else{this.Component=a;for(const d of i.split("."))this.Component=this.Component[d]}return this.hydrator=r,this.hydrate},s,this)}attributeChangedCallback(){this.hydrator&&this.hydrate()}},l.observedAttributes=["props"],l))}</script><div class="root astro-XGGZHCIZ">
+    <header class="astro-XGGZHCIZ">
+      <h1 class="astro-XGGZHCIZ">Card Component Tutorial</h1>
+      <a href="/web-feature-note/demo/cards">
+  完成品デモ
+</a>
+      <details class="astro-XGGZHCIZ">
+        <summary class="astro-XGGZHCIZ">TOC - All Steps</summary>
+        <ul class="astro-XGGZHCIZ">
+          <li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/1">
+  ベースとなるレイアウト ~ flexによる縦組み ~
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/2">
+  画像とタイトルを重ねる ~ gridの同セル配置 ~
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/3">
+  画像のレスポンシブ化
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/4">
+  画像下部にテキストを配置する
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/5">
+  画像とテキストのコントラストを確保する ~ mask-image ~
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/6">
+  Cardの角の丸みに合わせる
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/7">
+  画像の形をアレンジする ~ clip-path ~
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/8">
+  CardBodyにコンテンツを入れる
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/9">
+  3行以上は省略する ~ -webkit-line-clamp ~
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/10">
+  2つの子要素を両端に寄せる ~ space-between ~
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/11">
+  円形アバターを表示する
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/12">
+  円形アバターを横に並べてレスポンシブ化する
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/13">
+  アバターを右寄せする
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/14">
+  アバターを少し重ねて並べる
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/15">
+  4つ目以降のアバターは省略し、省略数を表示する
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/16">
+  省略数を円の中央に表示する
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/17">
+  5つ以上アバターがある場合、省略する
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/18">
+  アイコンとテキストを横並びにする
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/19">
+  アイコンとテキストが縦中央一直線に並ぶようにする
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/20">
+  テキストが長い場合に、アイコンが押しつぶされないようにする
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/21">
+  Cardの左角に「New」タグを載せる
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/22">
+  「New」タグの大きさを調整する
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                「New」タグを三角形に整形する
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/24">
+  「New」テキストをタグの形に沿って斜めに配置する
+</a>
+              </li><li class="astro-XGGZHCIZ">
+                <a href="/web-feature-note/demo/card-tutorial-step/25">
+  Cardをhoverした時に波紋アニメーションを加える
+</a>
+              </li>
+        </ul>
+      </details>
+    </header>
+    <main class="astro-XGGZHCIZ">
+      <h2 class="astro-XGGZHCIZ">「New」タグを三角形に整形する</h2>
+      <div class="story astro-5SIQTXU2"><div class="CardWrapper">
+  <div class="CardTag">
+    <div class="CardTag__text">New</div>
+  </div>
+  <div class="Card">
+    <div class="CardHeader">
+      <img
+        class="CardHeader__image"
+        src="https://placekitten.com/500/500"
+        alt="猫"
+      />
+      <h2 class="CardHeader__title">タイトル</h2>
+    </div>
+    <div class="CardBody">
+      <p class="CardBody__paragraph">
+        この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。
+      </p>
+    </div>
+    <div class="CardFooter">
+      <div class="PublishDate IconText">
+        <span class="IconText__icon PublishDate__icon">
+          <svg
+            version="1.1"
+            width="1em"
+            height="1em"
+            viewBox="0 0 36 36"
+            preserveAspectRatio="xMidYMid meet"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+          >
+            <title>clock-line</title>
+            <path
+              d="M18,2A16,16,0,1,0,34,18,16,16,0,0,0,18,2Zm0,30A14,14,0,1,1,32,18,14,14,0,0,1,18,32Z"
+              class="clr-i-outline clr-i-outline-path-1"
+            ></path>
+            <path
+              d="M18.92,18.4V10.75a1,1,0,0,0-2,0v8.72l5.9,4a1,1,0,1,0,1.11-1.66Z"
+              class="clr-i-outline clr-i-outline-path-2"
+            ></path>
+            <path
+              d="M8,17.94A9.94,9.94,0,0,1,23.41,9.59l.85-1.36a11.55,11.55,0,1,0-8.53,21L16,27.7A10,10,0,0,1,8,17.94Z"
+              class="clr-i-outline clr-i-outline-path-3"
+            ></path>
+            <rect x="0" y="0" width="36" height="36" fill-opacity="0" />
+          </svg>
+        </span>
+        <time class="IconText__text PublishDate__date" datetime="2022-12-03"
+          >2022/12/03</time
+        >
+      </div>
+      <ul class="Avatars">
+        <li class="Avatar">
+          <img
+            class="Avatar__thumb"
+            src="https://i.pravatar.cc/60?img=1"
+            alt="hogehogeさん"
+          />
+        </li>
+        <li class="Avatar">
+          <img
+            class="Avatar__thumb"
+            src="https://i.pravatar.cc/60?img=2"
+            alt="hogehogeさん"
+          />
+        </li>
+        <li class="Avatar">
+          <img
+            class="Avatar__thumb"
+            src="https://i.pravatar.cc/60?img=3"
+            alt="hogehogeさん"
+          />
+        </li>
+        <li class="Avatar">
+          <img
+            class="Avatar__thumb"
+            src="https://i.pravatar.cc/60?img=4"
+            alt="hogehogeさん"
+          />
+        </li>
+        <li class="Avatar">
+          <img
+            class="Avatar__thumb"
+            src="https://i.pravatar.cc/60?img=5"
+            alt="hogehogeさん"
+          />
+        </li>
+        <li class="Avatar">
+          <img
+            class="Avatar__thumb"
+            src="https://i.pravatar.cc/60?img=6"
+            alt="hogehogeさん"
+          />
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+<style>.Card {
+  --card-corner-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  border-radius: var(--card-corner-radius);
+  /** Header, Body, Footerを縦並びにする */
+  display: flex;
+  flex-direction: column;
+  /** 各エリアの間にだけ余白を設ける */
+  gap: 1em;
+}
+
+/** CardHeaderは画像をカードの縁まで広げたい場合もあるので、paddingを指定しない */
+
+.CardBody {
+  /** 左右に余白 */
+  padding: 0 1em;
+}
+
+.CardFooter {
+  /** 左右と下部に余白 */
+  padding: 0 1em 1em;
+  /** Cardの下端に配置 */
+  margin-top: auto;
+}
+
+.CardHeader {
+  display: grid;
+}
+
+/** 同一セルに重ねる */
+.CardHeader__title,
+.CardHeader__image {
+  grid-area: 1 / 1;
+}
+
+.CardHeader__image {
+  /** 親要素いっぱいに広げる */
+  width: 100%;
+  /** 横:縦 = 3:2 の比率で動的にheightを決める */
+  aspect-ratio: 3 / 2;
+  /** 歪まないようにする */
+  object-fit: cover;
+  /** [option] 25%下にずらして見せる */
+  /* object-view-box: inset(25% 0 0 0); */
+}
+
+.CardHeader__title {
+  /** 画像と同セルのため、画像全体に広がっている */
+  /** この状態ではalign-*は効かないので、新たなgridにして位置を指定する */
+  display: grid;
+  /** 横中央配置 */
+  justify-items: center;
+  /** 縦下部配置 */
+  align-content: flex-end;
+  /** デフォルトmarginの削除 */
+  margin: 0;
+  /** 下端から少し持ち上げる + 長いタイトル用に左右の余白設定 */
+  padding: 0 1.25em 0.75em;
+}
+
+.CardHeader__image {
+  /** グラデーションを重ねてテキストを読みやすく */
+  -webkit-mask-image: linear-gradient(to top, #ffffff00 0%, #ffffff 100%);
+  mask-image: linear-gradient(to top, #ffffff00 0%, #ffffff 100%);
+}
+
+.CardHeader__title {
+  /** 白グラデーション上で常に映えるように */
+  color: black;
+}
+
+.CardHeader__image {
+  border-top-left-radius: var(--card-corner-radius);
+  border-top-right-radius: var(--card-corner-radius);
+}
+
+.CardHeader__image {
+  /** [option] margin: 1em 1em 0.5em; と border-radius: 20px; と同等 */
+  clip-path: inset(1em 1em 0.5em round 20px);
+}
+
+.CardBody__paragraph {
+  margin: 0;
+}
+
+.CardBody__paragraph {
+  /** 3行で収まらない分は「…」で表示 */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  /** 4行目以降は隠す */
+  overflow: hidden;
+}
+
+.CardFooter {
+  display: flex;
+  /** PublishDateを左寄せ、Avatorsを右寄せ */
+  justify-content: space-between;
+  /** 幅が狭くなっても1emは間に余白を設ける */
+  gap: 1em;
+}
+
+.Avatars {
+  /** ulのデフォルトマージンを削除 */
+  margin: 0;
+}
+
+.Avatars {
+  list-style: none;
+}
+
+.Avatar {
+  /** 正方形を維持する */
+  aspect-ratio: 1;
+  /** 円形に切り抜く */
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.Avatar__thumb {
+  /** 画像をli.Avatarにフィットさせることで、中央を見せる */
+  width: 100%;
+}
+
+.Avatars {
+  display: grid;
+  /** 最大40pxのアバターを最大4つ横に並べる */
+  grid-template-columns: repeat(4, minmax(auto, 40px));
+}
+
+.Avatars {
+  padding: 0;
+}
+
+.Avatar:first-child:nth-last-child(3) {
+  grid-column-end: -3;
+}
+
+.Avatar:first-child:nth-last-child(2),
+.Avatar:first-child:nth-last-child(-n + 3) ~ .Avatar:has(~ .Avatar:last-child) {
+  grid-column-end: -2;
+}
+
+.Avatar:first-child:nth-last-child(1),
+.Avatar:first-child:nth-last-child(-n + 3) ~ .Avatar:last-child {
+  grid-column-end: -1;
+}
+
+.Avatars {
+  /** Card内側の余白を統一するため、Avatars全体が10px右にズレるのを防止 */
+  padding-right: 10px;
+}
+
+.Avatar {
+  /** 10px重ねる */
+  margin-right: -10px;
+  border: 2px solid white;
+}
+
+.Avatars {
+  /** 省略数カウンターを用意 */
+  counter-reset: over 0;
+}
+
+/** 4番目以降のAvatarに適用される */
+.Avatar:nth-child(n + 4) {
+  /** 4つ目以降の要素があればカウントを増やす */
+  counter-increment: over 1;
+}
+
+/** アバターが5つ以上ある場合のみ、その最後の.Avatar__thumbに適用される */
+.Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child .Avatar__thumb {
+  /** 領域は保持したまま見えなくする */
+  /** アクセシビリティツリーからも見えなくなる */
+  visibility: hidden;
+}
+
+.Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child {
+  /** ::afterの位置をabsoluteで調整するための指定 */
+  position: relative;
+}
+
+.Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child::after {
+  /** 全要素に対するカウンタのインクリメントが終わったlast-childで値を表示 */
+  content: "+" counter(over);
+  /** .Avatarの上に完全に被せる */
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  /** top: 0; bottom: 0; left: 0; right: 0; と同義 */
+  inset: 0;
+  background-color: #F675A8;
+}
+
+.Avatar:first-child:nth-last-child(n + 5) ~ .Avatar:last-child::after {
+  display: grid;
+  place-content: center;
+}
+
+/** 4つ目以降は省略（last-childはカウンタ表示用に残しておく） */
+.Avatar:nth-child(n + 4):not(:last-child) {
+  /** 描画をスキップ */
+  /** display: none;とは異なり、カウンタは機能する */
+  content-visibility: hidden;
+  /** 支援技術から隠す */
+  visibility: hidden;
+  /** display: none;を使わずに見えなくする（.visually-hidden） */
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  width: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+.IconText {
+  /** 子要素を横並びに */
+  display: flex;
+  /** テキストとアイコンの間の余白 */
+  gap: 0.25em;
+}
+
+.PublishDate {
+  white-space: nowrap; /** 改行禁止 */
+  font-size: 0.8rem;
+}
+
+.PublishDate__icon {
+  font-size: 1.75em;
+}
+
+.IconText {
+  /** アイコンとテキストを縦中央に揃える */
+  align-items: center;
+}
+
+.IconText__icon {
+  /** 今、アイコンを囲むspanの高さが、テキストのBoxと等しくなっている */
+  /** アイコンの実際の高さが異なる場合、align-items: center;を指定しても綺麗に中央に並ばない */
+  /** このflex指定により、アイコンの実際の高さにBoxの高さを一致させる */
+  display: flex;
+}
+
+.IconText__icon {
+  /** アイコンが縮むの禁止 */
+  flex-shrink: 0;
+}
+
+/** CardTagとCardを重ねるためのコンテナ */
+.CardWrapper {
+  --card-corner-radius: 10px; /** .Cardから移動 */
+  border-radius: var(--card-corner-radius);
+  display: grid;
+}
+
+.CardTag, .Card {
+  /** 同セルに配置 */
+  grid-area: 1 / 1;
+}
+
+.CardTag {
+  /** Cardの上に重ねる */
+  z-index: 1;
+}
+
+.CardTag {
+  /** 幅はCard幅の20%とし、高さを幅と等しくする */
+  width: 20%;
+  aspect-ratio: 1;
+  background-color: #beb6fa;
+}
+</style></div>
+
+
+<astro-island uid="Z1aQ78L" component-url="/web-feature-note/css-code-editor.6412b97a.js" component-export="default" renderer-url="/web-feature-note/client.788af3ea.js" props="{&quot;defaultCode&quot;:[0,&quot;.CardTag {\n  /** 斜めの三角形 */\n  clip-path: polygon(0% 0%, 100% 0%, 0% 100%);\n  /** Cardの左上角の丸みに合わせる */\n  border-top-left-radius: var(--card-corner-radius);\n}\n&quot;]}" ssr="" client="load" opts="{&quot;name&quot;:&quot;CssCodeEditor&quot;,&quot;value&quot;:true}" await-children=""><div class="container svelte-wfy5gs"><textarea spellcheck="false" class="same-layer svelte-wfy5gs"></textarea>
+  <pre aria-hidden="true" class="same-layer svelte-wfy5gs">    <code class="language-css svelte-wfy5gs"></code>
+  </pre>
+  <style></style>
+</div></astro-island>
+<pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CardWrapper<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CardTag<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CardTag__text<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>New<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Card<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CardHeader<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+        <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CardHeader__image<span class="token punctuation">"</span></span>
+        <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://placekitten.com/500/500<span class="token punctuation">"</span></span>
+        <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>猫<span class="token punctuation">"</span></span>
+      <span class="token punctuation">/></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h2</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CardHeader__title<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>タイトル<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h2</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CardBody<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CardBody__paragraph<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。この文章はダミーです。
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>CardFooter<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>PublishDate IconText<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IconText__icon PublishDate__icon<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>svg</span>
+            <span class="token attr-name">version</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1.1<span class="token punctuation">"</span></span>
+            <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1em<span class="token punctuation">"</span></span>
+            <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1em<span class="token punctuation">"</span></span>
+            <span class="token attr-name">viewBox</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0 0 36 36<span class="token punctuation">"</span></span>
+            <span class="token attr-name">preserveAspectRatio</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>xMidYMid meet<span class="token punctuation">"</span></span>
+            <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2000/svg<span class="token punctuation">"</span></span>
+            <span class="token attr-name"><span class="token namespace">xmlns:</span>xlink</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/1999/xlink<span class="token punctuation">"</span></span>
+          <span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>clock-line<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span>
+              <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M18,2A16,16,0,1,0,34,18,16,16,0,0,0,18,2Zm0,30A14,14,0,1,1,32,18,14,14,0,0,1,18,32Z<span class="token punctuation">"</span></span>
+              <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clr-i-outline clr-i-outline-path-1<span class="token punctuation">"</span></span>
+            <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span>
+              <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M18.92,18.4V10.75a1,1,0,0,0-2,0v8.72l5.9,4a1,1,0,1,0,1.11-1.66Z<span class="token punctuation">"</span></span>
+              <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clr-i-outline clr-i-outline-path-2<span class="token punctuation">"</span></span>
+            <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>path</span>
+              <span class="token attr-name">d</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>M8,17.94A9.94,9.94,0,0,1,23.41,9.59l.85-1.36a11.55,11.55,0,1,0-8.53,21L16,27.7A10,10,0,0,1,8,17.94Z<span class="token punctuation">"</span></span>
+              <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>clr-i-outline clr-i-outline-path-3<span class="token punctuation">"</span></span>
+            <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>path</span><span class="token punctuation">></span></span>
+            <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>rect</span> <span class="token attr-name">x</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">y</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token attr-name">width</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>36<span class="token punctuation">"</span></span> <span class="token attr-name">height</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>36<span class="token punctuation">"</span></span> <span class="token attr-name">fill-opacity</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>0<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>svg</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>time</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>IconText__text PublishDate__date<span class="token punctuation">"</span></span> <span class="token attr-name">datetime</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>2022-12-03<span class="token punctuation">"</span></span>
+          <span class="token punctuation">></span></span>2022/12/03<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>time</span>
+        <span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>ul</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatars<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+            <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar__thumb<span class="token punctuation">"</span></span>
+            <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://i.pravatar.cc/60?img=1<span class="token punctuation">"</span></span>
+            <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hogehogeさん<span class="token punctuation">"</span></span>
+          <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+            <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar__thumb<span class="token punctuation">"</span></span>
+            <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://i.pravatar.cc/60?img=2<span class="token punctuation">"</span></span>
+            <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hogehogeさん<span class="token punctuation">"</span></span>
+          <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+            <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar__thumb<span class="token punctuation">"</span></span>
+            <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://i.pravatar.cc/60?img=3<span class="token punctuation">"</span></span>
+            <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hogehogeさん<span class="token punctuation">"</span></span>
+          <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+            <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar__thumb<span class="token punctuation">"</span></span>
+            <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://i.pravatar.cc/60?img=4<span class="token punctuation">"</span></span>
+            <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hogehogeさん<span class="token punctuation">"</span></span>
+          <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+            <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar__thumb<span class="token punctuation">"</span></span>
+            <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://i.pravatar.cc/60?img=5<span class="token punctuation">"</span></span>
+            <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hogehogeさん<span class="token punctuation">"</span></span>
+          <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>li</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+          <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>img</span>
+            <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>Avatar__thumb<span class="token punctuation">"</span></span>
+            <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>https://i.pravatar.cc/60?img=6<span class="token punctuation">"</span></span>
+            <span class="token attr-name">alt</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>hogehogeさん<span class="token punctuation">"</span></span>
+          <span class="token punctuation">/></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>li</span><span class="token punctuation">></span></span>
+      <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
+</code></pre>
+      <div class="content astro-XGGZHCIZ"></div>
+    </main>
+    <footer class="astro-XGGZHCIZ">
+      <div class="prev astro-XGGZHCIZ">
+        <a href="/web-feature-note/demo/card-tutorial-step/22">
+  前へ
+</a>
+      </div>
+      <div class="next astro-XGGZHCIZ">
+        <a href="/web-feature-note/demo/card-tutorial-step/24">
+  次へ
+</a>
+      </div>
+    </footer>
+  </div>
+  
+</body></html>
+
