@@ -2,12 +2,14 @@
 import ButtonDemo from "../button-demo.astro"
 
 const css = `
-@keyframes Blur {
+@keyframes Blur_WithBorderRadius {
   0% {
     filter: blur(0);
+    border-radius: 20px;
   }
   100% {
     filter: blur(2px);
+    border-radius: 20px;
   }
 }`
 ---
@@ -21,6 +23,7 @@ const css = `
     background-color: var(--dark-color);
     color: var(--light-color);
     filter: blur(0);
+    border-radius: 20px;
     transition: none;
   }
 
