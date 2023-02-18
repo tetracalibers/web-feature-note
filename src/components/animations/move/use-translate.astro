@@ -1,0 +1,46 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes translate {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100px);
+  }
+}`
+---
+
+<button id="trigger-use-translate">START</button>
+
+<ButtonDemo css={css}>
+  <button id="target-use-translate">Animate</button>
+</ButtonDemo>
+
+<script>
+  const trigger = document.querySelector("#trigger-use-translate")
+  const target = document.querySelector("#target-use-translate")
+  trigger?.addEventListener("click", () => target?.classList.add("ef-Translate"))
+</script>
+
+<style>
+  .ef-Translate {
+    background-color: #ecc5fb;
+    position: relative;
+    transform: translateY(0);
+    animation-name: translate;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes translate {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(100px);
+    }
+  }
+</style>

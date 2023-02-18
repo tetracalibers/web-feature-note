@@ -1,0 +1,46 @@
+---
+import ButtonDemo from "../button-demo.astro"
+
+const css = `
+@keyframes move_position {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: 100px;
+  }
+}`
+---
+
+<button id="trigger-use-position">START</button>
+
+<ButtonDemo css={css}>
+  <button id="target-use-position">Animate</button>
+</ButtonDemo>
+
+<script>
+  const trigger = document.querySelector("#trigger-use-position")
+  const target = document.querySelector("#target-use-position")
+  trigger?.addEventListener("click", () => target?.classList.add("ef-ChangePosition"))
+</script>
+
+<style>
+  .ef-ChangePosition {
+    background-color: #ecc5fb;
+    position: relative;
+    top: 0;
+    animation-name: move;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    animation-fill-mode: forwards;
+  }
+
+  @keyframes move {
+    0% {
+      top: 0;
+    }
+    100% {
+      top: 100px;
+    }
+  }
+</style>
